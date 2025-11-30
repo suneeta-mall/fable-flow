@@ -1,0 +1,9 @@
+mkdocs==1.6.1
+mkdocs-material==9.7.0
+mkdocs-literate-nav==0.6.2
+mkdocs-bibtex==4.4.0
+mkdocs-rss-plugin==1.17.7
+mkdocs-minify-plugin==0.8.0
+mkdocs-blog-plugin==0.25
+mkdocs-git-revision-date-localized-plugin==1.5.0
+# -e .

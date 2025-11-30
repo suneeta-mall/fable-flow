@@ -1,0 +1,101 @@
+model:
+  server:
+    url: "${env.MODEL_SERVER_URL}" # "https://api.anthropic.com/v1"
+    api_key: "${env.MODEL_API_KEY}" # "dev-api-key"
+    timeout: 600  # 10 minutes timeout for long responses
+    max_retries: 3  # Retry failed requests up to 3 times
+    retry_delay: 2.0  # Initial delay between retries in seconds
+    reuse_http_client: true  # Reuse HTTP connections for better performance
+  default: "${env.DEFAULT_MODEL}"
+  max_tokens: 64000
+  stream: true
+  text_generation:
+    story: "${model.default}"
+    content_moderation: "${model.default}"
+    proofreading: "${model.default}"
+  image_generation:
+    # Options: 
+    # - "black-forest-labs/FLUX.1-schnell" (fastest, good quality, ~6GB VRAM)
+    # - "black-forest-labs/FLUX.1-dev" (best quality, ~12GB VRAM)
+    # - "stabilityai/stable-diffusion-xl-base-1.0" (good balance, ~8GB VRAM)
+    # - "stabilityai/stable-diffusion-3-medium-diffusers" (latest SD, ~10GB VRAM)
+    model: "black-forest-labs/FLUX.1-dev"
+    style_consistency: "stabilityai/stable-diffusion-xl-refiner-1.0"
+  text_to_speech:
+    # Kokoro-TTS - High quality neural TTS
+    # Install with: pip install kokoro>=0.9.2
+    voice_preset: "af_heart"  # Options: af_heart, af_sarah, af_bella, af_nicole, am_adam, am_michael  
+    sample_rate: 24000
+    device: "cuda"
+  music_generation:
+    model: "facebook/musicgen-small"
+  video_generation:
+    model: "hunyuanvideo-community/HunyuanVideo-I2V"
+    height: 720
+    width: 1280
+    num_frames: 129  # HunyuanVideo supports up to 129 frames (5 seconds)
+    num_inference_steps: 50
+    guidance_scale: 1.0  # HunyuanVideo uses lower guidance scale
+    true_cfg_scale: 6.0  # HunyuanVideo's true CFG scale for better quality
+    fps: 25
+    negative_prompt: "scary faces, frightening expressions, dark shadows, aggressive poses, angry expressions, menacing looks, threatening gestures, unsafe situations, sharp objects, dangerous activities, crying children, distressed expressions, conflict scenes, fighting, violence, inappropriate content, adult themes, realistic violence, disturbing imagery"
+  content_safety:
+    safety_model: "${model.default}"
+    scientific_accuracy: "${model.default}"
+
+api:
+  keys:
+    openai: "${env.OPENAI_API_KEY}"
+
+paths:
+  base: "/home/coder/wks/opensource_wks/fable-flow/"
+  output: "${paths.base}/.tmp/result_book"
+  
+style:
+  illustration:
+    style_preset: "children's book illustration"
+    color_scheme: "bright and cheerful"
+    art_style: "watercolor and digital art blend"
+  music:
+    happy: "upbeat orchestral with playful melodies"
+    sad: "gentle piano with soft strings"
+    adventure: "epic orchestral with percussion"
+    mystery: "mysterious strings with woodwinds"
+  video:
+    animation_style: "3D animation with 2D elements"
+    color_palette: "vibrant and child-friendly"
+    camera_style: "dynamic and engaging"
+  pdf:
+    # Most styling (fonts, colors, spacing) is defined in pdf.py as constants
+
+    # Page dimensions - Common sizes: 6x9 (432x648), 8.5x11 (612x792), A4 (595x842)
+    page_size: [432.0, 648.0]  # 6x9 inches (standard trade paperback)
+
+    # Print margins - Adjust based on print service requirements
+    margin_top: 36.0      # 0.5 inch
+    margin_bottom: 36.0   # 0.5 inch
+    margin_left: 36.0     # 0.5 inch
+    margin_right: 36.0    # 0.5 inch
+
+    # Image dimensions - Scale with page size
+    image_width: 288.0            # 4 inches (inline images)
+    image_height: 216.0           # 3 inches
+    full_page_image_width: 360.0  # 5 inches (full-page images)
+    full_page_image_height: 540.0 # 7.5 inches
+
+    # Page numbering
+    page_number_position: "bottom_center"  # Options: bottom_center, bottom_right, bottom_left
+    start_page_number: 1
+
+    # Layout preferences
+    use_drop_caps: true    # Decorative first letters in chapters
+    justify_text: false    # Left-align (false) or justify (true)
+
+book:
+  draft_story_author: "Suneeta Mall"
+  isbn_pdf: "978-0-XXXXX-XXX-X"
+  isbn_epub: "978-0-XXXXX-XXX-X"
+  publisher: "FableFlow Publishing"
+  publisher_location: "Sydney, Australia"
+  publication_year: 2024
+  edition: "First Edition" 
