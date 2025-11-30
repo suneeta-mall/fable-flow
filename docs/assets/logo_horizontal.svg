@@ -1,0 +1,130 @@
+<svg width="300" height="80" viewBox="0 0 300 80" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bookGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4f46e5;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#7c3aed;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#db2777;stop-opacity:1" />
+    </linearGradient>
+    
+    <radialGradient id="magicGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#fbbf24;stop-opacity:0.8" />
+      <stop offset="50%" style="stop-color:#f59e0b;stop-opacity:0.6" />
+      <stop offset="100%" style="stop-color:#d97706;stop-opacity:0.2" />
+    </radialGradient>
+    
+    <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#1e293b;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#4f46e5;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7c3aed;stop-opacity:1" />
+    </linearGradient>
+    
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <g id="smallSparkle">
+      <path d="M0,-3 L1,-1 L3,0 L1,1 L0,3 L-1,1 L-3,0 L-1,-1 Z" fill="#fbbf24"/>
+    </g>
+  </defs>
+  
+  <!-- Logo section -->
+  <g transform="translate(40,40)">
+    <!-- Background magical aura -->
+    <circle cx="0" cy="0" r="35" fill="url(#magicGlow)" opacity="0.3"/>
+    
+    <!-- Open book -->
+    <g transform="translate(0,8)">
+      <!-- Left page -->
+      <path d="M-18,-10 Q-20,-15 -13,-18 L-2,-15 Q0,-12 0,-10 L0,6 Q-2,8 -13,6 Q-20,4 -18,0 Z" 
+            fill="#fef3c7" stroke="#d1d5db" stroke-width="1"/>
+      <!-- Right page -->
+      <path d="M18,-10 Q20,-15 13,-18 L2,-15 Q0,-12 0,-10 L0,6 Q2,8 13,6 Q20,4 18,0 Z" 
+            fill="#fef3c7" stroke="#d1d5db" stroke-width="1"/>
+      
+      <!-- Text lines -->
+      <g opacity="0.4">
+        <line x1="-15" y1="-8" x2="-4" y2="-7" stroke="#9ca3af" stroke-width="0.8"/>
+        <line x1="-15" y1="-2" x2="-6" y2="-1" stroke="#9ca3af" stroke-width="0.8"/>
+        <line x1="-15" y1="4" x2="-5" y2="5" stroke="#9ca3af" stroke-width="0.8"/>
+        <line x1="4" y1="-7" x2="15" y2="-8" stroke="#9ca3af" stroke-width="0.8"/>
+        <line x1="6" y1="-1" x2="15" y2="-2" stroke="#9ca3af" stroke-width="0.8"/>
+        <line x1="5" y1="5" x2="15" y2="4" stroke="#9ca3af" stroke-width="0.8"/>
+      </g>
+    </g>
+    
+    <!-- Central AI/creativity orb -->
+    <circle cx="0" cy="-12" r="8" fill="url(#bookGradient)" opacity="0.9" filter="url(#glow)"/>
+    <g transform="translate(0,-12)" opacity="0.9">
+      <!-- Musical note -->
+      <path d="M-3,-4 Q-2,-5 -1,-4 L-1,2 Q-2,3 -3,2 Z M-1,-4 L3,-3 Q4,-2 3,-1 Q2,0 1,-1 L1,-3 Q0,-4 -1,-3" 
+            fill="#fbbf24" transform="scale(0.7)"/>
+      <!-- Paint brush stroke -->
+      <path d="M1,-3 Q4,-2 3,1 Q2,2 1,1 Q0,0 1,-3" fill="#f59e0b" opacity="0.8" transform="rotate(45)"/>
+    </g>
+    
+    <!-- Magical flow -->
+    <path d="M-15,10 Q-25,0 -20,-15 Q-15,-25 0,-28" 
+          stroke="#06d6a0" stroke-width="2" fill="none" opacity="0.6"/>
+    <path d="M15,10 Q25,0 20,-15 Q15,-25 0,-28" 
+          stroke="#118ab2" stroke-width="2" fill="none" opacity="0.6"/>
+    
+    <!-- Floating particles -->
+    <circle cx="-20" cy="0" r="1.5" fill="#06d6a0">
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="20" cy="0" r="1.5" fill="#118ab2">
+      <animate attributeName="opacity" values="0.5;1;0.5" dur="1.8s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+  
+  <!-- Text: "Fable Flow" -->
+  <g transform="translate(95,50)">
+    <text x="0" y="0" font-family="serif, Georgia" font-size="28" font-weight="bold" fill="url(#textGradient)">
+      Fable Flow
+    </text>
+    
+    <!-- Subtitle -->
+    <text x="0" y="18" font-family="sans-serif, Arial" font-size="11" fill="#6b7280" font-style="italic">
+      Where Stories Come to Life
+    </text>
+  </g>
+  
+  <!-- Trailing magical elements -->
+  <g opacity="0.6">
+    <use href="#smallSparkle" transform="translate(250,25) scale(0.8)">
+      <animateTransform attributeName="transform" type="rotate" values="0 250 25; 360 250 25" dur="8s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite"/>
+    </use>
+    
+    <use href="#smallSparkle" transform="translate(270,35) scale(0.6)">
+      <animate attributeName="opacity" values="0.4;0.9;0.4" dur="1.5s" repeatCount="indefinite"/>
+    </use>
+    
+    <use href="#smallSparkle" transform="translate(280,50) scale(0.5)">
+      <animateTransform attributeName="transform" type="rotate" values="0 280 50; -360 280 50" dur="10s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.2;0.7;0.2" dur="2.2s" repeatCount="indefinite"/>
+    </use>
+    
+    <!-- Multimedia icons -->
+    <g transform="translate(260,55)" opacity="0.4">
+      <circle cx="0" cy="0" r="3" fill="#7c3aed"/>
+      <path d="M-1,-1 L2,0 L-1,1 Z" fill="#a855f7"/>
+    </g>
+    
+    <g transform="translate(275,20)" opacity="0.4">
+      <path d="M0,-2 Q1,-3 2,-2 L2,4 Q1,5 0,4 Z M2,-2 L6,-1 Q7,0 6,1 Q5,2 4,1 L4,-1 Q3,-2 2,-1" 
+            fill="#db2777" transform="scale(0.5)"/>
+    </g>
+  </g>
+  
+  <!-- Flowing story elements -->
+  <g opacity="0.2" font-family="serif" font-size="6" fill="#6366f1">
+    <text x="85" y="12">Once upon a time...</text>
+    <text x="240" y="72">...and they all lived happily ever after</text>
+  </g>
+  
+</svg>

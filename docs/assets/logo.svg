@@ -1,0 +1,208 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="bookGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4f46e5;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#7c3aed;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#db2777;stop-opacity:1" />
+    </linearGradient>
+    
+    <radialGradient id="magicGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#fbbf24;stop-opacity:0.8" />
+      <stop offset="50%" style="stop-color:#f59e0b;stop-opacity:0.6" />
+      <stop offset="100%" style="stop-color:#d97706;stop-opacity:0.2" />
+    </radialGradient>
+    
+    <linearGradient id="pageGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fef3c7;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#fed7aa;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="flowGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#06d6a0;stop-opacity:0.8" />
+      <stop offset="50%" style="stop-color:#118ab2;stop-opacity:0.6" />
+      <stop offset="100%" style="stop-color:#073b4c;stop-opacity:0.4" />
+    </linearGradient>
+    
+    <linearGradient id="sparkleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fbbf24;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f59e0b;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Filter for magical glow effect -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <!-- Stars and sparkles -->
+    <g id="sparkle">
+      <path d="M0,-8 L2,-2 L8,0 L2,2 L0,8 L-2,2 L-8,0 L-2,-2 Z" fill="url(#sparkleGrad)"/>
+    </g>
+    
+    <g id="smallStar">
+      <path d="M0,-4 L1,-1 L4,0 L1,1 L0,4 L-1,1 L-4,0 L-1,-1 Z" fill="#fbbf24"/>
+    </g>
+  </defs>
+  
+  <!-- Background magical aura -->
+  <circle cx="100" cy="100" r="90" fill="url(#magicGlow)" opacity="0.3"/>
+  
+  <!-- Open book as the central element -->
+  <g transform="translate(100,120)">
+    <!-- Book spine and base -->
+    <ellipse cx="0" cy="0" rx="45" ry="8" fill="#374151" opacity="0.3"/>
+    
+    <!-- Left page -->
+    <path d="M-40,-25 Q-45,-35 -30,-40 L-5,-35 Q0,-30 0,-25 L0,15 Q-5,20 -30,15 Q-45,10 -40,0 Z" 
+          fill="url(#pageGradient)" stroke="#d1d5db" stroke-width="1"/>
+    
+    <!-- Right page -->
+    <path d="M40,-25 Q45,-35 30,-40 L5,-35 Q0,-30 0,-25 L0,15 Q5,20 30,15 Q45,10 40,0 Z" 
+          fill="url(#pageGradient)" stroke="#d1d5db" stroke-width="1"/>
+    
+    <!-- Text lines on pages -->
+    <g opacity="0.4">
+      <!-- Left page lines -->
+      <line x1="-35" y1="-20" x2="-8" y2="-18" stroke="#9ca3af" stroke-width="1"/>
+      <line x1="-35" y1="-12" x2="-12" y2="-10" stroke="#9ca3af" stroke-width="1"/>
+      <line x1="-35" y1="-4" x2="-15" y2="-2" stroke="#9ca3af" stroke-width="1"/>
+      <line x1="-35" y1="4" x2="-10" y2="6" stroke="#9ca3af" stroke-width="1"/>
+      
+      <!-- Right page lines -->
+      <line x1="8" y1="-18" x2="35" y2="-20" stroke="#9ca3af" stroke-width="1"/>
+      <line x1="12" y1="-10" x2="35" y2="-12" stroke="#9ca3af" stroke-width="1"/>
+      <line x1="15" y1="-2" x2="35" y2="-4" stroke="#9ca3af" stroke-width="1"/>
+      <line x1="10" y1="6" x2="35" y2="4" stroke="#9ca3af" stroke-width="1"/>
+    </g>
+  </g>
+  
+  <!-- Magical transformation streams flowing from the book -->
+  <g opacity="0.8" filter="url(#glow)">
+    <!-- Main flow streams -->
+    <path d="M70,130 Q50,100 60,70 Q70,40 100,30" 
+          stroke="url(#flowGradient)" stroke-width="3" fill="none" opacity="0.7"/>
+    <path d="M130,130 Q150,100 140,70 Q130,40 100,30" 
+          stroke="url(#flowGradient)" stroke-width="3" fill="none" opacity="0.7"/>
+    
+    <!-- Secondary magical streams -->
+    <path d="M80,125 Q40,110 30,80 Q25,60 45,45" 
+          stroke="#06d6a0" stroke-width="2" fill="none" opacity="0.5"/>
+    <path d="M120,125 Q160,110 170,80 Q175,60 155,45" 
+          stroke="#118ab2" stroke-width="2" fill="none" opacity="0.5"/>
+    
+    <!-- Flowing particles along streams -->
+    <circle cx="65" cy="105" r="2" fill="#06d6a0">
+      <animateMotion dur="3s" repeatCount="indefinite">
+        <path d="M0,0 Q-15,-30 5,-60 Q15,-90 45,-100"/>
+      </animateMotion>
+    </circle>
+    <circle cx="135" cy="105" r="2" fill="#118ab2">
+      <animateMotion dur="3.5s" repeatCount="indefinite">
+        <path d="M0,0 Q15,-30 -5,-60 Q-15,-90 -45,-100"/>
+      </animateMotion>
+    </circle>
+  </g>
+  
+  <!-- Central AI/creativity symbol -->
+  <g transform="translate(100,50)">
+    <!-- Magical orb -->
+    <circle cx="0" cy="0" r="18" fill="url(#bookGradient)" opacity="0.9" filter="url(#glow)"/>
+    
+    <!-- Creative elements inside orb -->
+    <g opacity="0.9">
+      <!-- Musical note -->
+      <path d="M-6,-8 Q-4,-10 -2,-8 L-2,4 Q-4,6 -6,4 Z M-2,-8 L6,-6 Q8,-4 6,-2 Q4,0 2,-2 L2,-6 Q0,-8 -2,-6" 
+            fill="#fbbf24" transform="scale(0.8)"/>
+      
+      <!-- Paint brush stroke -->
+      <path d="M2,-6 Q8,-4 6,2 Q4,4 2,2 Q0,0 2,-6" fill="#f59e0b" opacity="0.8" transform="rotate(45)"/>
+      
+      <!-- Video play symbol -->
+      <path d="M4,-4 L8,0 L4,4 Z" fill="#fed7aa" transform="scale(0.7) rotate(-30)"/>
+    </g>
+    
+    <!-- Pulsing glow animation -->
+    <circle cx="0" cy="0" r="18" fill="none" stroke="#fbbf24" stroke-width="2" opacity="0.6">
+      <animate attributeName="r" values="18;24;18" dur="2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.6;0.2;0.6" dur="2s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+  
+  <!-- Floating multimedia elements around the logo -->
+  <g opacity="0.8">
+    <!-- Camera/video icon -->
+    <g transform="translate(160,60)">
+      <rect x="-8" y="-6" width="16" height="12" rx="2" fill="#7c3aed" opacity="0.7"/>
+      <circle cx="0" cy="0" r="4" fill="#a855f7" opacity="0.8"/>
+      <circle cx="0" cy="0" r="2" fill="#c084fc"/>
+      <animate attributeName="transform" values="translate(160,60) rotate(0); translate(160,60) rotate(360)" dur="20s" repeatCount="indefinite"/>
+    </g>
+    
+    <!-- Musical notes -->
+    <g transform="translate(40,65)" opacity="0.6">
+      <path d="M0,-4 Q2,-6 4,-4 L4,8 Q2,10 0,8 Z M4,-4 L12,-2 Q14,0 12,2 Q10,4 8,2 L8,-2 Q6,-4 4,-2" 
+            fill="#db2777" transform="scale(0.6)"/>
+      <animateTransform attributeName="transform" type="translate" values="40,65; 35,60; 40,65" dur="4s" repeatCount="indefinite"/>
+    </g>
+    
+    <!-- Palette/art icon -->
+    <g transform="translate(40,130)">
+      <ellipse cx="0" cy="0" rx="8" ry="6" fill="#06d6a0" opacity="0.7"/>
+      <circle cx="-3" cy="-2" r="2" fill="#f59e0b"/>
+      <circle cx="3" cy="-1" r="1.5" fill="#db2777"/>
+      <circle cx="0" cy="2" r="1.5" fill="#7c3aed"/>
+      <animate attributeName="transform" values="translate(40,130) rotate(0); translate(40,130) rotate(-360)" dur="25s" repeatCount="indefinite"/>
+    </g>
+    
+    <!-- Microphone icon -->
+    <g transform="translate(160,140)">
+      <rect x="-2" y="-8" width="4" height="12" rx="2" fill="#4f46e5"/>
+      <rect x="-4" y="4" width="8" height="2" fill="#6366f1"/>
+      <line x1="0" y1="6" x2="0" y2="10" stroke="#7c3aed" stroke-width="2"/>
+      <animateTransform attributeName="transform" type="translate" values="160,140; 165,135; 160,140" dur="3s" repeatCount="indefinite"/>
+    </g>
+  </g>
+  
+  <!-- Magical sparkles scattered around -->
+  <g opacity="0.7">
+    <use href="#sparkle" transform="translate(35,40) scale(0.6)">
+      <animateTransform attributeName="transform" type="rotate" values="0 35 40; 360 35 40" dur="8s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite"/>
+    </use>
+    
+    <use href="#smallStar" transform="translate(170,35) scale(0.8)">
+      <animate attributeName="opacity" values="0.5;1;0.5" dur="1.5s" repeatCount="indefinite"/>
+    </use>
+    
+    <use href="#sparkle" transform="translate(25,160) scale(0.4)">
+      <animateTransform attributeName="transform" type="rotate" values="0 25 160; -360 25 160" dur="12s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.4;0.9;0.4" dur="2.8s" repeatCount="indefinite"/>
+    </use>
+    
+    <use href="#smallStar" transform="translate(175,165) scale(0.5)">
+      <animate attributeName="opacity" values="0.3;0.8;0.3" dur="2.2s" repeatCount="indefinite"/>
+    </use>
+    
+    <use href="#sparkle" transform="translate(15,100) scale(0.3)">
+      <animateTransform attributeName="transform" type="rotate" values="0 15 100; 360 15 100" dur="6s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.2;0.7;0.2" dur="1.8s" repeatCount="indefinite"/>
+    </use>
+    
+    <use href="#smallStar" transform="translate(185,100) scale(0.6)">
+      <animate attributeName="opacity" values="0.4;0.9;0.4" dur="2.5s" repeatCount="indefinite"/>
+    </use>
+  </g>
+  
+  <!-- Subtle flowing text/story elements -->
+  <g opacity="0.3" font-family="serif" font-size="8" fill="#6366f1">
+    <text x="20" y="25">Once upon a time...</text>
+    <text x="140" y="25" font-size="6">♪ ♫ ♪</text>
+    <text x="25" y="180" font-size="6">🎨 ✨ 🎬</text>
+    <text x="155" y="180">...happily ever after</text>
+  </g>
+  
+</svg>
