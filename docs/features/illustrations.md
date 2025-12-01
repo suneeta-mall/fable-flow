@@ -46,39 +46,59 @@ Generates various illustration styles:
 
 ## Usage
 
-### Basic Illustration Generation
+### Option 1: FableFlow Studio (Recommended)
+
+Use the web-based Studio interface:
+
+1. Start Studio: `make studio-start`
+2. Navigate to http://localhost:3000
+3. Run the publisher pipeline which includes illustration generation
+4. Preview generated illustrations in the Media Gallery
+5. Monitor real-time progress
+
+### Option 2: CLI - Individual Illustration Generation
 
 ```bash
-fable-flow illustrator draw --input path/to/story.txt --output output/
+# Generate illustrations (requires processed story)
+fable-flow illustrator draw
 ```
 
-### Advanced Options
+### Option 3: CLI - Full Publishing Pipeline
 
 ```bash
-fable-flow illustrator draw \
-  --input path/to/story.txt \
-  --output output/ \
-  --style cartoon \
-  --resolution 1024x1024 \
-  --consistency high
+# Run complete pipeline including illustrations
+fable-flow publisher process
 ```
 
 ### Configuration
 
-Illustration settings in `config.yaml`:
+Illustration settings in `config/default.yaml`:
 
 ```yaml
 model:
   image_generation:
-    model: "stabilityai/stable-diffusion-xl-base-1.0"
-    style_consistency: "stabilityai/stable-diffusion-xl-refiner-1.0"
+    model: "dall-e-3"  # Or "stabilityai/stable-diffusion-xl"
+    size: "1024x1024"
+    quality: "hd"
 
 style:
   illustration:
     style_preset: "children's book illustration"
-    color_scheme: "bright and cheerful"
-    art_style: "watercolor and digital art blend"
+    color_scheme: "vibrant and child-friendly"
+    art_style: "digital illustration with warm, engaging characters"
+
+# Environment variables (.env)
+MODEL_API_KEY=your_api_key
 ```
+
+## Agent Architecture
+
+FableFlow uses a two-agent illustration system:
+
+- **Illustration Planner Agent** - Analyzes story scenes, identifies key visual moments, creates detailed image prompts
+- **Illustrator Agent** - Generates images using AI models (DALL-E, Stable Diffusion), ensures consistency
+
+These agents work together to create cohesive visual narratives that match your story's tone and educational objectives.
 
 ## Output
 

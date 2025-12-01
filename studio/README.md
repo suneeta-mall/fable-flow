@@ -596,7 +596,7 @@ Contributions welcome! To extend Studio:
 
 ### License
 
-Apache License 2.0 - Same as FableFlow main project
+Elastic License 2.0 - Same as FableFlow main project
 
 ---
 

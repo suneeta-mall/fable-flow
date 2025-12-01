@@ -65,6 +65,8 @@ extra_javascript:
 - javascript/epub-reader.js
 # PDF reader maximize/minimize controls
 - javascript/pdf-reader.js
+# Mermaid for diagrams
+- https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js
 
 extra_css:
 - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css
@@ -116,7 +118,11 @@ markdown_extensions:
 - footnotes
 - pymdownx.betterem
 - pymdownx.details
-- pymdownx.superfences
+- pymdownx.superfences:
+    custom_fences:
+      - name: mermaid
+        class: mermaid
+        format: !!python/name:pymdownx.superfences.fence_code_format
 - pymdownx.caret
 - pymdownx.mark
 - pymdownx.highlight
@@ -170,6 +176,7 @@ nav:
   - Story Processing: features/story-processing.md
   - AI Narration: features/narration.md
   - Illustration Generation: features/illustrations.md
+  - Book Production: features/book-production.md
   - Video Production: features/video-production.md
   - Music Generation: features/music.md
   - Core API: api/core.md  

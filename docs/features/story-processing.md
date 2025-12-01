@@ -1,15 +1,20 @@
-# Story Processing
+# Story Processing & Editorial Review
 
-Fable Flow's story processing feature transforms your text into an enhanced, multimedia-ready narrative. This powerful system analyzes, structures, and optimizes your story for various output formats while maintaining its core message and educational value.
+FableFlow's story processing feature transforms your text into an enhanced, multimedia-ready narrative through a comprehensive AI-powered editorial review pipeline. This powerful system analyzes, structures, and optimizes your story through five specialized review stages while maintaining its core message and educational value.
 
 ## Overview
 
-The story processing pipeline takes your input text and enhances it through several stages:
+The story processing pipeline takes your input text and enhances it through a **5-stage AI editorial review process**:
 
-1. **Story Analysis** - Evaluates narrative structure, character development, and educational content
-2. **Content Enhancement** - Optimizes language, pacing, and engagement
-3. **Scene Breakdown** - Prepares the story for illustration and multimedia production
-4. **Format Preparation** - Structures the content for various output formats (PDF, video, etc.)
+1. **Friendly Proof** - Initial feedback on readability, flow, and engagement
+2. **Critical Review** - Professional editorial analysis of structure, character development, and narrative
+3. **Content Check** - Safety validation, age-appropriateness, and educational value assessment
+4. **Story Edit** - Structure improvements, pacing optimization, and narrative enhancement
+5. **Format Proof** - Final polish, formatting, and preparation for multimedia production
+
+### Author Control
+
+At each stage, you review the AI feedback and **approve or request revisions**. If you reject feedback at any stage, you can revise your manuscript and restart the review process. This ensures you maintain creative control while benefiting from AI-powered editorial insights.
 
 ## Key Features
 
@@ -45,55 +50,92 @@ Prepares your story for multimedia production by:
 
 ## Usage
 
-### Basic Processing
+### Option 1: FableFlow Studio (Recommended)
+
+Use the web-based Studio interface for the best experience:
+
+1. Start Studio: `make studio-start`
+2. Navigate to http://localhost:3000
+3. Open or create your story project
+4. Edit your manuscript in the Monaco editor
+5. Run the publisher pipeline from the UI
+6. Monitor real-time progress via WebSocket updates
+7. Review AI feedback at each editorial stage
+8. Approve or request revisions
+
+### Option 2: CLI - Individual Story Processing
 
 ```bash
-fable-flow story process --input path/to/your/story.txt --output output/
+# Process story manuscript only
+fable-flow story process
 ```
 
-### Advanced Options
+### Option 3: CLI - Full Publishing Pipeline
 
 ```bash
-fable-flow story process \
-  --input path/to/your/story.txt \
-  --output output/ \
-  --model claude-opus-4-20250514 \
-  --temperature 0.0 \
-  --seed 42
+# Run complete end-to-end pipeline (includes story processing + multimedia)
+fable-flow publisher process
 ```
+
+This runs all production stages: story review → illustrations → narration → music → books → video
 
 ### Configuration
 
-Story processing can be customized through the `config.yaml` file:
+Story processing can be customized through the `config/default.yaml` file or `.env` environment variables:
 
 ```yaml
 model:
   text_generation:
-    story: "claude-opus-4-20250514"
-    content_moderation: "claude-opus-4-20250514"
-    proofreading: "claude-opus-4-20250514"
-  content_safety:
-    safety_model: "claude-opus-4-20250514"
-    scientific_accuracy: "claude-opus-4-20250514"
+    story: "claude-opus-4-20250514"  # Or any vLLM-compatible model
+    proofreading: "claude-sonnet-4-20250514"
+    editorial: "claude-opus-4-20250514"
+
+# Environment variables (.env file)
+MODEL_API_KEY=your_api_key
+MODEL_SERVER_URL=http://localhost:8000/v1  # Optional: custom vLLM server
 ```
+
+FableFlow supports OpenAI API standards, including Claude API, vLLM, and other compatible model servers.
 
 ## Output
 
-The story processing pipeline generates several output files:
+The story processing pipeline generates:
 
-- `enhanced_story.txt` - The optimized story text
-- `scenes.json` - Scene breakdown for illustration
-- `analysis.json` - Story analysis and suggestions
+**In FableFlow Studio:**
+- Real-time editorial feedback displayed in the UI
+- Version comparison view for before/after
+- Interactive approval/rejection workflow
+- Live progress notifications
+
+**CLI Output Files:**
+- `manuscript.txt` - Enhanced manuscript after all review stages
+- `editorial_feedback/` - Feedback from each review stage
 - `metadata.json` - Processing metadata and settings
+- Prepares content for downstream agents (illustration, narration, etc.)
+
+## Agent Architecture
+
+FableFlow uses specialized AI agents for each review stage:
+
+- **Friendly Proofreader Agent** - Initial readability and engagement check
+- **Critical Reviewer Agent** - Professional editorial analysis
+- **Content Safety Checker Agent** - Safety and appropriateness validation
+- **Story Editor Agent** - Structure and narrative improvements
+- **Format Proofreader Agent** - Final polish and formatting
+
+These agents work asynchronously using message passing, allowing for efficient parallel processing in the full publisher pipeline.
 
 ## Integration
 
-The processed story can be used with other Fable Flow features:
+The processed story feeds into downstream production agents:
 
-- **Illustration Generation** - Uses scene breakdown for image creation
-- **Video Production** - Structures content for video generation
-- **PDF Publishing** - Formats content for book creation
-- **Audio Narration** - Prepares text for voice synthesis
+- **Illustration Planner/Illustrator Agents** - Generate contextual illustrations
+- **Book Producer Agent** - Create PDF, EPUB, and HTML books
+- **Narrator Agent** - Generate audio narration
+- **Music Director/Musician Agents** - Compose background music
+- **Movie Director/Animator/Producer Agents** - Assemble final video
+
+See [complete workflow documentation](../fableflow-workflow.md) for the full agent pipeline.
 
 ## Best Practices
 

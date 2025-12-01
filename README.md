@@ -6,7 +6,7 @@
 
 FableFlow is an open-source platform that converts story manuscripts into multimedia content with narration, illustrations, and video production using AI agents.
 
-[![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![License: Elastic 2.0](https://img.shields.io/badge/License-Elastic_2.0-blue.svg)](https://www.elastic.co/licensing/elastic-license)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
 [![Documentation](https://img.shields.io/badge/docs-mkdocs-blue.svg)](https://suneeta-mall.github.io/fable-flow)
 
@@ -137,7 +137,7 @@ Contributions welcome via:
 
 ## License
 
-Apache License 2.0 - see [LICENSE](LICENSE)
+Elastic License 2.0 - see [LICENSE](LICENSE)
 
 ## Links
 
@@ -148,5 +148,5 @@ Apache License 2.0 - see [LICENSE](LICENSE)
 
 ---
 
-Built by [Suneeta Mall](https://github.com/suneeta-mall) and contributors.
+Built by [Suneeta Mall](https://github.com/suneeta-mall), and Claude Code.
 

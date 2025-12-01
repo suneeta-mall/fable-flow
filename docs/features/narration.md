@@ -44,24 +44,36 @@ Supports various audio formats:
 * OGG for web use
 * AAC for streaming
 
+## Agent Architecture
+
+FableFlow uses a dedicated **Narrator Agent** that:
+
+- Converts manuscript text to natural-sounding speech
+- Applies appropriate emotional tone and pacing
+- Generates high-quality audio files for storytelling
+- Integrates with video and book production
+
 ## Usage
 
-### Basic Narration
+### Option 1: FableFlow Studio (Recommended)
+
+1. Start Studio: `make studio-start`
+2. Navigate to http://localhost:3000
+3. Run the publisher pipeline
+4. Listen to generated narration in the Media Gallery
+
+### Option 2: CLI - Individual Narration
 
 ```bash
-fable-flow director produce --input path/to/story.txt --voice-style friendly
+# Generate narration (requires processed story)
+fable-flow narration produce
 ```
 
-### Advanced Options
+### Option 3: CLI - Full Publishing Pipeline
 
 ```bash
-fable-flow director produce \
-  --input path/to/story.txt \
-  --voice-style friendly \
-  --pacing medium \
-  --emotion high \
-  --format mp3 \
-  --quality high
+# Run complete pipeline including narration
+fable-flow publisher process
 ```
 
 ### Configuration
