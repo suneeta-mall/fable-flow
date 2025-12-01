@@ -36,7 +36,48 @@ Think of FableFlow as your creative co-pilot. You bring the story that matters�
 
 </div>
 
-[View complete workflow documentation →](fableflow-workflow.md)
+### Complete FableFlow Journey
+
+```mermaid
+%%{init: {'theme':'neutral'}}%%
+flowchart LR
+    A([👤 Author])
+    B[🎨 Studio]
+    C[📋 Review]
+    D[🎬 Production]
+    E[📚 Books]
+    F[🎥 Media]
+    G[🌐 Website]
+    H[👥 Readers]
+
+    A --> B
+    B --> C
+    C --> D
+    D --> E
+    D --> F
+    E --> G
+    F --> G
+    G --> H
+    H -.->|Feedback| A
+
+    classDef process fill:#87ceeb,stroke:#333,stroke-width:3px
+    classDef output fill:#90ee90,stroke:#333,stroke-width:3px
+    classDef community fill:#ffd700,stroke:#333,stroke-width:3px
+
+    class B,C,D process
+    class E,F output
+    class A,G,H community
+```
+
+**The Complete Journey:**
+
+1. **Author** writes stories in FableFlow Studio
+2. **Review** process refines content through AI editorial stages
+3. **Production** generates multimedia (narration, illustrations, music, video)
+4. **Publishing** creates multiple book formats (PDF, EPUB, HTML)
+5. **Community** reads, engages, and provides feedback
+
+[📖 View detailed workflow with all stages, AI agents, and production paths →](fableflow-workflow.md)
 
 ### The Four-Stage Creative Pipeline
 

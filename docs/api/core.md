@@ -1,739 +1,659 @@
 # FableFlow Core API 🔌
 
-The FableFlow Core API provides programmatic access to all story creation and processing capabilities. This documentation covers the main API components, usage patterns, and integration examples.
+The FableFlow Core API provides programmatic access to story creation and multimedia production capabilities through an agent-based architecture. This documentation covers the main components, CLI usage, and integration patterns.
 
 ## 🚀 Getting Started
 
 ### Installation and Setup
 
-```python
-# Install FableFlow
-pip install fable-flow
+**Prerequisites:**
+- Python 3.11+
+- Git
 
-# Import core components
-from fable_flow import StoryProcessor, Config, Story
-from fable_flow.models import TextModel, ImageModel, AudioModel
-from fable_flow.outputs import PDFGenerator, EPUBGenerator, HTMLGenerator
+**Step 1: Clone the Repository**
+
+```bash
+git clone https://github.com/suneeta-mall/fable-flow.git
+cd fable-flow
 ```
 
-### Basic API Usage
+**Step 2: Create Virtual Environment**
+
+```bash
+# Create virtual environment
+python3.11 -m venv .venv
+
+# Activate virtual environment
+source .venv/bin/activate  # On Linux/macOS
+# Or on Windows:
+# .venv\Scripts\activate
+```
+
+**Step 3: Install Dependencies**
+
+```bash
+# Install all dependencies using Makefile
+make install
+
+# This installs:
+# - Core FableFlow package (editable mode)
+# - All production dependencies
+# - Development dependencies (optional)
+```
+
+### Environment Configuration
+
+Create a `.env` file in the project root:
+
+```bash
+# Model Server Configuration
+MODEL_API_KEY=your-api-key
+
+# Option 1: Use OpenAI directly
+MODEL_SERVER_URL=https://api.openai.com/v1
+
+# Option 2: Use custom vLLM server
+MODEL_SERVER_URL=http://localhost:8000/v1
+
+# Option 3: Use Anthropic Claude
+MODEL_SERVER_URL=https://api.anthropic.com/v1
+```
+
+### Basic CLI Usage
+
+```bash
+# Run complete publishing pipeline
+fable-flow publisher process
+
+# Individual production steps
+fable-flow story process        # Story enhancement
+fable-flow illustrator draw     # Generate illustrations
+fable-flow narration produce    # Generate narration
+fable-flow music produce        # Generate music
+fable-flow director produce     # Generate video
+```
+
+## 📋 Core Architecture
+
+### Agent-Based System
+
+FableFlow uses a multi-agent architecture built on `autogen-core`. Each agent is a specialized AI that handles specific production tasks.
+
+**Review Agents:**
+- `FriendProofReaderAgent` - Initial readability and engagement feedback
+- `CritiqueAgent` - Professional editorial analysis
+- `ContentModeratorAgent` - Safety and appropriateness validation
+- `EditorAgent` - Structure and narrative improvements
+- `FormatProofAgent` - Final polish and formatting
+
+**Production Agents:**
+- `NarratorAgent` - Audio narration generation
+- `IllustrationPlannerAgent` - Scene planning and prompt creation
+- `IllustratorAgent` - Image generation
+- `BookProducerAgent` - PDF, EPUB, HTML book generation
+- `MusicDirectorAgent` - Music planning
+- `MusicianAgent` - Music generation
+- `MovieDirectorAgent` - Video planning
+- `AnimatorAgent` - Animation/scene creation
+- `MovieProducerAgent` - Final video assembly
+
+See [complete workflow documentation](../fableflow-workflow.md) for agent collaboration details.
+
+## 🔧 Configuration System
+
+### Config Module (`fable_flow.config`)
+
+FableFlow uses Pydantic-based configuration with YAML files and environment variables.
 
 ```python
-# Initialize processor with configuration
-processor = StoryProcessor(config_file='config/my_config.yaml')
+from fable_flow.config import config
 
-# Create a story from text
-story_text = """
-Once upon a time, there was a curious little girl named Emma...
-"""
+# Access configuration
+print(config.model.server.url)
+print(config.model.default)
+print(config.paths.output)
+```
 
-# Process the story
-result = processor.create_story(
-    content=story_text,
-    title="Emma's Adventure",
-    target_age="6-8",
-    themes=["curiosity", "friendship"]
+### Configuration Classes
+
+**ModelServerConfig**
+```python
+class ModelServerConfig(BaseModel):
+    url: str = "http://localhost:8000/v1"
+    api_key: str = "dev-api-key"
+    timeout: float = 300.0
+    max_retries: int = 3
+    retry_delay: float = 2.0
+```
+
+**TextGenerationConfig**
+```python
+class TextGenerationConfig(BaseModel):
+    story: str                    # Model for story enhancement
+    content_moderation: str       # Model for safety checks
+    proofreading: str            # Model for proofreading
+```
+
+**ImageGenerationConfig**
+```python
+class ImageGenerationConfig(BaseModel):
+    model: str = "stabilityai/stable-diffusion-xl-base-1.0"
+    style_consistency: str = "stabilityai/stable-diffusion-xl-refiner-1.0"
+```
+
+**TextToSpeechConfig**
+```python
+class TextToSpeechConfig(BaseModel):
+    voice_preset: str = "af_heart"
+    sample_rate: int = 24000
+    device: str = "cuda"
+```
+
+**PDFConfig**
+```python
+class PDFConfig(BaseModel):
+    page_size: tuple[float, float] = (6 * 72, 9 * 72)  # 6x9 inches
+    margin_top: float = 0.5 * 72
+    margin_bottom: float = 0.5 * 72
+    image_width: float = 4.0 * 72
+    title_font: str = "Helvetica-Bold"
+    body_font: str = "Times-Roman"
+    # ... many more styling options
+```
+
+### Custom Configuration
+
+Create `config/my_config.yaml`:
+
+```yaml
+model:
+  server:
+    url: https://api.openai.com/v1
+    api_key: ${MODEL_API_KEY}
+  default: claude-opus-4-20250514
+  text_generation:
+    story: claude-opus-4-20250514
+    proofreading: claude-sonnet-4-20250514
+
+paths:
+  output: ./output
+  books: ./docs/books
+
+pdf:
+  page_size: [612, 792]  # 8.5 x 11 inches
+  title_font_size: 28
+  body_font_size: 14
+```
+
+Load custom config:
+```bash
+export FABLE_FLOW_CONFIG=config/my_config.yaml
+fable-flow publisher process
+```
+
+## 🤖 Model Classes
+
+### EnhancedTextModel
+
+Text generation with robust continuation support.
+
+```python
+from fable_flow.models import EnhancedTextModel
+
+model = EnhancedTextModel(model_name="claude-opus-4-20250514")
+
+# Generate text with continuation handling
+response = await model.complete(
+    messages=[
+        {"role": "system", "content": "You are a children's story editor."},
+        {"role": "user", "content": "Enhance this story: ..."}
+    ],
+    temperature=0.7,
+    max_tokens=2000
 )
-
-# Access generated content
-print(f"Enhanced text: {result.enhanced_text}")
-print(f"Generated {len(result.illustrations)} illustrations")
-print(f"Audio duration: {result.narration.duration} seconds")
 ```
 
-## 📋 Core Classes
+**Key Features:**
+- Automatic continuation handling for long responses
+- Retry logic with exponential backoff
+- Context management for multi-turn conversations
+- Integration with OpenAI-compatible APIs
 
-### StoryProcessor
+**Implementation:** `producer/fable_flow/models.py:38`
 
-The main entry point for story creation and processing.
+### ImageModel
 
-```python
-class StoryProcessor:
-    def __init__(self, config_file=None, config_dict=None):
-        """Initialize the story processor
-        
-        Args:
-            config_file (str): Path to configuration file
-            config_dict (dict): Configuration as dictionary
-        """
-        
-    def create_story(self, content, **kwargs) -> ProcessedStory:
-        """Create a complete multimedia story
-        
-        Args:
-            content (str): Raw story text
-            title (str): Story title
-            target_age (str): Target age range (e.g., "5-8")
-            themes (list): Story themes
-            output_formats (list): Desired output formats
-            
-        Returns:
-            ProcessedStory: Complete processed story object
-        """
-        
-    def enhance_text(self, text, metadata) -> EnhancedText:
-        """Enhance story text using AI"""
-        
-    def generate_illustrations(self, text, scene_count=None) -> List[Illustration]:
-        """Generate illustrations for the story"""
-        
-    def create_narration(self, text, voice_config=None) -> Narration:
-        """Generate audio narration"""
-        
-    def add_background_music(self, story_metadata) -> BackgroundMusic:
-        """Generate background music"""
-        
-    def export_story(self, story, formats, output_dir) -> ExportResult:
-        """Export story in specified formats"""
-```
-
-### Story and ProcessedStory
-
-Core data structures for representing stories.
-
-```python
-class Story:
-    """Raw story data structure"""
-    def __init__(self, content, title=None, metadata=None):
-        self.content = content
-        self.title = title
-        self.metadata = metadata or {}
-        
-    @classmethod
-    def from_file(cls, file_path):
-        """Load story from file"""
-        
-    @classmethod  
-    def from_markdown(cls, markdown_content):
-        """Parse story from markdown"""
-
-class ProcessedStory:
-    """Complete processed story with all generated content"""
-    def __init__(self):
-        self.original_text = ""
-        self.enhanced_text = ""
-        self.illustrations = []
-        self.narration = None
-        self.background_music = None
-        self.metadata = {}
-        
-    def to_dict(self) -> dict:
-        """Convert to dictionary for serialization"""
-        
-    def save(self, file_path):
-        """Save processed story to file"""
-        
-    @classmethod
-    def load(cls, file_path):
-        """Load processed story from file"""
-```
-
-### Configuration Management
-
-```python
-class Config:
-    """Configuration management"""
-    def __init__(self, config_file=None, config_dict=None):
-        self.text_model = TextModelConfig()
-        self.image_model = ImageModelConfig()
-        self.audio_model = AudioModelConfig()
-        self.processing = ProcessingConfig()
-        self.output = OutputConfig()
-        
-    @classmethod
-    def load(cls, file_path):
-        """Load configuration from YAML file"""
-        
-    def save(self, file_path):
-        """Save configuration to YAML file"""
-        
-    def validate(self):
-        """Validate configuration settings"""
-
-class TextModelConfig:
-    def __init__(self):
-        self.provider = "openai"
-        self.model = "gpt-4"
-        self.temperature = 0.7
-        self.max_tokens = 2000
-        self.safety_filter = True
-
-class ImageModelConfig:
-    def __init__(self):
-        self.provider = "openai"
-        self.model = "dall-e-3"
-        self.style = "digital art"
-        self.quality = "hd"
-        self.size = "1024x1024"
-
-class AudioModelConfig:
-    def __init__(self):
-        self.provider = "elevenlabs"
-        self.voice_id = "narrator"
-        self.stability = 0.75
-        self.similarity_boost = 0.8
-```
-
-## 🎨 Model Interfaces
-
-### Text Processing
-
-```python
-from fable_flow.models import TextModel
-
-class TextModel:
-    """Abstract base class for text processing models"""
-    
-    def enhance_story(self, text, metadata) -> str:
-        """Enhance raw story text"""
-        raise NotImplementedError
-        
-    def generate_scenes(self, text) -> List[Scene]:
-        """Extract scenes from story text"""
-        raise NotImplementedError
-        
-    def create_discussion_questions(self, text, age_group) -> List[str]:
-        """Generate educational discussion questions"""
-        raise NotImplementedError
-
-# Example implementation
-class OpenAITextModel(TextModel):
-    def __init__(self, api_key, model="gpt-4"):
-        self.client = OpenAI(api_key=api_key)
-        self.model = model
-        
-    def enhance_story(self, text, metadata):
-        response = self.client.chat.completions.create(
-            model=self.model,
-            messages=[
-                {"role": "system", "content": self._create_system_prompt(metadata)},
-                {"role": "user", "content": text}
-            ]
-        )
-        return response.choices[0].message.content
-        
-    def _create_system_prompt(self, metadata):
-        return f"""
-        Enhance this story for children aged {metadata.get('target_age', '5-10')}.
-        Themes: {', '.join(metadata.get('themes', []))}
-        Make it engaging, age-appropriate, and educational.
-        """
-```
-
-### Image Generation
+Image generation using Stable Diffusion models.
 
 ```python
 from fable_flow.models import ImageModel
 
-class ImageModel:
-    """Abstract base class for image generation"""
-    
-    def generate_illustration(self, prompt, style_config=None) -> bytes:
-        """Generate single illustration"""
-        raise NotImplementedError
-        
-    def generate_batch(self, prompts, style_config=None) -> List[bytes]:
-        """Generate multiple illustrations"""
-        raise NotImplementedError
-        
-    def ensure_consistency(self, prompts, character_descriptions) -> List[str]:
-        """Modify prompts to ensure character consistency"""
-        raise NotImplementedError
+# Initialize with model
+image_model = ImageModel(model_name="stabilityai/stable-diffusion-xl-base-1.0")
 
-class DALLEImageModel(ImageModel):
-    def __init__(self, api_key):
-        self.client = OpenAI(api_key=api_key)
-        
-    def generate_illustration(self, prompt, style_config=None):
-        response = self.client.images.generate(
-            model="dall-e-3",
-            prompt=self._enhance_prompt(prompt, style_config),
-            size="1024x1024",
-            quality="hd",
-            n=1
-        )
-        
-        # Download and return image data
-        image_url = response.data[0].url
-        return self._download_image(image_url)
+# Generate image
+image = image_model.generate(
+    prompt="A curious little girl exploring a colorful garden",
+    negative_prompt="blurry, low quality",
+    num_inference_steps=50
+)
+
+# Save image
+image.save("output/illustration.png")
 ```
 
-### Audio Synthesis
+**Supported Models:**
+- Stable Diffusion XL
+- Stable Diffusion 3
+- Flux
+- And other diffusers-compatible models
+
+### AudioModel
+
+Text-to-speech using Kokoro.
 
 ```python
 from fable_flow.models import AudioModel
 
-class AudioModel:
-    """Abstract base class for audio generation"""
-    
-    def synthesize_speech(self, text, voice_config=None) -> bytes:
-        """Convert text to speech"""
-        raise NotImplementedError
-        
-    def generate_music(self, style, duration, metadata=None) -> bytes:
-        """Generate background music"""
-        raise NotImplementedError
-        
-    def combine_audio(self, speech, music, balance=0.8) -> bytes:
-        """Combine speech and music"""
-        raise NotImplementedError
+audio_model = AudioModel(
+    voice_preset="af_heart",
+    sample_rate=24000
+)
 
-class ElevenLabsAudioModel(AudioModel):
-    def __init__(self, api_key):
-        self.api_key = api_key
-        self.base_url = "https://api.elevenlabs.io/v1"
-        
-    def synthesize_speech(self, text, voice_config=None):
-        voice_id = voice_config.get('voice_id', 'default')
-        
-        response = requests.post(
-            f"{self.base_url}/text-to-speech/{voice_id}",
-            headers={"xi-api-key": self.api_key},
-            json={
-                "text": text,
-                "voice_settings": {
-                    "stability": voice_config.get('stability', 0.75),
-                    "similarity_boost": voice_config.get('similarity_boost', 0.8)
-                }
-            }
-        )
-        
-        return response.content
+# Generate narration
+audio_data = audio_model.synthesize(
+    text="Once upon a time, in a land far away..."
+)
+
+# Save audio
+audio_model.save(audio_data, "output/narration.wav")
 ```
 
-## 📤 Output Generation
+### MusicModel
 
-### Export Formats
+Background music generation using MusicGen.
 
 ```python
-from fable_flow.outputs import OutputGenerator
+from fable_flow.models import MusicModel
 
-class OutputGenerator:
-    """Base class for output format generation"""
-    
-    def generate(self, story: ProcessedStory, output_path: str):
-        """Generate output in specific format"""
-        raise NotImplementedError
+music_model = MusicModel()
 
-class PDFGenerator(OutputGenerator):
-    def generate(self, story, output_path):
-        """Generate PDF version of the story"""
-        from reportlab.pdfgen import canvas
-        from reportlab.lib.pagesizes import letter
-        
-        pdf = canvas.Canvas(output_path, pagesize=letter)
-        
-        # Add title
-        pdf.setFont("Helvetica-Bold", 24)
-        pdf.drawString(100, 750, story.title)
-        
-        # Add content
-        pdf.setFont("Helvetica", 12)
-        y_position = 700
-        
-        for paragraph in story.enhanced_text.split('\n\n'):
-            pdf.drawString(100, y_position, paragraph[:80])
-            y_position -= 20
-            
-        # Add illustrations
-        for i, illustration in enumerate(story.illustrations):
-            if i < 5:  # Limit for demo
-                pdf.drawImage(illustration.image_path, 100, y_position - 200, 
-                            width=200, height=150)
-                y_position -= 220
-                
-        pdf.save()
-
-class EPUBGenerator(OutputGenerator):
-    def generate(self, story, output_path):
-        """Generate EPUB version of the story"""
-        from ebooklib import epub
-        
-        book = epub.EpubBook()
-        book.set_identifier(f"story_{story.metadata.get('id', 'unknown')}")
-        book.set_title(story.title)
-        book.set_language('en')
-        
-        # Add chapters
-        chapter = epub.EpubHtml(
-            title=story.title,
-            file_name='chapter_1.xhtml',
-            lang='en'
-        )
-        
-        chapter.content = self._create_html_content(story)
-        book.add_item(chapter)
-        
-        # Add images
-        for illustration in story.illustrations:
-            img = epub.EpubImage()
-            img.file_name = f'image_{illustration.scene_number}.jpg'
-            img.content = illustration.image_data
-            book.add_item(img)
-            
-        # Define Table of Contents
-        book.toc = (epub.Link("chapter_1.xhtml", story.title, "chapter_1"),)
-        
-        # Add navigation
-        book.add_item(epub.EpubNcx())
-        book.add_item(epub.EpubNav())
-        
-        # Write EPUB file
-        epub.write_epub(output_path, book, {})
+# Generate music
+audio = music_model.generate(
+    description="upbeat orchestral children's adventure music",
+    duration=30  # seconds
+)
 ```
 
-## 🔧 Advanced API Usage
+## 📖 Book Generation
 
-### Custom Processing Pipeline
+### PDFGenerator Class
+
+Professional PDF book generation using ReportLab.
 
 ```python
-from fable_flow.pipeline import ProcessingPipeline, PipelineStep
+from fable_flow.pdf import PDFGenerator
+from fable_flow.common import Manuscript
+from pathlib import Path
 
-class CustomProcessingPipeline(ProcessingPipeline):
-    def __init__(self, config):
-        super().__init__(config)
-        
-    def build_pipeline(self):
-        """Build custom processing pipeline"""
-        return [
-            PipelineStep("validate_input", self.validate_input),
-            PipelineStep("enhance_text", self.enhance_text),
-            PipelineStep("extract_scenes", self.extract_scenes),
-            PipelineStep("generate_illustrations", self.generate_illustrations),
-            PipelineStep("create_narration", self.create_narration),
-            PipelineStep("add_music", self.add_background_music),
-            PipelineStep("generate_metadata", self.generate_metadata),
-            PipelineStep("export_outputs", self.export_outputs)
-        ]
-        
-    def validate_input(self, story_data):
-        """Custom input validation"""
-        if len(story_data.content) < 100:
-            raise ValueError("Story too short")
-        return story_data
-        
-    def generate_metadata(self, processed_story):
-        """Generate custom metadata"""
-        processed_story.metadata.update({
-            'word_count': len(processed_story.enhanced_text.split()),
-            'reading_time': self.estimate_reading_time(processed_story.enhanced_text),
-            'illustration_count': len(processed_story.illustrations),
-            'narration_duration': processed_story.narration.duration if processed_story.narration else 0
-        })
-        return processed_story
+# Initialize generator
+pdf_generator = PDFGenerator(output_dir=Path("output"))
 
-# Usage
-pipeline = CustomProcessingPipeline(config)
-result = pipeline.process(story_input)
+# Generate PDF (requires HTML formatted content)
+manuscript = Manuscript(
+    content="Story text...",
+    metadata={"title": "My Story", "author": "Author Name"}
+)
+
+book_metadata = {
+    "title": "My Story",
+    "author": "Author Name",
+    "publisher": "FableFlow Publishing",
+    "copyright_year": "2024"
+}
+
+pdf_generator.generate_pdf(
+    html_content=formatted_html,  # From BookStructureGenerator
+    message=manuscript,
+    output_path=Path("output/book.pdf"),
+    book_metadata=book_metadata
+)
 ```
 
-### Async Processing
+**Key Features:**
+- Professional layout with margins and typography
+- Embedded illustrations with captions
+- Table of contents with bookmarks
+- Page numbers and headers
+- Custom styling via `config.pdf`
+
+**Key Methods:**
+- `generate_pdf()` - Main PDF generation method
+- `_create_document()` - Document setup
+- `_process_pages()` - Page layout processing
+- `_process_image_element()` - Image placement
+- `_create_styles()` - Typography and styling
+
+**Implementation:** `producer/fable_flow/pdf.py:70`
+
+### EPUBGenerator Class
+
+EPUB3 e-book generation.
+
+```python
+from fable_flow.epub import EPUBGenerator
+from fable_flow.common import Manuscript
+from pathlib import Path
+
+# Initialize generator
+epub_generator = EPUBGenerator(output_dir=Path("output"))
+
+# Generate EPUB (requires HTML formatted content)
+manuscript = Manuscript(
+    content="Story text...",
+    metadata={"title": "My Story", "author": "Author Name"}
+)
+
+book_metadata = {
+    "title": "My Story",
+    "author": "Author Name",
+    "publisher": "FableFlow Publishing",
+    "language": "en"
+}
+
+epub_generator.generate_epub(
+    html_content=formatted_html,  # From BookStructureGenerator
+    message=manuscript,
+    output_path=Path("output/book.epub"),
+    book_metadata=book_metadata
+)
+```
+
+**Key Features:**
+- EPUB3 standard compliance
+- Responsive layout for e-readers
+- NCX navigation for table of contents
+- Embedded images with proper packaging
+- Complete metadata for library systems
+
+**Key Methods:**
+- `generate_epub()` - Main EPUB generation method
+- `_create_content_opf()` - Package document
+- `_create_toc_ncx()` - Navigation file
+- `_create_epub_cover_with_text()` - Cover generation
+
+**Implementation:** `producer/fable_flow/epub.py:19`
+
+### Book Structure Utilities
+
+**BookStructureGenerator** - Generate structured HTML from story content:
+
+```python
+from fable_flow.book_structure import BookStructureGenerator
+from fable_flow.common import Manuscript
+
+generator = BookStructureGenerator()
+
+# Generate formatted HTML book structure
+html_content = await generator.generate_book_html(
+    manuscript=Manuscript(
+        content="Story text...",
+        metadata={"title": "My Story"}
+    )
+)
+
+# Returns complete HTML with proper book structure:
+# - Front/back covers
+# - Title page
+# - Table of contents
+# - Story chapters
+# - Back matter
+```
+
+**BookContentProcessor** - Utilities for content processing:
+
+```python
+from fable_flow.book_utils import BookContentProcessor
+
+processor = BookContentProcessor()
+
+# Validate book metadata
+validated_metadata = processor.validate_book_metadata({
+    "title": "My Story",
+    "author": "Author Name"
+})
+
+# Clean HTML content
+cleaned_html = processor.clean_html_content(raw_html)
+```
+
+**Implementation:**
+- `producer/fable_flow/book_structure.py:16`
+- `producer/fable_flow/book_utils.py:17`
+
+## 🎬 CLI Commands
+
+### Publisher Pipeline
+
+Complete end-to-end pipeline:
+
+```bash
+# Run full pipeline
+fable-flow publisher process
+
+# Customize output directory
+fable-flow publisher process --output-dir custom/output
+```
+
+**Implementation:** `producer/fable_flow/publisher.py`
+
+### Story Processing
+
+Story enhancement and editorial review:
+
+```bash
+# Process story through 5-stage review
+fable-flow story process
+
+# Uses manuscript from configured paths
+```
+
+**Implementation:** `producer/fable_flow/story.py`
+
+### Illustration Generation
+
+Image generation for story scenes:
+
+```bash
+# Generate illustrations
+fable-flow illustrator draw
+
+# Requires processed story and image prompts
+```
+
+**Implementation:** `producer/fable_flow/illustrator.py`
+
+### Narration Generation
+
+Audio narration creation:
+
+```bash
+# Generate narration
+fable-flow narration produce
+
+# Requires processed story text
+```
+
+**Implementation:** `producer/fable_flow/narration.py`
+
+### Music Generation
+
+Background music creation:
+
+```bash
+# Generate background music
+fable-flow music produce
+
+# Requires story metadata for mood
+```
+
+**Implementation:** `producer/fable_flow/music.py`
+
+### Video Production
+
+Video assembly and generation:
+
+```bash
+# Generate final video
+fable-flow director produce
+
+# Requires images, narration, and music
+```
+
+**Implementation:** `producer/fable_flow/movie.py`
+
+## 🔗 Integration Patterns
+
+### Custom Agent Implementation
+
+Extend the agent system:
+
+```python
+from autogen_core import RoutedAgent, message_handler
+from fable_flow.models import EnhancedTextModel
+
+class CustomReviewAgent(RoutedAgent):
+    def __init__(self, model_client):
+        super().__init__("Custom review agent")
+        self._model_client = model_client
+
+    @message_handler
+    async def handle_message(self, message, ctx):
+        # Process message
+        result = await self._model_client.complete(
+            messages=[{"role": "user", "content": message.content}]
+        )
+
+        # Publish to next agent
+        await self.publish_message(...)
+```
+
+### Using FableFlow in Python
 
 ```python
 import asyncio
-from fable_flow.async_processor import AsyncStoryProcessor
+from fable_flow.publisher import main as publisher_main
+from pathlib import Path
 
-async def process_multiple_stories(story_list):
-    """Process multiple stories concurrently"""
-    processor = AsyncStoryProcessor(config_file='config/async_config.yaml')
-    
-    # Process stories concurrently
-    tasks = [
-        processor.create_story_async(
-            content=story['content'],
-            title=story['title'],
-            target_age=story['target_age']
-        )
-        for story in story_list
-    ]
-    
-    results = await asyncio.gather(*tasks, return_exceptions=True)
-    
-    # Handle results and exceptions
-    successful_results = []
-    failed_results = []
-    
-    for i, result in enumerate(results):
-        if isinstance(result, Exception):
-            failed_results.append({'story': story_list[i], 'error': result})
-        else:
-            successful_results.append(result)
-            
-    return successful_results, failed_results
+async def create_book():
+    # Run publisher pipeline
+    await publisher_main(
+        story_fn=Path("story/draft_story.txt"),
+        output_dir=Path("output/")
+    )
 
-# Usage
-stories = [
-    {'content': 'Story 1...', 'title': 'Adventure 1', 'target_age': '5-8'},
-    {'content': 'Story 2...', 'title': 'Adventure 2', 'target_age': '6-9'},
-]
-
-successful, failed = asyncio.run(process_multiple_stories(stories))
+# Run
+asyncio.run(create_book())
 ```
 
-### Plugin System
+### FableFlow Studio Integration
+
+The Studio web interface integrates with the core API:
 
 ```python
-from fable_flow.plugins import Plugin, register_plugin
+# studio/api.py
+from fable_flow.publisher import main as publisher_main
+from fastapi import FastAPI
 
-class CustomEnhancementPlugin(Plugin):
-    """Example custom plugin for story enhancement"""
-    
-    name = "custom_enhancement"
-    version = "1.0.0"
-    description = "Custom story enhancement plugin"
-    
-    def __init__(self, config):
-        self.config = config
-        
-    def enhance_story(self, story_text, metadata):
-        """Custom story enhancement logic"""
-        # Add custom enhancements
-        enhanced = story_text
-        
-        # Example: Add educational callouts
-        if 'science' in metadata.get('themes', []):
-            enhanced = self.add_science_callouts(enhanced)
-            
-        # Example: Adjust reading level
-        target_age = metadata.get('target_age', '5-10')
-        enhanced = self.adjust_reading_level(enhanced, target_age)
-        
-        return enhanced
-        
-    def add_science_callouts(self, text):
-        """Add science fact callouts"""
-        # Implementation here
-        return text
-        
-    def adjust_reading_level(self, text, target_age):
-        """Adjust text for target reading level"""
-        # Implementation here
-        return text
+app = FastAPI()
 
-# Register the plugin
-register_plugin(CustomEnhancementPlugin)
+@app.post("/api/process")
+async def process_story(series: str, book: str):
+    story_path = Path(f"docs/books/{series}/{book}")
+    await publisher_main(story_fn=story_path / "draft_story.txt")
+    return {"status": "completed"}
+```
 
-# Use in configuration
-config = {
-    'plugins': {
-        'custom_enhancement': {
-            'enabled': True,
-            'priority': 10
-        }
+## 📚 Data Models
+
+### Manuscript Model
+
+```python
+from fable_flow.common import Manuscript
+
+manuscript = Manuscript(
+    content="Story text...",
+    metadata={
+        "title": "My Story",
+        "author": "Author Name",
+        "target_age": "6-8"
     }
-}
+)
 ```
 
-## 🧪 Testing and Validation
+**Implementation:** `producer/fable_flow/common.py`
 
-### Unit Testing
+### Story Formatter
 
 ```python
-import unittest
-from unittest.mock import Mock, patch
-from fable_flow import StoryProcessor, Config
+from fable_flow.story_formatter import StoryFormatter
 
-class TestStoryProcessor(unittest.TestCase):
-    def setUp(self):
-        self.config = Config({
-            'text_model': {'provider': 'mock'},
-            'image_model': {'provider': 'mock'},
-            'audio_model': {'provider': 'mock'}
-        })
-        self.processor = StoryProcessor(config_dict=self.config.to_dict())
-        
-    def test_story_creation(self):
-        """Test basic story creation"""
-        story_content = "Once upon a time, there was a brave little mouse."
-        
-        result = self.processor.create_story(
-            content=story_content,
-            title="Mouse Adventure",
-            target_age="5-7"
-        )
-        
-        self.assertIsNotNone(result)
-        self.assertIn("mouse", result.enhanced_text.lower())
-        self.assertEqual(result.title, "Mouse Adventure")
-        
-    @patch('fable_flow.models.OpenAITextModel.enhance_story')
-    def test_text_enhancement(self, mock_enhance):
-        """Test text enhancement with mocking"""
-        mock_enhance.return_value = "Enhanced story text"
-        
-        result = self.processor.enhance_text("Original text", {})
-        
-        self.assertEqual(result.text, "Enhanced story text")
-        mock_enhance.assert_called_once()
-        
-    def test_configuration_validation(self):
-        """Test configuration validation"""
-        invalid_config = Config({'text_model': {'provider': 'invalid'}})
-        
-        with self.assertRaises(ValueError):
-            invalid_config.validate()
-
-if __name__ == '__main__':
-    unittest.main()
+formatter = StoryFormatter()
+formatted = formatter.format(
+    raw_text="unformatted story",
+    style="children's book"
+)
 ```
 
-### Integration Testing
+**Implementation:** `producer/fable_flow/story_formatter.py`
+
+## 🧪 Testing
+
+### Running Tests
+
+```bash
+# Run all tests
+python -m pytest tests/ -v
+
+# Run with coverage
+python -m pytest tests/ --cov=fable_flow --cov-report=html
+
+# Run specific test
+python -m pytest tests/test_agents.py -v
+```
+
+### Example Test
 
 ```python
 import pytest
-from fable_flow import StoryProcessor
-import tempfile
-import os
+from fable_flow.config import config
+from fable_flow.models import EnhancedTextModel
 
-@pytest.fixture
-def temp_output_dir():
-    """Create temporary output directory"""
-    with tempfile.TemporaryDirectory() as tmpdir:
-        yield tmpdir
+@pytest.mark.asyncio
+async def test_text_generation():
+    model = EnhancedTextModel(model_name=config.model.default)
 
-@pytest.fixture
-def sample_story():
-    """Sample story for testing"""
-    return {
-        'content': """
-        Emma was excited about her first day at the new school. 
-        She packed her favorite book and walked through the colorful doors.
-        """,
-        'title': "Emma's First Day",
-        'target_age': "6-8",
-        'themes': ["school", "confidence"]
-    }
-
-def test_end_to_end_story_creation(temp_output_dir, sample_story):
-    """Test complete story creation pipeline"""
-    processor = StoryProcessor(config_file='config/test_config.yaml')
-    
-    # Create story
-    result = processor.create_story(**sample_story)
-    
-    # Validate results
-    assert result is not None
-    assert len(result.enhanced_text) > len(sample_story['content'])
-    assert len(result.illustrations) > 0
-    assert result.narration is not None
-    
-    # Export story
-    export_result = processor.export_story(
-        result, 
-        formats=['pdf', 'html'],
-        output_dir=temp_output_dir
+    response = await model.complete(
+        messages=[
+            {"role": "user", "content": "Write a short story opening."}
+        ],
+        max_tokens=100
     )
-    
-    # Verify files were created
-    assert os.path.exists(os.path.join(temp_output_dir, "Emma's First Day.pdf"))
-    assert os.path.exists(os.path.join(temp_output_dir, "Emma's First Day.html"))
 
-def test_error_handling(sample_story):
-    """Test error handling in story processing"""
-    # Test with invalid configuration
-    processor = StoryProcessor(config_dict={'invalid': 'config'})
-    
-    with pytest.raises(Exception):
-        processor.create_story(**sample_story)
+    assert response.content
+    assert len(response.content) > 0
 ```
 
-## 📊 Monitoring and Analytics
+## 📖 Further Documentation
 
-### Usage Tracking
-
-```python
-from fable_flow.analytics import UsageTracker
-
-class UsageTracker:
-    def __init__(self, config):
-        self.config = config
-        self.metrics = {}
-        
-    def track_story_creation(self, story_metadata):
-        """Track story creation metrics"""
-        self.metrics['stories_created'] = self.metrics.get('stories_created', 0) + 1
-        self.metrics['total_words'] = self.metrics.get('total_words', 0) + story_metadata.get('word_count', 0)
-        
-    def track_api_usage(self, provider, model, tokens_used):
-        """Track API usage and costs"""
-        key = f"{provider}_{model}"
-        if key not in self.metrics:
-            self.metrics[key] = {'calls': 0, 'tokens': 0, 'cost': 0}
-            
-        self.metrics[key]['calls'] += 1
-        self.metrics[key]['tokens'] += tokens_used
-        self.metrics[key]['cost'] += self.calculate_cost(provider, model, tokens_used)
-        
-    def get_usage_report(self):
-        """Generate usage report"""
-        return {
-            'summary': self.metrics,
-            'timestamp': datetime.now().isoformat(),
-            'period': 'session'
-        }
-```
-
-## 🚀 Production Deployment
-
-### API Server
-
-```python
-from fastapi import FastAPI, HTTPException
-from pydantic import BaseModel
-from fable_flow import StoryProcessor
-import asyncio
-
-app = FastAPI(title="FableFlow API", version="1.0.0")
-
-class StoryRequest(BaseModel):
-    content: str
-    title: str = None
-    target_age: str = "5-10"
-    themes: list = []
-    output_formats: list = ["pdf", "html"]
-
-class StoryResponse(BaseModel):
-    id: str
-    status: str
-    enhanced_text: str = None
-    illustrations: list = []
-    download_urls: dict = {}
-
-processor = StoryProcessor(config_file='config/production.yaml')
-
-@app.post("/stories", response_model=StoryResponse)
-async def create_story(request: StoryRequest):
-    """Create a new story"""
-    try:
-        result = await processor.create_story_async(
-            content=request.content,
-            title=request.title,
-            target_age=request.target_age,
-            themes=request.themes
-        )
-        
-        return StoryResponse(
-            id=result.id,
-            status="completed",
-            enhanced_text=result.enhanced_text,
-            illustrations=[ill.to_dict() for ill in result.illustrations],
-            download_urls=result.download_urls
-        )
-        
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
-
-@app.get("/stories/{story_id}")
-async def get_story(story_id: str):
-    """Get story by ID"""
-    # Implementation here
-    pass
-
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
-```
+- **[Complete Workflow](../fableflow-workflow.md)** - Agent collaboration and pipeline details
+- **[Story Processing](../features/story-processing.md)** - 5-stage editorial review
+- **[Book Production](../features/book-production.md)** - PDF/EPUB/HTML generation
+- **[Illustration Generation](../features/illustrations.md)** - Image generation details
+- **[CLI Reference](../create/index.md)** - Complete command reference
 
 ---
 
-This comprehensive API documentation provides everything you need to integrate FableFlow into your applications. For more examples and advanced usage patterns, check out our [GitHub repository](https://github.com/suneeta-mall/fable-flow) and [community discussions](https://github.com/suneeta-mall/fable-flow/discussions)!
+**Note:** FableFlow uses an agent-based architecture with asynchronous message passing. There is no single `StoryProcessor` class; instead, specialized agents collaborate through a message-passing system to create complete multimedia stories.
+
+For implementation details, see the source code in `producer/fable_flow/` directory.

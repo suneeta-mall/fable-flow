@@ -42,6 +42,7 @@ flowchart LR
 ```
 
 **Key Stages:**
+
 1. **Author** writes in Studio
 2. **Review** process refines content
 3. **Production** generates multimedia
@@ -89,6 +90,7 @@ flowchart TB
 ```
 
 **Studio Features:**
+
 - **Project Browser**: Dashboard of all stories
 - **Monaco Editor**: Professional code editor
 - **Version Compare**: Side-by-side diffs
@@ -140,6 +142,7 @@ flowchart TB
 ```
 
 **Review Stages:**
+
 1. **Friendly Proof** - Initial feedback
 2. **Critical Review** - Professional analysis
 3. **Content Check** - Safety validation
@@ -219,19 +222,23 @@ flowchart TB
 ### Production Dependencies:
 
 **📚 Book Production** depends on:
+
 - ✅ Manuscript (from Start)
 - ✅ Images (from Illustration path)
 
 **🎬 Movie Production** depends on:
+
 - ✅ Manuscript (from Start)
 - ✅ Images (from Illustration path)
 - ✅ Background music (from Music path)
 
 **🎙️ Narration Path** is independent:
+
 - Creates audio files for standalone listening
 - Not used in movie production
 
 **Key Points:**
+
 - All agents start simultaneously when manuscript is approved
 - Illustration path completes first → feeds into Book & Movie
 - Music path feeds into Movie
@@ -288,6 +295,7 @@ flowchart TB
 ```
 
 ### Book Structure Generated:
+
 - Front Cover (with title overlay)
 - Title Page
 - Publication Information
@@ -301,12 +309,15 @@ flowchart TB
 ### Output Formats:
 
 **📕 PDF** (ReportLab):
+
 - Print layout, bookmarks, page numbers, TOC
 
 **📗 EPUB** (EPUB3):
+
 - NCX navigation, OPF manifest, e-reader optimized
 
 **🌐 HTML**:
+
 - Web-friendly, responsive design, browser preview
 
 ---
@@ -376,26 +387,31 @@ flowchart TB
 ### Website Sections:
 
 **📚 Story Library**
+
 - Browse all published stories
 - Read online (HTML/PDF/EPUB)
 - Search by genre, age, topic
 
 **🔍 Curious Cassie Series**
+
 - Featured educational children's books
 - Ages 5-10, scientific concepts
 - Examples: "Magic of YET!", "Beach Quest"
 
 **✨ Creator's Corner**
+
 - Getting started guides
 - Tutorials and best practices
 - CLI command reference
 
 **🌟 Community Hub**
+
 - Guidelines and forums
 - Author collaboration
 - Discussion boards
 
 **💭 Curiosity Chronicles**
+
 - Blog with author spotlights
 - Behind-the-scenes content
 - Tips and platform updates
@@ -403,16 +419,19 @@ flowchart TB
 ### Community Benefits:
 
 **👧👦 Kids & Young Readers:**
+
 - Free educational stories
 - Interactive multimedia
 - Age-appropriate content
 
 **✍️ Authors Community:**
+
 - Learn from tutorials
 - Share and get feedback
 - Collaborate with others
 
 **👨‍🏫 Educators:**
+
 - Teaching resources
 - Curriculum integration
 - STEM storytelling
@@ -436,18 +455,21 @@ flowchart TB
 ### 🚀 Key Features
 
 **For Authors:**
+
 - ✅ Professional Studio (Monaco editor, version control)
 - ✅ Real-time production monitoring (WebSocket)
 - ✅ Multi-format output (5 formats)
 - ✅ Community feedback integration
 
 **For Readers:**
+
 - ✅ Free access to quality stories
 - ✅ Multiple formats (PDF/EPUB/HTML/Audio/Video)
 - ✅ Educational content (STEM)
 - ✅ Interactive multimedia
 
 **For Platform:**
+
 - ✅ AI-powered pipeline
 - ✅ Open-source community
 - ✅ Scalable architecture
@@ -458,11 +480,13 @@ flowchart TB
 ## Technology Stack
 
 ### Studio (localhost:3000)
+
 - **Frontend**: React + Vite + Tailwind
 - **Editor**: Monaco (VS Code)
 - **Backend**: FastAPI + WebSocket
 
 ### Production Pipeline
+
 - **Story**: LLM agents (OpenAI/Claude)
 - **Narration**: Text-to-Speech APIs
 - **Illustration**: DALL-E, Stable Diffusion
@@ -470,12 +494,14 @@ flowchart TB
 - **Video**: FFmpeg assembly
 
 ### Book Production
+
 - **HTML**: LLM-generated structure
 - **PDF**: ReportLab (Python)
 - **EPUB**: Custom EPUB3 generator
 - **Images**: PIL/Pillow
 
 ### Website (Production)
+
 - **Framework**: MkDocs + Material theme
 - **Hosting**: GitHub Pages
 - **Features**: Blog, Search, PDF/EPUB readers

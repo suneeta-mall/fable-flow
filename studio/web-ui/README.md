@@ -200,4 +200,4 @@ npm run preview
 
 ## License
 
-MIT License - Same as Fable Flow main project
+Elastic License 2.0 - Same as Fable Flow main project

@@ -4,13 +4,23 @@ Fable Flow's video production feature transforms your story into engaging, anima
 
 ## Overview
 
-The video production pipeline creates videos through:
+The video production pipeline creates videos through a **three-agent system** that orchestrates:
 
-* Scene animation
-* Narration synchronization
-* Music integration
-* Visual effects
-* Transitions and timing
+* Scene animation and image-to-video conversion
+* Narration and audio synchronization
+* Music integration and mixing
+* Visual effects and transitions
+* Final assembly and rendering
+
+## Agent Architecture
+
+FableFlow uses a three-agent video production system:
+
+- **Movie Director Agent** - Plans scenes, determines camera movements, creates storyboards
+- **Animator Agent** - Converts illustrations to video using image-to-video AI models
+- **Movie Producer Agent** - Assembles all elements (images, narration, music) into final video
+
+These agents collaborate to create cohesive multimedia storytelling experiences.
 
 ## Key Features
 
@@ -34,48 +44,59 @@ Enhances videos with:
 * Educational graphics
 * Timing synchronization
 
-### Multiple Output Formats
+### Output Format
 
-Supports various video formats:
+Generates video in:
 
-* MP4 for general use
-* WebM for web
-* MOV for Apple devices
-* AVI for compatibility
-* MKV for high quality
+* **MP4** (H.264/AAC) - Universal format for web, mobile, and desktop playback
+  - Codec: libx264 (video), aac (audio)
+  - Frame rate: 24 fps
+  - Compatible with all major platforms and browsers
 
 ## Usage
 
-### Basic Video Generation
+### Option 1: FableFlow Studio (Recommended)
+
+1. Start Studio: `make studio-start`
+2. Navigate to http://localhost:3000
+3. Run the publisher pipeline
+4. Watch generated video in the Media Gallery
+5. Monitor three-stage production: Director → Animator → Producer
+
+### Option 2: CLI - Individual Video Production
 
 ```bash
-fable-flow movie generate --input path/to/story.txt --output output/
+# Generate video (requires processed story, images, narration, music)
+fable-flow director produce
 ```
 
-### Advanced Options
+Note: Video production depends on outputs from illustration, narration, and music agents.
+
+### Option 3: CLI - Full Publishing Pipeline
 
 ```bash
-fable-flow movie generate \
-  --input path/to/story.txt \
-  --output output/ \
-  --resolution 1920x1080 \
-  --fps 30 \
-  --style 3d \
-  --quality high
+# Run complete pipeline including video
+fable-flow publisher process
 ```
+
+This ensures all dependencies (story, illustrations, narration, music) are created first.
 
 ### Configuration
 
-Video settings in `config.yaml`:
+Video settings in `config/default.yaml`:
 
 ```yaml
 model:
   video_generation:
-    model: "THUDM/CogVideoX1.5-5B-I2V"
-    num_frames: 81
+    model: "hunyuanvideo-community/HunyuanVideo-I2V"
+    height: 720
+    width: 1280
+    num_frames: 129  # HunyuanVideo supports up to 129 frames (5 seconds)
     num_inference_steps: 50
-    guidance_scale: 6
-    fps: 8
+    guidance_scale: 1.0
+    true_cfg_scale: 6.0
+    fps: 25
+    negative_prompt: "scary faces, frightening expressions, dark shadows..."
 
 style:
   video:
@@ -84,17 +105,38 @@ style:
     camera_style: "dynamic and engaging"
 ```
 
+**Supported Models:**
+
+- `hunyuanvideo-community/HunyuanVideo-I2V` - High quality image-to-video (default)
+- Other image-to-video diffusion models via Hugging Face
+
 ## Output
 
 The video pipeline generates:
 
-* `video/` directory containing:
-    * Main video file
-    * Scene segments
-    * Animation assets
-    * Visual effects
-* `metadata.json` with video details
-* `timeline.json` for editing
+**Main Output:**
+```
+output/
+└── story_video.mp4       # Final assembled video with narration and music
+```
+
+**Intermediate Files (created during production):**
+```
+output/
+├── movie_director.txt    # Director's scene planning and storyboard
+├── movie_0.mp4          # Individual scene videos
+├── movie_1.mp4
+├── movie_N.mp4
+├── music_0.mp3          # Music segments per scene
+├── music_1.mp3
+└── music_N.mp3
+```
+
+**Dependencies (required from other agents):**
+
+- `image_0.png`, `image_1.png`, etc. - From IllustratorAgent
+- `narration.m4a` - From NarratorAgent
+- `music.mp3` - From MusicianAgent (fallback if per-scene music not available)
 
 ## Integration
 
@@ -124,19 +166,6 @@ Video production works seamlessly with:
     * Track versions
     * Backup original files
     * Document settings
-
-## Troubleshooting
-
-### Common Issues
-
-**Issue**: Animation stuttering
-**Solution**: Adjust frame rate and processing settings
-
-**Issue**: Audio sync problems
-**Solution**: Check timing parameters and narration alignment
-
-**Issue**: Quality degradation
-**Solution**: Verify resolution and compression settings
 
 ### Getting Help
 

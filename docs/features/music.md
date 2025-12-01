@@ -44,24 +44,36 @@ Supports various audio formats:
 * OGG for web use
 * AAC for streaming
 
+## Agent Architecture
+
+FableFlow uses a two-agent music system:
+
+- **Music Director Agent** - Analyzes story mood, plans musical themes, determines instrumentation
+- **Musician Agent** - Generates original compositions using AI music models
+
+These agents create soundtracks that enhance emotional impact and complement the storytelling.
+
 ## Usage
 
-### Basic Music Generation
+### Option 1: FableFlow Studio (Recommended)
+
+1. Start Studio: `make studio-start`
+2. Navigate to http://localhost:3000
+3. Run the publisher pipeline
+4. Listen to generated music in the Media Gallery
+
+### Option 2: CLI - Individual Music Generation
 
 ```bash
-fable-flow music produce --input path/to/story.txt --mood happy
+# Generate music (requires processed story)
+fable-flow music produce
 ```
 
-### Advanced Options
+### Option 3: CLI - Full Publishing Pipeline
 
 ```bash
-fable-flow music produce \
-  --input path/to/story.txt \
-  --mood happy \
-  --style orchestral \
-  --duration 3:00 \
-  --format mp3 \
-  --quality high
+# Run complete pipeline including music
+fable-flow publisher process
 ```
 
 ### Configuration
