@@ -1,16 +1,16 @@
-# 🌟 Cassie's Beach Science Adventure
+# 🌟 Cassie's Beach Adventure
 
 ![FableFlow - Where Stories Come to Life](docs/assets/logo_horizontal.svg){width=40%,align=center}---
 
-## *Newton's Laws in Motion*
+## *Discovering Newton's Amazing Ideas*
 
-**Perfect for 5-10 years (primary audience: 6-8 years)** 📚 **Created by Suneeta Mall with FableFlow** ✨
+**Perfect for 5-10 years** 📚 **Created by Suneeta Mall with FableFlow** ✨
 
 ---
 
 ## 🎉 Hey Kids! Are You Ready for an Adventure?
 
-Join Cassie and her little brother Caleb on an exciting trip to Cronulla Beach where every question leads to an amazing discovery! You'll learn why trees can't walk (well, most of them!), why balls behave mysteriously in moving cars, and how a scientist named Isaac Newton figured out the secrets of how everything moves. Get ready for bunny hops, skip counting, and mind-blowing experiments that'll make you see the world in a whole new way!
+Join Cassie on an exciting trip to the beach where everyday moments become science adventures! You'll discover why things fall down, how cars really move, and what makes rainbows appear. Get ready to see the world through curious eyes—just like the famous scientist Isaac Newton!
 
 ![Story Adventure](image_0.png){width=60%}
 
@@ -18,21 +18,21 @@ Join Cassie and her little brother Caleb on an exciting trip to Cronulla Beach w
 
 Get ready to explore and learn amazing things:
 
-* You'll discover how gravity keeps you connected to Earth and why it's fun to feel it through bunny hops! You'll learn how to figure out when you'll arrive somewhere using distance, time, and speed (and help calm down impatient little brothers). You'll understand why things look like they're moving backward when YOU'RE the one moving forward, and you'll experiment with how balls fall differently depending on how fast you're going. Best of all, you'll meet Sir Isaac Newton and learn how being curious—just like you—can help you discover amazing things about the world!
+* You'll discover why gravity pulls everything down (and why jumping takes work!), how motion looks different depending on where you stand, why things push back when you push them, and how white light secretly contains all the rainbow colors. Most importantly, you'll learn that asking questions and staying curious can help you understand the amazing world around you—just like Isaac Newton did!
 
 
 
 ## 🎨 Cool Things About This Story:
 
 
-* This story has amazing pictures and sounds!
+* Did you know there's a real tree called the Walking Palm that can actually move by growing new roots? Isaac Newton figured out gravity, motion, AND rainbows—all by staying curious and thinking hard! You can do science experiments right in your car by tossing a ball while moving! When you push sand at the beach, the sand is actually pushing you back with the same amount of force!
 
 
 
 ![Story Friends](image_1.png){width=60%}
 
 ## 🌈 Adventures We'll Go On:
-**Physics and motion, gravity and forces, relative speed and perspective, distance-time-speed relationships, scientific curiosity and observation, problem-solving through questioning, STEM learning through everyday experiences, family learning adventures** - and so much more!
+**Gravity and forces, motion and speed, distance and time, relative motion, Newton's Third Law (action and reaction), light and rainbows, scientific curiosity and observation, asking questions, persistence in learning** - and so much more!
 
 ---
 
@@ -66,7 +66,7 @@ Get ready to explore and learn amazing things:
 
     **Super Cool Book Reader!**
 
-    <div id="epub-reader-cassie-s-beach-science-adventure" class="epub-reader-container" data-epub-path="../book.epub" style="width: 100%; margin: 20px 0;">
+    <div id="epub-reader-cassie-s-beach-adventure" class="epub-reader-container" data-epub-path="../book.epub" style="width: 100%; margin: 20px 0;">
         <div style="padding: 20px; text-align: center; background-color: #f8f9fa; border-radius: 8px;">
             <p>📖 Loading your awesome book...</p>
         </div>
@@ -160,12 +160,12 @@ Just like these famous scientists who were once curious kids too:
 
 **Educational Value & Learning Outcomes**
 
-This engaging educational story introduces fundamental physics concepts through a relatable family beach trip narrative. Children explore Newton's laws of motion, gravity, relative velocity, and distance-time-speed calculations through age-appropriate dialogue and hands-on examples. The story promotes scientific thinking by modeling how everyday observations can lead to deeper understanding, while celebrating curiosity as a valuable trait. Perfect for parents and educators seeking to make STEM concepts accessible and exciting for early elementary students, the book combines Australian cultural elements with universal scientific principles, encouraging children to ask questions and explore the world around them.
+This educational story introduces young readers to fundamental physics concepts through six-year-old Cassie's beach adventure. Through relatable experiences—jumping, car rides, and beach play—children explore Newton's laws of motion, gravity, relative motion, and light refraction. The narrative emphasizes that scientific thinking begins with curiosity and careful observation, encouraging children to ask questions about their everyday experiences. Perfect for fostering STEM interest while celebrating the joy of discovery.
 
 **Key Learning Areas:**
 
 
-* **Science Concepts:** Physics and motion, gravity and forces, relative speed and perspective, distance-time-speed relationships, scientific curiosity and observation, problem-solving through questioning, STEM learning through everyday experiences, family learning adventures
+* **Science Concepts:** Gravity and forces, motion and speed, distance and time, relative motion, Newton's Third Law (action and reaction), light and rainbows, scientific curiosity and observation, asking questions, persistence in learning
 
 * **Critical Thinking:** Encourages questioning and exploration
 

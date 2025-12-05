@@ -263,6 +263,167 @@ Book production integrates with:
 **Issue**: Page breaks in wrong places
 **Solution**: Adjust chapter structure and layout settings
 
+### EPUB Validation & Debugging
+
+#### When EPUB Conversion Fails on Kindle/Publishing Sites
+
+If your EPUB shows errors when uploading to Amazon KDP, Apple Books, or other publishing platforms, or when converting to MOBI/AZW3, use **Calibre** to debug and identify the issues.
+
+**Common EPUB Errors:**
+- `Failed to find image: OEBPS/images/filename.ext` - Missing or incorrectly referenced image files
+- `TOC item not found in document` - Navigation points to non-existent files
+- `Invalid XHTML` - Malformed HTML/XML structure
+- `Missing required metadata` - ISBN, publisher, or other required fields
+- `Cover image not found` - Cover reference doesn't match actual file
+
+#### Using Calibre for EPUB Debugging
+
+**Step 1: Install Calibre**
+
+```bash
+# Ubuntu/Debian
+sudo apt install calibre
+
+# macOS
+brew install calibre
+
+# Windows
+# Download from: https://calibre-ebook.com/download
+```
+
+**Step 2: Convert EPUB with Calibre (Validates & Shows Errors)**
+
+```bash
+# Convert EPUB to MOBI (will show validation errors)
+ebook-convert book.epub book.mobi --output-profile kindle
+
+# Convert EPUB to AZW3 (newer Kindle format)
+ebook-convert book.epub book.azw3 --output-profile kindle
+```
+
+**What Calibre Checks:**
+- ✓ All referenced images exist
+- ✓ All TOC items point to valid files
+- ✓ XHTML is well-formed
+- ✓ Metadata is complete
+- ✓ File structure is correct
+- ✓ Kindle compatibility
+
+**Step 3: Read Error Messages**
+
+Calibre will output detailed errors like:
+```
+Failed to find image: OEBPS/images/logo_horizontal.svg
+TOC item Cover [OEBPS/cover.xhtml] not found in document
+```
+
+These errors tell you exactly what's wrong with your EPUB.
+
+**Step 4: Fix Issues in FableFlow**
+
+Common fixes:
+1. **Missing images** - Ensure all referenced images are in `output/` directory
+2. **Wrong image format** - Check if EPUB references `.svg` but only `.png` exists
+3. **Incorrect TOC** - Verify all TOC entries match actual XHTML files
+4. **Broken image paths** - Ensure paths use `images/filename.ext` format
+
+**Step 5: Re-generate EPUB**
+
+After fixing issues:
+```bash
+# Delete old EPUB to force regeneration
+rm output/book.epub
+
+# Run book production again
+fable-flow publisher process
+```
+
+#### Alternative: Online EPUB Validators
+
+**EPUBCheck (Official Validator):**
+```bash
+# Install Java if needed
+sudo apt install default-jre
+
+# Download EPUBCheck
+wget https://github.com/w3c/epubcheck/releases/download/v5.1.0/epubcheck-5.1.0.zip
+unzip epubcheck-5.1.0.zip
+
+# Validate EPUB
+java -jar epubcheck-5.1.0/epubcheck.jar book.epub
+```
+
+**Online Validators:**
+- [EPUBCheck Online](http://validator.idpf.org/) - Official IDPF validator
+- [Pagina EPUB Checker](https://www.pagina.gmbh/produkte/epub-checker/) - Detailed validation
+
+#### Kindle-Specific Issues
+
+**Amazon KDP Upload Errors:**
+
+If Amazon KDP rejects your EPUB:
+
+1. **Use Kindle Previewer** (Amazon's official tool):
+   - Download: https://kdp.amazon.com/en_US/help/topic/G202131170
+   - Open your EPUB in Kindle Previewer
+   - It will show Amazon-specific compatibility issues
+   - Preview how it looks on different Kindle devices
+
+2. **Common Kindle Issues:**
+   - Cover image must be referenced correctly in metadata
+   - All images should be < 5MB each
+   - Total EPUB size should be < 650MB
+   - Use RGB color space for images (not CMYK)
+   - Avoid complex CSS that Kindle doesn't support
+
+3. **Fix and Re-validate:**
+   ```bash
+   # After fixing, convert with Calibre to test
+   ebook-convert book.epub book.mobi
+
+   # Then upload to KDP
+   ```
+
+#### Publishing Platform Requirements
+
+**Amazon Kindle (KDP):**
+- Accepts EPUB 2.0 and 3.0
+- Automatically converts to Kindle format
+- Recommends using Kindle Previewer first
+
+**Apple Books:**
+- Requires EPUB 3.0
+- Strict XHTML validation
+- Use Apple Books Previewer for testing
+
+**Google Play Books:**
+- Accepts EPUB 2.0 and 3.0
+- More lenient validation
+- Good for testing if others fail
+
+**Kobo:**
+- Accepts EPUB 2.0 and 3.0
+- Similar requirements to Kindle
+
+#### Pro Tips
+
+1. **Always validate before uploading** - Use Calibre or EPUBCheck
+2. **Test on actual devices** - Different e-readers handle EPUBs differently
+3. **Keep it simple** - Complex layouts may not work across all platforms
+4. **Check images** - Ensure all images are included and properly sized
+5. **Use standard fonts** - Embedded fonts can cause issues on some readers
+
+#### FableFlow EPUB Features
+
+FableFlow generates EPUB 3.0 with:
+- ✓ Both `toc.ncx` (EPUB 2.0 compatibility) and `nav.xhtml` (EPUB 3.0)
+- ✓ Proper metadata (ISBN, author, publisher, description)
+- ✓ Cover image with high contrast text overlay
+- ✓ Optimized for Kindle, Apple Books, and other platforms
+- ✓ Validated structure and navigation
+
+If you still encounter issues after validation, please report them on [GitHub Issues](https://github.com/suneeta-mall/fable-flow/issues) with the Calibre error output.
+
 ### Getting Help
 
 - Check the [complete workflow documentation](../fableflow-workflow.md)

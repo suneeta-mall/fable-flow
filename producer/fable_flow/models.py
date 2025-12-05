@@ -159,9 +159,10 @@ class EnhancedImageModel:
                 generator=torch.Generator(device=self.device).manual_seed(42),
             ).images[0]
 
-        # Convert PIL Image to bytes
+        # Convert PIL Image to bytes (JPEG at 72 DPI)
         img_buffer = io.BytesIO()
-        image.save(img_buffer, format="PNG", optimize=True)
+        image = image.convert("RGB")  # Ensure RGB mode for JPEG
+        image.save(img_buffer, format="PNG", dpi=(72, 72), quality=95)
         return img_buffer.getvalue()
 
 

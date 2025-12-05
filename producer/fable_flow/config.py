@@ -36,6 +36,13 @@ class ImageGenerationConfig(BaseModel):
     model: str = "stabilityai/stable-diffusion-xl-base-1.0"
     style_consistency: str = "stabilityai/stable-diffusion-xl-refiner-1.0"
 
+    # Amazon KDP eBook cover specifications
+    # Reference: https://kdp.amazon.com/en_US/help/topic/G200645690
+    # Ideal dimensions: 2560 x 1600 pixels (1.6:1 ratio)
+    # Minimum: 1000 x 625 pixels
+    cover_width: int = 1600
+    cover_height: int = 2560
+
 
 class TextToSpeechConfig(BaseModel):
     voice_preset: str = "af_heart"

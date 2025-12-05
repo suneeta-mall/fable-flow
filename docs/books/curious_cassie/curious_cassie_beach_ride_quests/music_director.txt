@@ -1,35 +1,51 @@
-<music>
-Gentle synth pads, peaceful ambient melody, warm electronic tones, contemplative children's theme, slow tempo, C major brightness
-</music>
+# Music Prompts for "Curious Cassie's Beach Ride Quest"
 
-<music>
-Soft electronic storytelling, warm synth strings, cozy family atmosphere, gentle ambient texture, tender loving mood, medium slow pace
-</music>
+<music>Gentle synth pads, warm electronic tones, playful children's theme, medium tempo, bright major key</music>
 
-<music>
-Playful synth melody, upbeat electronic beats, joyful discovery theme, bouncing digital sounds, excited children's energy, fast tempo
-</music>
+<music>Curious electronic melody, soft beats, wonder and discovery mood, C major brightness, upbeat tempo</music>
 
-<music>
-Humorous electronic tune, quirky synth lead, light comedy mood, playful ambient beats, cheeky children's theme, medium tempo
-</music>
+<music>Warm synth atmosphere, gentle ambient texture, family warmth theme, peaceful electronic, slow tempo</music>
 
-<music>
-Problem-solving synth progression, building electronic excitement, breakthrough celebration theme, triumphant digital melody, fast tempo, major key
-</music>
+<music>Playful electronic bounce, cheerful synth lead, excitement building, fast tempo, joyful major key</music>
 
-<music>
-Dreamy ambient synth, floating electronic pads, imagination theme, gentle swirling sounds, visualization music, slow mystical tempo
-</music>
+<music>Mysterious ambient synth, soft electronic curiosity theme, wondering mood, medium slow tempo</music>
 
-<music>
-Curious synth melody, wondering electronic tones, puzzled ambient texture, mysterious children's theme, medium questioning tempo, minor key
-</music>
+<music>Bright synth celebration, happy electronic beats, discovery joy theme, upbeat tempo, major key</music>
 
-<music>
-Exciting discovery synth, aha moment electronic burst, surprise celebration theme, bright digital sparkle, fast joyful tempo
-</music>
+<music>Gentle electronic lullaby, soft synth pads, bedtime warmth, peaceful ambient, slow tempo</music>
 
-<music>
-Adventure arrival synth, triumphant electronic celebration, beach excitement theme, victorious digital melody, uplifting ambient joy, fast tempo
-</music>
+<music>Adventure synth lead, exciting electronic rhythm, journey theme, medium fast tempo, heroic mood</music>
+
+<music>Wonder ambient synth, soft electronic exploration, curious discovery, slow building tempo</music>
+
+<music>Playful synth melody, bouncing electronic beats, jumping joy theme, fast tempo, bright major</music>
+
+<music>Cheerful road trip synth, driving electronic rhythm, family adventure, steady tempo, happy mood</music>
+
+<music>Problem-solving electronic theme, thinking synth pads, clever discovery, medium tempo, focused mood</music>
+
+<music>Exciting synth crescendo, fast electronic beats, breakthrough moment, quick tempo, triumphant major</music>
+
+<music>Mysterious electronic atmosphere, wondering synth tones, puzzle-solving mood, medium slow tempo</music>
+
+<music>Joyful celebration synth, happy electronic fanfare, success theme, upbeat tempo, bright major key</music>
+
+<music>Inspiring electronic melody, warm synth pads, learning joy theme, medium tempo, uplifting mood</music>
+
+<music>Beach arrival synth, excited electronic rhythm, ocean theme, fast tempo, adventure major key</music>
+
+<music>Playful water electronic, splashing synth sounds, beach fun theme, bouncy tempo, joyful mood</music>
+
+<music>Building excitement synth, electronic construction theme, creative energy, medium tempo, major key</music>
+
+<music>Discovery wonder electronic, aha moment synth, breakthrough theme, medium tempo, enlightened mood</music>
+
+<music>Magical rainbow synth, prismatic electronic tones, beauty theme, slow tempo, dreamy atmosphere</music>
+
+<music>Sunset reflection electronic, gentle synth pads, peaceful ending, slow tempo, warm major key</music>
+
+<music>Triumphant learning synth, celebration electronic beats, achievement theme, upbeat tempo, joyful major</music>
+
+<music>Journey home electronic, satisfied synth melody, contentment theme, medium tempo, peaceful mood</music>
+
+<music>Dreamy goodnight synth, soft electronic lullaby, sleepy wonder, slow tempo, gentle major key</music>
