@@ -98,3 +98,4 @@ studio/web-ui/dist/
 studio/web-ui/.vite/
 studio/__pycache__/
 studio/*.pyc
+.claude/

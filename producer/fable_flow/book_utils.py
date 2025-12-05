@@ -8,7 +8,7 @@ import re
 from pathlib import Path
 from typing import Any
 
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, NavigableString
 from loguru import logger
 
 _LOGO_PATH = Path(__file__).parent.parent.parent / "docs" / "assets" / "logo_horizontal.png"
@@ -301,6 +301,51 @@ class BookContentProcessor:
         return metadata
 
     @staticmethod
+    def extract_subtitle_from_html(html_content: str) -> str:
+        """Extract subtitle from HTML content.
+
+        Looks for elements with class containing 'subtitle' (e.g., 'cover-subtitle',
+        'front-cover-subtitle', 'title-page-subtitle').
+
+        Args:
+            html_content: HTML content string
+
+        Returns:
+            Extracted subtitle text or empty string if not found
+        """
+        from bs4 import BeautifulSoup
+
+        try:
+            soup = BeautifulSoup(html_content, "html.parser")
+
+            # Look for elements with class containing 'subtitle'
+            subtitle_elements = soup.find_all(class_=lambda c: c and "subtitle" in c.lower())
+
+            if subtitle_elements:
+                # Get the first subtitle found
+                subtitle = subtitle_elements[0].get_text().strip()
+                logger.info(f"BookContentProcessor: Extracted subtitle from HTML: '{subtitle}'")
+                return subtitle
+
+            # Fallback: look for ## heading after title (markdown style)
+            h2_elements = soup.find_all("h2")
+            if h2_elements:
+                # Check if it's before first chapter
+                first_h2_text = h2_elements[0].get_text().strip()
+                if "chapter" not in first_h2_text.lower():
+                    logger.info(
+                        f"BookContentProcessor: Extracted subtitle from first H2: '{first_h2_text}'"
+                    )
+                    return first_h2_text
+
+            logger.debug("BookContentProcessor: No subtitle found in HTML")
+            return ""
+
+        except Exception as e:
+            logger.error(f"BookContentProcessor: Failed to extract subtitle from HTML: {e}")
+            return ""
+
+    @staticmethod
     def extract_chapter_titles(soup: BeautifulSoup) -> list[str]:
         """Extract all chapter titles from parsed HTML.
 
@@ -320,6 +365,90 @@ class BookContentProcessor:
 
         logger.info(f"BookContentProcessor: Found {len(chapters)} chapter titles")
         return chapters
+
+    @staticmethod
+    def remove_poem_quotes(html_content: str) -> str:
+        """Remove beginning and ending quotes from poem boxes.
+
+        This function finds all poem-box and related poetry containers and removes
+        opening quotes from the first line and closing quotes from the last line.
+
+        Args:
+            html_content: HTML content containing poem boxes
+
+        Returns:
+            HTML content with quotes removed from poem boxes
+        """
+        soup = BeautifulSoup(html_content, "html.parser")
+
+        # All poem-related CSS classes
+        poem_classes = [
+            "poem-box",
+            "poem-verse",
+            "haiku-box",
+            "limerick-box",
+            "cinquain-box",
+            "chant-box",
+            "song-lyrics",
+        ]
+
+        quote_chars = ['"', "'", '"', '"', """, """]
+        quotes_removed = 0
+
+        def get_all_text_nodes(element):
+            """Recursively get all text nodes in order."""
+            text_nodes = []
+            for child in element.descendants:
+                if isinstance(child, NavigableString) and str(child).strip():
+                    text_nodes.append(child)
+            return text_nodes
+
+        for poem_class in poem_classes:
+            poem_elements = soup.find_all("div", class_=poem_class)
+
+            for poem_div in poem_elements:
+                # Get all text nodes in the poem
+                text_nodes = get_all_text_nodes(poem_div)
+
+                if not text_nodes:
+                    continue
+
+                # Remove opening quote from first text node
+                first_node = text_nodes[0]
+                first_text = str(first_node)
+                for quote_char in quote_chars:
+                    if first_text.lstrip().startswith(quote_char):
+                        # Calculate leading whitespace
+                        leading_ws = first_text[: len(first_text) - len(first_text.lstrip())]
+                        # Remove quote and preserve whitespace
+                        new_text = leading_ws + first_text.lstrip()[len(quote_char) :]
+                        first_node.replace_with(new_text)
+                        quotes_removed += 1
+                        logger.debug(
+                            f"BookContentProcessor: Removed opening {quote_char} from poem"
+                        )
+                        break
+
+                # Remove closing quote from last text node
+                last_node = text_nodes[-1]
+                last_text = str(last_node)
+                for quote_char in quote_chars:
+                    if last_text.rstrip().endswith(quote_char):
+                        # Calculate trailing whitespace
+                        trailing_ws = last_text[len(last_text.rstrip()) :]
+                        # Remove quote and preserve whitespace
+                        new_text = last_text.rstrip()[: -len(quote_char)] + trailing_ws
+                        last_node.replace_with(new_text)
+                        quotes_removed += 1
+                        logger.debug(
+                            f"BookContentProcessor: Removed closing {quote_char} from poem"
+                        )
+                        break
+
+        if quotes_removed > 0:
+            logger.info(f"BookContentProcessor: Removed {quotes_removed} quotes from poem boxes")
+
+        return str(soup)
 
     @staticmethod
     def verify_and_fix_author_attribution(html_content: str) -> str:

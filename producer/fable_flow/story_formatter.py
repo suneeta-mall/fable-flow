@@ -40,8 +40,8 @@ class StoryHTMLFormatter:
         chapters = []
 
         # Patterns to detect chapter headers
-        # 1. "Chapter N:" with optional title
-        chapter_pattern = r"^(?:##\s*)?Chapter\s+(?:\d+|One|Two|Three|Four|Five|Six|Seven|Eight|Nine|Ten)(?:[:\s].*)?$"
+        # 1. "Chapter N:" with optional title (supports H1, H2, H3 markdown: #, ##, ###)
+        chapter_pattern = r"^#{0,3}\s*Chapter\s+(?:\d+|One|Two|Three|Four|Five|Six|Seven|Eight|Nine|Ten)(?:[:\s].*)?$"
 
         lines = story_text.split("\n")
         current_chapter_title = None

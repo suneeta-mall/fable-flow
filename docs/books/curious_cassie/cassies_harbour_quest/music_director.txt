@@ -1,47 +1,55 @@
 <music>
-Playful synth melody, cheerful electronic beats, joyful celebration theme, bright major key, upbeat tempo
+Playful electronic melody, exciting synth bursts, bubbly digital sounds, fast energetic tempo, bright major key
 </music>
 
 <music>
-Gentle ambient synth, warm electronic pads, curious learning mood, soft focused atmosphere, medium slow tempo
+Gentle synth pads, warm inviting tones, soft electronic ambient, curious mood, medium slow tempo
 </music>
 
 <music>
-Thoughtful synth textures, analytical electronic tones, gentle wonder theme, contemplative mood, medium tempo
+Cheerful synth tune, playful electronic beats, happy family atmosphere, medium tempo, bright harmonies
 </music>
 
 <music>
-Exciting synth build, anticipation electronic rhythm, surprise discovery theme, building energy, medium fast tempo
+Exciting synth build, anticipation electronic crescendo, adventurous digital theme, upbeat tempo, rising energy
 </music>
 
 <music>
-Flowing ambient synth, peaceful electronic waves, graceful underwater theme, serene atmosphere, slow gentle tempo
+Peaceful ambient synth, flowing electronic textures, underwater atmosphere, slow graceful tempo, serene mood
 </music>
 
 <music>
-Happy electronic melody, adventure synth lead, excitement building theme, joyful anticipation, upbeat tempo
+Wonder-filled synth melody, building electronic excitement, awe-inspiring digital soundscape, medium tempo, expansive feel
 </music>
 
 <music>
-Wonder synth pads, majestic electronic tones, awe-inspired theme, bright expansive atmosphere, medium tempo
+Majestic electronic theme, breathtaking synth pads, inspiring ambient layers, slow grand tempo, magical atmosphere
 </music>
 
 <music>
-Educational synth theme, discovery electronic beats, experiment wonder mood, playful learning energy, medium tempo
+Curious synth tones, discovery electronic motif, learning atmosphere, medium tempo, bright investigative mood
 </music>
 
 <music>
-Triumphant synth fanfare, heroic electronic drums, eureka celebration theme, historic excitement, fast energetic tempo
+Triumphant synth fanfare, celebratory electronic beats, victorious digital anthem, fast joyful tempo, major key
 </music>
 
 <music>
-Jubilant electronic melody, victory synth celebration, pure joy theme, exuberant happiness, fast upbeat tempo
+Gentle ambient synth, mysterious electronic tones, exploratory soundscape, slow curious tempo, wonder-filled atmosphere
 </music>
 
 <music>
-Gentle wonder synth, respectful ambient tones, fascination discovery theme, reverent curiosity, slow peaceful tempo
+Delicate synth pads, peaceful electronic ambience, reverent digital tones, slow graceful tempo, magical mood
 </music>
 
 <music>
-Reflective synth pads, hopeful electronic atmosphere, environmental commitment theme, peaceful resolution, slow contemplative tempo
+Pride-filled synth melody, warm electronic celebration, accomplishment theme, medium tempo, heartfelt harmonies
+</music>
+
+<music>
+Inspiring synth lead, hopeful electronic atmosphere, dream-like digital soundscape, medium tempo, aspirational mood
+</music>
+
+<music>
+Dreamy synth lullaby, soft electronic whispers, peaceful ambient textures, slow gentle tempo, serene nighttime atmosphere
 </music>

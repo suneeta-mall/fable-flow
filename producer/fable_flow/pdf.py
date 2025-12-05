@@ -993,6 +993,32 @@ class PDFGenerator:
         if current_line.strip():
             lines.append(current_line.strip())
 
+        # Remove beginning and ending quotes from poem lines
+        if lines:
+            # Strip opening quotes from first line (before any HTML tags)
+            first_line = lines[0]
+            for quote_char in ['"', "'", '"', '"', """, """]:
+                if first_line.lstrip().startswith(quote_char):
+                    # Find the position after any opening tags
+                    stripped = first_line.lstrip()
+                    # Remove the quote character
+                    stripped = stripped[len(quote_char) :]
+                    # Preserve any leading whitespace and tags
+                    lines[0] = first_line[: len(first_line) - len(first_line.lstrip())] + stripped
+                    break
+
+            # Strip closing quotes from last line (after any HTML tags)
+            last_line = lines[-1]
+            for quote_char in ['"', "'", '"', '"', """, """]:
+                if last_line.rstrip().endswith(quote_char):
+                    # Find the position before any closing tags
+                    stripped = last_line.rstrip()
+                    # Remove the quote character
+                    stripped = stripped[: -len(quote_char)]
+                    # Preserve any trailing whitespace and tags
+                    lines[-1] = stripped + last_line[len(last_line.rstrip()) :]
+                    break
+
         # Join lines with ReportLab line breaks
         poem_text = "<br/>".join(lines) if lines else ""
 
@@ -1784,6 +1810,9 @@ class PDFGenerator:
                         elements.append(self._create_paragraph(text, styles["preface-text"]))
 
         elements.append(PageBreak())  # New page after title page
+        # Add invisible content to force blank page to exist
+        elements.append(Paragraph("&nbsp;", styles.get("Normal", styles.get("body-text"))))
+        elements.append(PageBreak())  # Move past the blank page
         return elements
 
     def _process_front_cover_page(self, div_element, styles) -> list:
@@ -1848,12 +1877,14 @@ class PDFGenerator:
                                 elements.append(
                                     self._create_paragraph(text, styles["front-cover-title"])
                                 )
+                                logger.info(f"PDFGenerator: Front cover title: {text}")
                             elif child.name == "h2" and "front-cover-subtitle" in child.get(
                                 "class", []
                             ):
                                 elements.append(
                                     self._create_paragraph(text, styles["front-cover-subtitle"])
                                 )
+                                logger.info(f"PDFGenerator: Front cover subtitle: {text}")
                             elif child.name == "p" and "front-cover-author" in child.get(
                                 "class", []
                             ):
@@ -2041,9 +2072,11 @@ class PDFGenerator:
                     if child.name == "h1" and "title-page-title" in child.get("class", []):
                         elements.append(self._create_paragraph(text, styles["title-page-title"]))
                         elements.append(Spacer(1, 0.3 * 72))  # Minimal spacing
+                        logger.info(f"PDFGenerator: Title page title: {text}")
                     elif child.name == "h2" and "title-page-subtitle" in child.get("class", []):
                         elements.append(self._create_paragraph(text, styles["title-page-subtitle"]))
                         elements.append(Spacer(1, 0.5 * 72))  # Reduced spacing
+                        logger.info(f"PDFGenerator: Title page subtitle: {text}")
                     elif child.name == "p" and "title-page-author" in child.get("class", []):
                         elements.append(Spacer(1, 0.5 * 72))  # Reduced spacing
                         elements.append(self._create_paragraph(text, styles["title-page-author"]))
@@ -2055,6 +2088,9 @@ class PDFGenerator:
                         )
 
         elements.append(PageBreak())  # New page after title page
+        # Add invisible content to force blank page to exist
+        elements.append(Paragraph("&nbsp;", styles.get("Normal", styles.get("body-text"))))
+        elements.append(PageBreak())  # Move past the blank page
         return elements
 
     def _process_publication_info(self, div_element, styles) -> list:
@@ -2165,6 +2201,7 @@ class PDFGenerator:
             logger.info(f"PDFGenerator: Added section to TOC: '{section_title}' -> page {page_num}")
 
         elements.append(PageBreak())  # New page after TOC
+        elements.append(PageBreak())  # Explicit blank page
         return elements
 
     def _process_preface(self, div_element, styles) -> list:

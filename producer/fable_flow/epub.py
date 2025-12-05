@@ -7,6 +7,7 @@ from typing import Any
 
 from bs4 import BeautifulSoup
 from loguru import logger
+from PIL import Image, ImageDraw, ImageFont
 
 from fable_flow.book_structure import BookStructureGenerator
 from fable_flow.book_utils import BookContentProcessor
@@ -40,15 +41,24 @@ class EPUBGenerator:
         """Generate an EPUB file from HTML content with metadata."""
         logger.info(f"EPUBGenerator: Generating EPUB from HTML with {len(html_content)} characters")
 
-        # Validate and clean metadata
-        book_metadata = BookContentProcessor.validate_book_metadata(book_metadata)
-
         # Clean HTML content using shared utility
         html_content = BookContentProcessor.clean_html_content(html_content)
 
         # Parse HTML structure
         soup = BeautifulSoup(html_content, "html.parser")
         book_div = soup.find("div", class_="book")
+
+        # Extract title and subtitle from HTML
+        title_elem = soup.find(class_="front-cover-title")
+        subtitle_elem = soup.find(class_="front-cover-subtitle")
+
+        if title_elem:
+            book_metadata["title"] = title_elem.get_text().strip()
+        if subtitle_elem:
+            book_metadata["subtitle"] = subtitle_elem.get_text().strip()
+
+        # Validate and clean metadata
+        book_metadata = BookContentProcessor.validate_book_metadata(book_metadata)
 
         # Collect all content elements - front matter + book content
         all_elements = []
@@ -149,7 +159,11 @@ class EPUBGenerator:
         creation_date: str,
         image_files: list = None,
     ) -> str:
-        """Create the OEBPS/content.opf package document."""
+        """Create the OEBPS/content.opf package document.
+
+        Uses EPUB 3.0 format with modern metadata and navigation.
+        Includes both toc.ncx (backwards compatibility) and nav.xhtml (EPUB 3).
+        """
         book_config = config.book
         isbn = book_config.isbn_epub if hasattr(config, "book") else "978-0-XXXXX-XXX-Y"
 
@@ -170,7 +184,7 @@ class EPUBGenerator:
         <dc:subject>Science</dc:subject>
         <dc:description>An engaging educational children's book that combines storytelling with scientific learning.</dc:description>
 
-        <!-- EPUB metadata -->
+        <!-- EPUB 3 metadata -->
         <meta property="dcterms:modified">{creation_date}</meta>
         <meta name="cover" content="cover-image"/>
     </metadata>
@@ -226,9 +240,9 @@ class EPUBGenerator:
         nav_points = []
         play_order = 1
 
-        # Add standard sections
+        # Add standard sections (Note: cover.xhtml is for EPUB readers, not TOC navigation)
         standard_sections = [
-            ("cover", "Cover", "cover.xhtml"),
+            ("front-cover", "Front Cover", "front-cover.xhtml"),
             ("title", "Title Page", "title-page.xhtml"),
             ("pub-info", "Publication Info", "publication-info.xhtml"),
             ("toc", "Contents", "toc-page.xhtml"),
@@ -825,7 +839,7 @@ img {
         toc_html = self._create_xhtml_page("Table of Contents", toc_element)
         epub_zip.writestr("OEBPS/toc-page.xhtml", toc_html)
 
-        # 6. Navigation file (EPUB3 requirement)
+        # 6. Navigation file (EPUB 3 requirement)
         nav_html = self._create_nav_xhtml(book_metadata["title"])
         epub_zip.writestr("OEBPS/nav.xhtml", nav_html)
 
@@ -858,6 +872,8 @@ img {
     def _html_to_xhtml(self, title: str, html_content: str) -> str:
         """Convert HTML fragment to proper XHTML page for EPUB.
 
+        Uses EPUB 3 compatible XHTML structure.
+
         Args:
             title: Page title
             html_content: HTML content fragment
@@ -884,7 +900,6 @@ img {
     # Kept for backward compatibility but deprecated
     def _create_front_cover_page(self, book_metadata: dict) -> str:
         """Create a front cover page XHTML with image background and text overlays."""
-        from fable_flow.config import config
 
         title = book_metadata.get("title", "FableFlow Book")
         subtitle = book_metadata.get("subtitle", "")
@@ -892,7 +907,13 @@ img {
         author = config.book.draft_story_author
         publisher = book_metadata.get("publisher", config.book.publisher)
 
-        subtitle_html = f'<h2 class="front-cover-subtitle">{subtitle}</h2>' if subtitle else ""
+        # Generate subtitle HTML only if subtitle exists and is not empty/None
+        subtitle_html = ""
+        if subtitle and subtitle.strip():
+            subtitle_html = f'<h2 class="front-cover-subtitle">{subtitle}</h2>'
+            logger.info(f"EPUBGenerator: Adding subtitle to cover: '{subtitle}'")
+        else:
+            logger.debug(f"EPUBGenerator: No subtitle for cover (value: '{subtitle}')")
 
         return f"""<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
@@ -958,41 +979,13 @@ img {
 </body>
 </html>"""
 
-    def _create_explicit_title_page(self, book_metadata: dict) -> str:
-        """Create an explicit title page with programmatically generated content (no LLM)."""
-        from fable_flow.config import config
-
-        title = book_metadata.get("title", "FableFlow Book")
-        subtitle = book_metadata.get("subtitle", "")
-        # ALWAYS use config.book.draft_story_author for author attribution
-        author = config.book.draft_story_author
-        publisher = book_metadata.get("publisher", config.book.publisher)
-
-        subtitle_html = f'<h2 class="title-page-subtitle">{subtitle}</h2>' if subtitle else ""
-
-        return f"""<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops">
-<head>
-    <title>Title Page - {title}</title>
-    <link rel="stylesheet" type="text/css" href="styles/main.css"/>
-</head>
-<body>
-    <div class="explicit-title-page">
-        <div class="title-page-content">
-            <h1 class="title-page-title">{title}</h1>
-            {subtitle_html}
-            <p class="title-page-author">By {author}</p>
-            <p class="title-page-publisher">{publisher}</p>
-        </div>
-    </div>
-</body>
-</html>"""
-
     def _create_xhtml_page(
         self, title: str, content_element, content_type: str = "standard"
     ) -> str:
-        """Create an XHTML page from BeautifulSoup element."""
+        """Create an XHTML page from BeautifulSoup element.
+
+        Uses EPUB 3 compatible XHTML structure.
+        """
         if content_element is None:
             content_html = f"<p><em>{title} content not available.</em></p>"
         else:
@@ -1017,7 +1010,10 @@ img {
 </html>"""
 
     def _create_nav_xhtml(self, title: str) -> str:
-        """Create EPUB3 navigation document."""
+        """Create EPUB 3 navigation document.
+
+        Required for EPUB 3 specification. Uses epub:type="toc" for semantic navigation.
+        """
         return f"""<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops">
@@ -1029,7 +1025,7 @@ img {
     <nav epub:type="toc" id="toc">
         <h1>Table of Contents</h1>
         <ol>
-            <li><a href="cover.xhtml">Cover</a></li>
+            <li><a href="front-cover.xhtml">Cover</a></li>
             <li><a href="title-page.xhtml">Title Page</a></li>
             <li><a href="publication-info.xhtml">Publication Info</a></li>
             <li><a href="toc-page.xhtml">Contents</a></li>
@@ -1101,216 +1097,118 @@ img {
         return placeholder
 
     def _create_epub_cover_with_text(self, book_metadata: dict) -> Path:
-        """Create a composite EPUB cover image with title and author overlaid.
-
-        This combines the front_cover.png background with text overlay
-        specifically for EPUB readers to display in bookshelves.
-
-        Returns:
-            Path to the generated epub_cover.png file
-        """
-        from PIL import Image, ImageDraw, ImageFont
-
+        """Create EPUB cover by overlaying title, subtitle, author, and publisher on front cover image."""
         front_cover_path = self.output_dir / "front_cover.png"
         epub_cover_path = self.output_dir / "epub_cover.png"
 
-        # If epub_cover already exists, return it
         if epub_cover_path.exists():
-            logger.info("EPUBGenerator: Using existing epub_cover.png")
             return epub_cover_path
 
-        # If front_cover doesn't exist, return None
-        if not front_cover_path.exists():
-            logger.warning("EPUBGenerator: front_cover.png not found, cannot create EPUB cover")
-            return None
+        cover_img = Image.open(front_cover_path)
+        width, height = cover_img.size
+        draw = ImageDraw.Draw(cover_img)
 
-        try:
-            # Open the background cover image
-            cover_img = Image.open(front_cover_path)
-            width, height = cover_img.size
+        title = book_metadata.get("title", "Untitled")
+        subtitle = book_metadata.get("subtitle", "")
+        author = config.book.draft_story_author
+        publisher = book_metadata.get("publisher", config.book.publisher)
 
-            # Create a drawing context
-            draw = ImageDraw.Draw(cover_img)
+        # Reasonable font sizes that fit on cover
+        title_font = ImageFont.truetype(
+            "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", int(height * 0.08)
+        )
+        subtitle_font = ImageFont.truetype(
+            "/usr/share/fonts/truetype/liberation/LiberationSans-Italic.ttf", int(height * 0.05)
+        )
+        info_font = ImageFont.truetype(
+            "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", int(height * 0.04)
+        )
 
-            # Get metadata
-            title = book_metadata.get("title", "Untitled")
-            author = config.book.draft_story_author
-            publisher = book_metadata.get("publisher", config.book.publisher)
+        # Padding and spacing
+        side_padding = int(width * 0.08)
+        max_width = width - (2 * side_padding)
+        section_spacing = int(height * 0.06)
 
-            # Try to use a nice font, fall back to default if not available
-            try:
-                # Try different font sizes for title
-                title_font_size = int(height * 0.08)  # 8% of image height
-                author_font_size = int(height * 0.04)  # 4% of image height
+        def wrap_text(text, font):
+            """Wrap text to fit within max_width."""
+            words = text.split()
+            lines = []
+            current_line = []
 
-                # Try to load system fonts
-                try:
-                    title_font = ImageFont.truetype(
-                        "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", title_font_size
-                    )
-                    author_font = ImageFont.truetype(
-                        "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", author_font_size
-                    )
-                except Exception:
-                    # Fallback to default font
-                    title_font = ImageFont.load_default()
-                    author_font = ImageFont.load_default()
-            except Exception:
-                title_font = ImageFont.load_default()
-                author_font = ImageFont.load_default()
+            for word in words:
+                test_line = " ".join(current_line + [word])
+                bbox = draw.textbbox((0, 0), test_line, font=font)
+                if bbox[2] - bbox[0] <= max_width:
+                    current_line.append(word)
+                else:
+                    if current_line:
+                        lines.append(" ".join(current_line))
+                    current_line = [word]
 
-            # Define horizontal padding (10% on each side)
-            horizontal_padding = int(width * 0.10)
-            available_width = width - (2 * horizontal_padding)
+            if current_line:
+                lines.append(" ".join(current_line))
 
-            # Position text in the upper portion of the cover
-            title_y = int(height * 0.15)  # 15% from top
-            author_y = int(height * 0.75)  # 75% from top
-            publisher_y = int(height * 0.85)  # 85% from top
+            return lines
 
-            # Draw title - adjust font size if text is too wide
-            title_bbox = draw.textbbox((0, 0), title, font=title_font)
-            title_width = title_bbox[2] - title_bbox[0]
+        def draw_text_block(lines, font, y_pos, color):
+            """Draw centered text block with outline, return total height used."""
+            line_spacing = int(height * 0.01)
+            total_height = 0
 
-            # If title is too wide, reduce font size to fit
-            if title_width > available_width:
-                # Calculate scaling factor needed
-                scale_factor = available_width / title_width
-                new_title_font_size = int(
-                    title_font_size * scale_factor * 0.95
-                )  # 95% for safety margin
+            for line in lines:
+                bbox = draw.textbbox((0, 0), line, font=font)
+                text_width = bbox[2] - bbox[0]
+                text_height = bbox[3] - bbox[1]
+                x_pos = (width - text_width) // 2
 
-                # Reload font with adjusted size
-                try:
-                    title_font = ImageFont.truetype(
-                        "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", new_title_font_size
-                    )
-                except Exception:
-                    title_font = ImageFont.load_default()
+                # Black outline for readability
+                for dx in [-2, -1, 0, 1, 2]:
+                    for dy in [-2, -1, 0, 1, 2]:
+                        if dx != 0 or dy != 0:
+                            draw.text((x_pos + dx, y_pos + dy), line, font=font, fill=(0, 0, 0))
 
-                # Recalculate width with new font
-                title_bbox = draw.textbbox((0, 0), title, font=title_font)
-                title_width = title_bbox[2] - title_bbox[0]
+                # Main text
+                draw.text((x_pos, y_pos), line, font=font, fill=color)
+                y_pos += text_height + line_spacing
+                total_height += text_height + line_spacing
 
-            # Center within the available width (after padding)
-            title_x = horizontal_padding + (available_width - title_width) // 2
+            return total_height
 
-            # Draw multiple shadow layers for better visibility
-            # Outer glow/shadow
-            for offset in [(0, 4), (4, 0), (0, -4), (-4, 0), (3, 3), (-3, 3), (3, -3), (-3, -3)]:
-                draw.text(
-                    (title_x + offset[0], title_y + offset[1]),
-                    title,
-                    font=title_font,
-                    fill=(0, 0, 0, 255),
-                )
-            # Inner shadow
-            draw.text((title_x + 2, title_y + 2), title, font=title_font, fill=(0, 0, 0, 230))
-            # Draw title
-            draw.text((title_x, title_y), title, font=title_font, fill=(255, 255, 255, 255))
+        # Layout from top
+        y = int(height * 0.25)
 
-            # Draw author - adjust font size if text is too wide
-            author_text = f"By {author}"
-            author_bbox = draw.textbbox((0, 0), author_text, font=author_font)
-            author_width = author_bbox[2] - author_bbox[0]
+        # Title
+        title_lines = wrap_text(title, title_font)
+        y += draw_text_block(title_lines, title_font, y, (255, 255, 255))
+        y += section_spacing
 
-            # Create a copy of the author font for potential resizing
-            current_author_font = author_font
+        # Subtitle
+        if subtitle and subtitle.strip():
+            subtitle_lines = wrap_text(subtitle, subtitle_font)
+            y += draw_text_block(subtitle_lines, subtitle_font, y, (255, 220, 80))
+            y += section_spacing
 
-            # If author text is too wide, reduce font size to fit
-            if author_width > available_width:
-                scale_factor = available_width / author_width
-                new_author_font_size = int(author_font_size * scale_factor * 0.95)
+        # Author and publisher at bottom
+        bottom_y = int(height * 0.85)
 
-                try:
-                    current_author_font = ImageFont.truetype(
-                        "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", new_author_font_size
-                    )
-                except Exception:
-                    current_author_font = ImageFont.load_default()
+        author_lines = wrap_text(f"By {author}", info_font)
+        publisher_lines = wrap_text(publisher, info_font)
 
-                author_bbox = draw.textbbox((0, 0), author_text, font=current_author_font)
-                author_width = author_bbox[2] - author_bbox[0]
+        # Calculate total height needed for bottom section
+        author_bbox = draw.textbbox((0, 0), "By Author", font=info_font)
+        line_height = author_bbox[3] - author_bbox[1]
+        bottom_content_height = (len(author_lines) + len(publisher_lines)) * line_height
 
-            author_x = horizontal_padding + (available_width - author_width) // 2
+        # Position author and publisher
+        author_y = bottom_y - bottom_content_height
+        author_y += draw_text_block(author_lines, info_font, author_y, (255, 255, 255))
+        author_y += int(height * 0.02)
+        draw_text_block(publisher_lines, info_font, author_y, (255, 255, 255))
 
-            # Draw multiple shadow layers for better visibility
-            for offset in [(0, 3), (3, 0), (0, -3), (-3, 0), (2, 2), (-2, 2), (2, -2), (-2, -2)]:
-                draw.text(
-                    (author_x + offset[0], author_y + offset[1]),
-                    author_text,
-                    font=current_author_font,
-                    fill=(0, 0, 0, 255),
-                )
-            draw.text(
-                (author_x + 1, author_y + 1),
-                author_text,
-                font=current_author_font,
-                fill=(0, 0, 0, 230),
-            )
-            # Draw author
-            draw.text(
-                (author_x, author_y),
-                author_text,
-                font=current_author_font,
-                fill=(255, 255, 255, 255),
-            )
+        cover_img.save(epub_cover_path, "PNG")
+        logger.info(f"EPUBGenerator: Created EPUB cover: {epub_cover_path}")
 
-            # Draw publisher - adjust font size if text is too wide
-            publisher_bbox = draw.textbbox((0, 0), publisher, font=author_font)
-            publisher_width = publisher_bbox[2] - publisher_bbox[0]
-
-            # Create a copy of the author font for publisher (uses same font)
-            current_publisher_font = author_font
-
-            # If publisher text is too wide, reduce font size to fit
-            if publisher_width > available_width:
-                scale_factor = available_width / publisher_width
-                new_publisher_font_size = int(author_font_size * scale_factor * 0.95)
-
-                try:
-                    current_publisher_font = ImageFont.truetype(
-                        "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", new_publisher_font_size
-                    )
-                except Exception:
-                    current_publisher_font = ImageFont.load_default()
-
-                publisher_bbox = draw.textbbox((0, 0), publisher, font=current_publisher_font)
-                publisher_width = publisher_bbox[2] - publisher_bbox[0]
-
-            publisher_x = horizontal_padding + (available_width - publisher_width) // 2
-
-            # Draw multiple shadow layers for better visibility
-            for offset in [(0, 3), (3, 0), (0, -3), (-3, 0), (2, 2), (-2, 2), (2, -2), (-2, -2)]:
-                draw.text(
-                    (publisher_x + offset[0], publisher_y + offset[1]),
-                    publisher,
-                    font=current_publisher_font,
-                    fill=(0, 0, 0, 255),
-                )
-            draw.text(
-                (publisher_x + 1, publisher_y + 1),
-                publisher,
-                font=current_publisher_font,
-                fill=(0, 0, 0, 230),
-            )
-            # Draw publisher
-            draw.text(
-                (publisher_x, publisher_y),
-                publisher,
-                font=current_publisher_font,
-                fill=(255, 255, 255, 255),
-            )
-
-            # Save the composite image
-            cover_img.save(epub_cover_path, "PNG")
-            logger.info(f"EPUBGenerator: Created EPUB cover with text overlay: {epub_cover_path}")
-
-            return epub_cover_path
-
-        except Exception as e:
-            logger.error(f"EPUBGenerator: Failed to create EPUB cover with text: {e}")
-            return None
+        return epub_cover_path
 
     def _collect_images(self) -> list:
         """Collect all images that need to be included in the EPUB."""
@@ -1322,7 +1220,11 @@ img {
         return image_files
 
     def _generate_image_manifest_entries(self, image_files: list) -> str:
-        """Generate manifest entries for all images."""
+        """Generate manifest entries for all images.
+
+        For EPUB 3, the cover image uses properties="cover-image" for better
+        metadata support. Also maintains backwards-compatible meta reference.
+        """
         if not image_files:
             return ""
 
@@ -1341,7 +1243,8 @@ img {
             else:
                 media_type = "image/png"  # fallback
 
-            # Special handling for EPUB cover with text - give it the cover-image id for readers
+            # Special handling for EPUB cover with text - give it the cover-image id
+            # Uses both properties="cover-image" (EPUB 3) and meta reference (backwards compat)
             if image_file.name == "epub_cover.png":
                 entries.append(
                     f'\n        <item id="cover-image" href="images/{image_file.name}" media-type="{media_type}" properties="cover-image"/>'
