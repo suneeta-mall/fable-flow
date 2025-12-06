@@ -1,6 +1,6 @@
 # 🌟 Cassie's Harbour Quest
 
-![FableFlow - Where Stories Come to Life](docs/assets/logo_horizontal.svg){width=40%,align=center}---
+![FableFlow - Where Stories Come to Life](assets/logo_horizontal.svg){width=40%,align=center}
 
 ## *A Buoyancy and Marine Science Adventure*
 

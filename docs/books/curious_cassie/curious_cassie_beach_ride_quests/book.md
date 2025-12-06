@@ -1,6 +1,6 @@
 # 🌟 Cassie's Beach Adventure
 
-![FableFlow - Where Stories Come to Life](docs/assets/logo_horizontal.svg){width=40%,align=center}---
+![FableFlow - Where Stories Come to Life](assets/logo_horizontal.svg){width=40%,align=center}
 
 ## *Discovering Newton's Amazing Ideas*
 

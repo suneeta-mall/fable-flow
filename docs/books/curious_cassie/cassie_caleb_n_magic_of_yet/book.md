@@ -1,6 +1,6 @@
 # 🌟 The Magic of YET
 
-![FableFlow - Where Stories Come to Life](docs/assets/logo_horizontal.svg){width=40%,align=center}---
+![FableFlow - Where Stories Come to Life](assets/logo_horizontal.svg){width=40%,align=center}
 
 ## *A Growth Mindset Adventure*
 

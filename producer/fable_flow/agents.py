@@ -1708,7 +1708,7 @@ OUTPUT: Return ONLY the caption text, nothing else.
 
         return f"""# 🌟 {title}
 
-![FableFlow - Where Stories Come to Life](docs/assets/logo_horizontal.svg){{width=40%,align=center}}---
+![FableFlow - Where Stories Come to Life](assets/logo_horizontal.svg){{width=40%,align=center}}
 {subtitle_display}
 **Perfect for {age_group}** 📚 **Created by {config.book.draft_story_author} with FableFlow** ✨
 
