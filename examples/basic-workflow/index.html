@@ -1,0 +1,2223 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Discover enchanting AI-enhanced stories, explore the world of Curious Cassie, and create your own multimedia adventures. FableFlow is where imagination meets technology to bring stories to life.">
+      
+      
+      
+        <link rel="canonical" href="https://suneeta-mall.github.io/fable-flow/examples/basic-workflow/">
+      
+      
+      
+      
+        
+      
+      
+        <link rel="alternate" type="application/rss+xml" title="RSS feed" href="../../feed_rss_created.xml">
+        <link rel="alternate" type="application/rss+xml" title="RSS feed of updated content" href="../../feed_rss_updated.xml">
+      
+      <link rel="icon" href="../../assets/favicon.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>Basic Workflow Example 🚀 - FableFlow - Where Stories Come to Life</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        
+        <link rel="stylesheet" href="../../assets/external/fonts.googleapis.com/css.49ea35f2.css">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/external/cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#basic-workflow-example" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="https://suneeta-mall.github.io/fable-flow" title="FableFlow - Where Stories Come to Life" class="md-header__button md-logo" aria-label="FableFlow - Where Stories Come to Life" data-md-component="logo">
+      
+  <img src="../../assets/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            FableFlow - Where Stories Come to Life
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Basic Workflow Example 🚀
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/suneeta-mall/fable-flow" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    suneeta-mall/fable-flow
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../stories/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  📚 Story Library
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../curious-cassie/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  🔍 Curious Cassie
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../create/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  ✨ Creator's Corner
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../community/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  🌟 Community
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../blog/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Curiosity Chronicles
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../contributing/guidelines/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  🤝 Contributing
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../features/story-processing/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  🔧 Features & API
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://suneeta-mall.github.io/fable-flow" title="FableFlow - Where Stories Come to Life" class="md-nav__button md-logo" aria-label="FableFlow - Where Stories Come to Life" data-md-component="logo">
+      
+  <img src="../../assets/logo.svg" alt="logo">
+
+    </a>
+    FableFlow - Where Stories Come to Life
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/suneeta-mall/fable-flow" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    suneeta-mall/fable-flow
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../stories/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📚 Story Library
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../curious-cassie/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🔍 Curious Cassie
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🔍 Curious Cassie
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📚 Cassie's Adventures
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    📚 Cassie's Adventures
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../books/curious_cassie/cassie_caleb_n_magic_of_yet/book/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🌱 The Magic of YET!
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../books/curious_cassie/curious_cassie_beach_ride_quests/book/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🏖️ Beach Ride Quest
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../books/curious_cassie/cassies_harbour_quest/book/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ⚓ Harbour Quest
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../create/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ✨ Creator's Corner
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ✨ Creator's Corner
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/quick-start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick Tutorial
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../community/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🌟 Community
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🌟 Community
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../community/guidelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guidelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curiosity Chronicles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing/guidelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🤝 Contributing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🔧 Features & API
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🔧 Features & API
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/story-processing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Story Processing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/narration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI Narration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/illustrations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Illustration Generation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/book-production/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Book Production
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/video-production/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Video Production
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/music/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Music Generation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/core/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Core API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#story-concept" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 Story Concept
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-initial-story-draft" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: Initial Story Draft
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-configuration-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: Configuration Setup
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-running-fableflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: Running FableFlow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-ai-enhancement-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4: AI Enhancement Process
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 4: AI Enhancement Process">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#text-enhancement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Text Enhancement
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#illustration-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Illustration Generation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#audio-production" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Audio Production
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-5-output-formats" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5: Output Formats
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-6-quality-review" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 6: Quality Review
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 6: Quality Review">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#educational-alignment-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Educational Alignment Check
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#technical-quality-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Technical Quality Check
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accessibility-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Accessibility Check
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-7-educational-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 7: Educational Resources
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 7: Educational Resources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#discussion-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Discussion Questions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extension-activities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Extension Activities
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Learning Objectives
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-8-publishing-and-sharing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 8: Publishing and Sharing
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 8: Publishing and Sharing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#local-sharing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Local Sharing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fableflow-community" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FableFlow Community
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#classroom-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Classroom Integration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iteration-and-improvement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔄 Iteration and Improvement
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔄 Iteration and Improvement">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gathering-feedback" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gathering Feedback
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#refinement-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Refinement Options
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#version-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version Management
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#success-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📊 Success Metrics
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📊 Success Metrics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#engagement-indicators" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Engagement Indicators
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#educational-impact" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Educational Impact
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚀 Next Steps
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚀 Next Steps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-your-own-story" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Creating Your Own Story
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-techniques" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Advanced Techniques
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tips-for-success" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Tips for Success
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 Tips for Success">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#story-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Story Development
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#technical-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Technical Best Practices
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#community-engagement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Community Engagement
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="basic-workflow-example">Basic Workflow Example 🚀<a class="headerlink" href="#basic-workflow-example" title="Permanent link">#</a></h1>
+<p>This guide demonstrates a complete FableFlow workflow from initial story idea to finished multimedia book. Follow along to see how all the components work together.</p>
+<h2 id="story-concept">📝 Story Concept<a class="headerlink" href="#story-concept" title="Permanent link">#</a></h2>
+<p><strong>Title</strong>: "Emma's First Day at School"<br />
+<strong>Target Age</strong>: 5-7 years<br />
+<strong>Theme</strong>: Overcoming anxiety and making new friends<br />
+<strong>Educational Focus</strong>: Social-emotional learning  </p>
+<h2 id="step-1-initial-story-draft">Step 1: Initial Story Draft<a class="headerlink" href="#step-1-initial-story-draft" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="gh"># Emma&#39;s First Day at School</span>
+
+Emma felt butterflies in her tummy as she looked at the big school building. 
+It was her very first day, and everything seemed so new and different.
+
+&quot;What if nobody wants to be my friend?&quot; she whispered to her mom.
+
+Her mom smiled and gave her a hug. &quot;Just be yourself, Emma. 
+You&#39;re kind and funny - I know you&#39;ll make wonderful friends.&quot;
+
+Emma took a deep breath and walked into her new classroom...
+</code></pre></div>
+<h2 id="step-2-configuration-setup">Step 2: Configuration Setup<a class="headerlink" href="#step-2-configuration-setup" title="Permanent link">#</a></h2>
+<p>Create a configuration file for your story:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># config/emma_story.yaml</span>
+<span class="nt">story</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Emma&#39;s</span><span class="nv"> </span><span class="s">First</span><span class="nv"> </span><span class="s">Day</span><span class="nv"> </span><span class="s">at</span><span class="nv"> </span><span class="s">School&quot;</span>
+<span class="w">  </span><span class="nt">target_age</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;5-7</span><span class="nv"> </span><span class="s">years&quot;</span>
+<span class="w">  </span><span class="nt">reading_level</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;early_elementary&quot;</span>
+<span class="w">  </span><span class="nt">themes</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;social_skills&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;confidence&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;friendship&quot;</span><span class="p p-Indicator">]</span>
+
+<span class="nt">processing</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">enhance_text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">generate_illustrations</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">create_narration</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">add_background_music</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+
+<span class="nt">illustration</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">style</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;warm_cartoon&quot;</span>
+<span class="w">  </span><span class="nt">character_consistency</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">scene_count</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8</span>
+
+<span class="nt">narration</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">voice_type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;child_friendly_female&quot;</span>
+<span class="w">  </span><span class="nt">pacing</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;slow_and_clear&quot;</span>
+<span class="w">  </span><span class="nt">emotions</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+
+<span class="nt">music</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">mood</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;gentle_optimistic&quot;</span>
+<span class="w">  </span><span class="nt">instruments</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;piano&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;strings&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="nt">volume_level</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;background&quot;</span>
+</code></pre></div>
+<h2 id="step-3-running-fableflow">Step 3: Running FableFlow<a class="headerlink" href="#step-3-running-fableflow" title="Permanent link">#</a></h2>
+<p>Execute the story processing pipeline:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Install and activate FableFlow</span>
+pip<span class="w"> </span>install<span class="w"> </span>fable-flow
+fable-flow<span class="w"> </span>init
+
+<span class="c1"># Process the story</span>
+fable-flow<span class="w"> </span>create<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--input<span class="w"> </span>stories/emma_draft.md<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--config<span class="w"> </span>config/emma_story.yaml<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--output<span class="w"> </span>output/emma_story
+</code></pre></div>
+<h2 id="step-4-ai-enhancement-process">Step 4: AI Enhancement Process<a class="headerlink" href="#step-4-ai-enhancement-process" title="Permanent link">#</a></h2>
+<h3 id="text-enhancement">Text Enhancement<a class="headerlink" href="#text-enhancement" title="Permanent link">#</a></h3>
+<p>FableFlow improves the story structure and language:</p>
+<div class="highlight"><pre><span></span><code><span class="gh"># Emma&#39;s First Day at School</span>
+
+Emma&#39;s tummy danced with nervous butterflies as she gazed up at 
+Sunshine Elementary School. The red brick building looked enormous, 
+with colorful murals painted along its walls and children&#39;s laughter 
+echoing from the playground.
+
+&quot;What if nobody wants to be my friend?&quot; Emma whispered, tugging 
+gently on her mom&#39;s hand.
+
+Mom knelt down to Emma&#39;s eye level, her smile as warm as morning 
+sunshine. &quot;Sweet Emma, just be your wonderful self. You have such 
+a kind heart and the most amazing giggle - I know you&#39;ll find 
+friends who love those special things about you.&quot;
+
+Emma took a deep, brave breath, squared her small shoulders, 
+and stepped through the bright yellow doors of adventure...
+</code></pre></div>
+<h3 id="illustration-generation">Illustration Generation<a class="headerlink" href="#illustration-generation" title="Permanent link">#</a></h3>
+<p>The AI creates consistent illustrations:</p>
+<ol>
+<li><strong>Scene 1</strong>: Emma and mom outside school building</li>
+<li><strong>Scene 2</strong>: Emma entering the classroom</li>
+<li><strong>Scene 3</strong>: Meeting her teacher, Mrs. Johnson</li>
+<li><strong>Scene 4</strong>: Finding her desk and supplies</li>
+<li><strong>Scene 5</strong>: Playground time and first interactions</li>
+<li><strong>Scene 6</strong>: Making a friend during art time</li>
+<li><strong>Scene 7</strong>: Lunch together with her new friend</li>
+<li><strong>Scene 8</strong>: Happy goodbye at the end of the day</li>
+</ol>
+<h3 id="audio-production">Audio Production<a class="headerlink" href="#audio-production" title="Permanent link">#</a></h3>
+<ul>
+<li><strong>Narration</strong>: Natural, expressive voice reading</li>
+<li><strong>Character Voices</strong>: Distinct voices for Emma, Mom, and Teacher</li>
+<li><strong>Background Music</strong>: Gentle piano melody that builds confidence</li>
+<li><strong>Sound Effects</strong>: School bell, children playing, footsteps</li>
+</ul>
+<h2 id="step-5-output-formats">Step 5: Output Formats<a class="headerlink" href="#step-5-output-formats" title="Permanent link">#</a></h2>
+<p>FableFlow generates multiple formats:</p>
+<div class="highlight"><pre><span></span><code>output/emma_story/
+├── online/
+│   ├── index.html          # Interactive web version
+│   ├── style.css           # Custom styling
+│   └── assets/
+│       ├── images/         # All illustrations
+│       ├── audio/          # Narration files
+│       └── music/          # Background music
+├── emma_story.pdf          # Print-ready version
+├── emma_story.epub         # E-reader compatible
+├── emma_story_slides.pptx  # Classroom presentation
+└── metadata/
+    ├── educational_guide.md # Discussion questions
+    ├── activity_ideas.md   # Extension activities
+    └── story_analysis.json # Technical metadata
+</code></pre></div>
+<h2 id="step-6-quality-review">Step 6: Quality Review<a class="headerlink" href="#step-6-quality-review" title="Permanent link">#</a></h2>
+<h3 id="educational-alignment-check">Educational Alignment Check<a class="headerlink" href="#educational-alignment-check" title="Permanent link">#</a></h3>
+<ul>
+<li>✅ Age-appropriate vocabulary and concepts</li>
+<li>✅ Positive social-emotional messaging</li>
+<li>✅ Relatable character and situation</li>
+<li>✅ Clear problem-resolution structure</li>
+</ul>
+<h3 id="technical-quality-check">Technical Quality Check<a class="headerlink" href="#technical-quality-check" title="Permanent link">#</a></h3>
+<ul>
+<li>✅ Consistent character appearance across illustrations</li>
+<li>✅ Clear, professional narration</li>
+<li>✅ Appropriate background music volume</li>
+<li>✅ Proper formatting in all output formats</li>
+</ul>
+<h3 id="accessibility-check">Accessibility Check<a class="headerlink" href="#accessibility-check" title="Permanent link">#</a></h3>
+<ul>
+<li>✅ Alt text for all images</li>
+<li>✅ Closed captions for audio</li>
+<li>✅ High contrast text and backgrounds</li>
+<li>✅ Screen reader compatibility</li>
+</ul>
+<h2 id="step-7-educational-resources">Step 7: Educational Resources<a class="headerlink" href="#step-7-educational-resources" title="Permanent link">#</a></h2>
+<p>FableFlow automatically generates teaching materials:</p>
+<h3 id="discussion-questions">Discussion Questions<a class="headerlink" href="#discussion-questions" title="Permanent link">#</a></h3>
+<ul>
+<li>How did Emma feel before her first day? Have you ever felt that way?</li>
+<li>What advice did Emma's mom give her? Was it helpful?</li>
+<li>What helped Emma make friends? What are good ways to make friends?</li>
+<li>How did Emma's feelings change throughout the day?</li>
+</ul>
+<h3 id="extension-activities">Extension Activities<a class="headerlink" href="#extension-activities" title="Permanent link">#</a></h3>
+<ul>
+<li><strong>Art</strong>: Draw a picture of your first day at school</li>
+<li><strong>Writing</strong>: Write about a time you felt nervous but things turned out well</li>
+<li><strong>Role Play</strong>: Practice introducing yourself to new friends</li>
+<li><strong>Social Skills</strong>: Practice conversation starters for meeting new people</li>
+</ul>
+<h3 id="learning-objectives">Learning Objectives<a class="headerlink" href="#learning-objectives" title="Permanent link">#</a></h3>
+<ul>
+<li>Identify and discuss emotions related to new experiences</li>
+<li>Develop strategies for managing anxiety in social situations</li>
+<li>Practice friendship skills and social interaction</li>
+<li>Build confidence in new environments</li>
+</ul>
+<h2 id="step-8-publishing-and-sharing">Step 8: Publishing and Sharing<a class="headerlink" href="#step-8-publishing-and-sharing" title="Permanent link">#</a></h2>
+<h3 id="local-sharing">Local Sharing<a class="headerlink" href="#local-sharing" title="Permanent link">#</a></h3>
+<ul>
+<li>Share the PDF version for printing</li>
+<li>Use the PowerPoint for classroom presentations</li>
+<li>Host the HTML version on your website</li>
+</ul>
+<h3 id="fableflow-community">FableFlow Community<a class="headerlink" href="#fableflow-community" title="Permanent link">#</a></h3>
+<ul>
+<li>Submit to the community story library</li>
+<li>Share in creator showcase discussions</li>
+<li>Get feedback from other educators and parents</li>
+</ul>
+<h3 id="classroom-integration">Classroom Integration<a class="headerlink" href="#classroom-integration" title="Permanent link">#</a></h3>
+<ul>
+<li>Align with social-emotional learning curriculum</li>
+<li>Use as a discussion starter for first-day jitters</li>
+<li>Create classroom activities based on the story themes</li>
+</ul>
+<h2 id="iteration-and-improvement">🔄 Iteration and Improvement<a class="headerlink" href="#iteration-and-improvement" title="Permanent link">#</a></h2>
+<h3 id="gathering-feedback">Gathering Feedback<a class="headerlink" href="#gathering-feedback" title="Permanent link">#</a></h3>
+<ul>
+<li>Test with target age group</li>
+<li>Get input from parents and teachers</li>
+<li>Monitor engagement and comprehension</li>
+<li>Collect suggestions for improvement</li>
+</ul>
+<h3 id="refinement-options">Refinement Options<a class="headerlink" href="#refinement-options" title="Permanent link">#</a></h3>
+<ul>
+<li>Adjust reading level based on feedback</li>
+<li>Modify illustrations for better representation</li>
+<li>Fine-tune narration pacing</li>
+<li>Add or modify educational components</li>
+</ul>
+<h3 id="version-management">Version Management<a class="headerlink" href="#version-management" title="Permanent link">#</a></h3>
+<p>FableFlow tracks versions and changes:
+<div class="highlight"><pre><span></span><code>fable-flow<span class="w"> </span>version<span class="w"> </span>--story<span class="w"> </span>emma_story<span class="w"> </span>--list
+fable-flow<span class="w"> </span>update<span class="w"> </span>--story<span class="w"> </span>emma_story<span class="w"> </span>--config<span class="w"> </span>config/emma_story_v2.yaml
+</code></pre></div></p>
+<h2 id="success-metrics">📊 Success Metrics<a class="headerlink" href="#success-metrics" title="Permanent link">#</a></h2>
+<h3 id="engagement-indicators">Engagement Indicators<a class="headerlink" href="#engagement-indicators" title="Permanent link">#</a></h3>
+<ul>
+<li><strong>Reading Completion</strong>: How many children finish the story</li>
+<li><strong>Re-reading Rate</strong>: How often children return to the story</li>
+<li><strong>Discussion Participation</strong>: Engagement with follow-up questions</li>
+<li><strong>Activity Completion</strong>: Use of extension activities</li>
+</ul>
+<h3 id="educational-impact">Educational Impact<a class="headerlink" href="#educational-impact" title="Permanent link">#</a></h3>
+<ul>
+<li><strong>Comprehension Assessment</strong>: Understanding of story themes</li>
+<li><strong>Emotional Recognition</strong>: Ability to identify and discuss feelings</li>
+<li><strong>Social Skill Development</strong>: Application of friendship strategies</li>
+<li><strong>Confidence Building</strong>: Reduced anxiety about new situations</li>
+</ul>
+<h2 id="next-steps">🚀 Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">#</a></h2>
+<h3 id="creating-your-own-story">Creating Your Own Story<a class="headerlink" href="#creating-your-own-story" title="Permanent link">#</a></h3>
+<ol>
+<li><strong>Choose Your Theme</strong>: What do you want children to learn?</li>
+<li><strong>Write Your Draft</strong>: Start with a simple narrative structure</li>
+<li><strong>Configure FableFlow</strong>: Set up your processing preferences</li>
+<li><strong>Generate and Review</strong>: Run the pipeline and evaluate results</li>
+<li><strong>Refine and Improve</strong>: Iterate based on feedback and testing</li>
+</ol>
+<h3 id="advanced-techniques">Advanced Techniques<a class="headerlink" href="#advanced-techniques" title="Permanent link">#</a></h3>
+<ul>
+<li><strong>Series Development</strong>: Create connected stories with recurring characters</li>
+<li><strong>Adaptive Content</strong>: Customize stories for different reading levels</li>
+<li><strong>Interactive Elements</strong>: Add choice-based story branches</li>
+<li><strong>Multimedia Integration</strong>: Include videos, animations, or interactive games</li>
+</ul>
+<hr />
+<h2 id="tips-for-success">💡 Tips for Success<a class="headerlink" href="#tips-for-success" title="Permanent link">#</a></h2>
+<h3 id="story-development">Story Development<a class="headerlink" href="#story-development" title="Permanent link">#</a></h3>
+<ul>
+<li><strong>Start Simple</strong>: Begin with clear, straightforward narratives</li>
+<li><strong>Know Your Audience</strong>: Research age-appropriate content and interests</li>
+<li><strong>Test Early</strong>: Get feedback from children and educators throughout development</li>
+<li><strong>Iterate Frequently</strong>: Use feedback to improve your story continuously</li>
+</ul>
+<h3 id="technical-best-practices">Technical Best Practices<a class="headerlink" href="#technical-best-practices" title="Permanent link">#</a></h3>
+<ul>
+<li><strong>Version Control</strong>: Keep track of different story versions</li>
+<li><strong>Backup Everything</strong>: Maintain copies of all source materials</li>
+<li><strong>Quality Checks</strong>: Review all generated content before publishing</li>
+<li><strong>Accessibility First</strong>: Design for inclusive access from the beginning</li>
+</ul>
+<h3 id="community-engagement">Community Engagement<a class="headerlink" href="#community-engagement" title="Permanent link">#</a></h3>
+<ul>
+<li><strong>Share Your Process</strong>: Document your creation journey for others</li>
+<li><strong>Seek Feedback</strong>: Engage with the FableFlow community for input</li>
+<li><strong>Contribute Back</strong>: Help improve the platform and help other creators</li>
+<li><strong>Celebrate Success</strong>: Share your achievements and inspire others</li>
+</ul>
+<hr />
+<p>This example demonstrates the complete FableFlow workflow from concept to finished story. Each project will be unique, but this framework provides a solid foundation for creating engaging, educational multimedia stories.</p>
+<p>Ready to start your own story? Check out our <a href="../../getting-started/quick-start/">Quick Start Guide</a> to begin your creative journey!</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/suneeta-mall-a6a0507/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/suneeta-mall" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://x.com/suneetamall/" target="_blank" rel="noopener" title="x.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M357.2 48h70.6L273.6 224.2 455 464H313L201.7 318.6 74.5 464H3.8l164.9-188.5L-5.2 48h145.6l100.5 132.9zm-24.8 373.8h39.1L119.1 88h-42z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.medium.com/@suneetamall" target="_blank" rel="noopener" title="www.medium.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M369.4 32c43.4 0 78.6 35.2 78.6 78.6v83.8c-1.9-.1-3.8-.2-5.7-.2h-.4c-10 0-22.3 2.4-31.1 6.8-10 4.6-18.7 11.5-26 20.6-11.8 14.6-18.9 34.3-20.6 56.4-.1.7-.1 1.3-.2 2s-.1 1.2-.1 1.9c-.1 1.2-.1 2.4-.1 3.6 0 1.9-.1 3.8 0 5.8 1.2 50.1 28.2 90.2 76.3 90.2 2.7 0 5.3-.1 7.9-.4v20.4c0 43.4-35.2 78.6-78.6 78.6L78.6 480C35.2 480 0 444.8 0 401.4V110.6C0 67.2 35.2 32 78.6 32zM82.3 138.9l.3.1c13.2 3 19.8 7.4 19.8 23.4v187.2c0 16-6.7 20.4-19.9 23.4l-.3.1v2.8H135v-2.8l-.3-.1c-13.2-3-19.9-7.4-19.9-23.4V173.3l86.1 202.5h4.9l88.6-208.2v186.6c-1.1 12.6-7.8 16.5-19.7 19.2l-.3.1v2.7h91.9v-2.7l-.3-.1c-11.9-2.7-18.7-6.6-19.9-19.2l-.1-191.8h.1c0-16 6.7-20.4 19.9-23.4l.3-.1v-2.7h-72.2l-67 157.4-67-157.4H82.3zM448 340.3c-25.1-7.4-43-35.1-41.2-67.8h41.1v67.8zm-6.4-135.6c2.3 0 4.4.3 6.4.9V263h-40.2c1.5-33.6 13.6-57.9 33.8-58.3"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://scholar.google.com.au/citations?hl=en&amp;user=WD712CUAAAAJ" target="_blank" rel="noopener" title="scholar.google.com.au" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M390.9 298.5s0 .1.1.1c9.2 19.4 14.4 41.1 14.4 64C405.3 445.1 338.5 512 256 512s-149.3-66.9-149.3-149.3c0-22.9 5.2-44.6 14.4-64 1.7-3.6 3.6-7.2 5.6-10.7q6.6-11.4 15-21.3c27.4-32.6 68.5-53.3 114.4-53.3 33.6 0 64.6 11.1 89.6 29.9 9.1 6.9 17.4 14.7 24.8 23.5 5.6 6.6 10.6 13.8 15 21.3 2 3.4 3.8 7 5.5 10.5zm26.4-18.8c-30.1-58.4-91-98.4-161.3-98.4s-131.2 40-161.3 98.4L0 202.7 256 0l256 202.7-94.7 77.1z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.researchgate.net/profile/Suneeta_Mall3" target="_blank" rel="noopener" title="www.researchgate.net" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M0 32v448h448V32zm262.2 334.4c-6.6 3-33.2 6-50-14.2-9.2-10.6-25.3-33.3-42.2-63.6-8.9 0-14.7 0-21.4-.6v46.4c0 23.5 6 21.2 25.8 23.9v8.1c-6.9-.3-23.1-.8-35.6-.8-13.1 0-26.1.6-33.6.8v-8.1c15.5-2.9 22-1.3 22-23.9V225c0-22.6-6.4-21-22-23.9V193c25.8 1 53.1-.6 70.9-.6 31.7 0 55.9 14.4 55.9 45.6 0 21.1-16.7 42.2-39.2 47.5 13.6 24.2 30 45.6 42.2 58.9 7.2 7.8 17.2 14.7 27.2 14.7zm22.9-135c-23.3 0-32.2-15.7-32.2-32.2V167c0-12.2 8.8-30.4 34-30.4s30.4 17.9 30.4 17.9l-10.7 7.2s-5.5-12.5-19.7-12.5c-7.9 0-19.7 7.3-19.7 19.7v26.8c0 13.4 6.6 23.3 17.9 23.3 14.1 0 21.5-10.9 21.5-26.8h-17.9v-10.7h30.4c0 20.5 4.7 49.9-34 49.9m-116.5 44.7c-9.4 0-13.6-.3-20-.8v-69.7c6.4-.6 15-.6 22.5-.6 23.3 0 37.2 12.2 37.2 34.5 0 21.9-15 36.6-39.7 36.6"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://suneeta-mall.github.io/feed_rss_created.xml" target="_blank" rel="noopener" title="suneeta-mall.github.io" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M0 64c0-17.7 14.3-32 32-32 229.8 0 416 186.2 416 416 0 17.7-14.3 32-32 32s-32-14.3-32-32C384 253.6 226.4 96 32 96 14.3 96 0 81.7 0 64m0 352a64 64 0 1 1 128 0 64 64 0 1 1-128 0m32-256c159.1 0 288 128.9 288 288 0 17.7-14.3 32-32 32s-32-14.3-32-32c0-123.7-100.3-224-224-224-17.7 0-32-14.3-32-32s14.3-32 32-32"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="mailto:suneetamall@gmail.com" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4l208 156a48 48 0 0 0 57.6 0l208-156c12.1-9.1 19.2-23.3 19.2-38.4 0-26.5-21.5-48-48-48zM0 196v188c0 35.3 28.7 64 64 64h384c35.3 0 64-28.7 64-64V196L313.6 344.8c-34.1 25.6-81.1 25.6-115.2 0z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.annotate", "content.code.copy", "content.tooltips", "content.tabs.link", "navigation.indexes", "navigation.instant", "navigation.instant.preview", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow", "header.autohide", "announce.dismiss", "navigation.footer", {"git-revision-date-localized": {"enable_creation_date": true, "type": "date"}}], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+        <script src="../../javascript/katex.js"></script>
+      
+        <script src="../../assets/external/cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js"></script>
+      
+        <script src="../../assets/external/cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js"></script>
+      
+        <script src="../../assets/external/cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+      
+        <script src="../../assets/external/cdn.jsdelivr.net/npm/epubjs@0.3.93/dist/epub.min.js"></script>
+      
+        <script src="../../javascript/epub-reader.js"></script>
+      
+        <script src="../../javascript/pdf-reader.js"></script>
+      
+        <script src="../../assets/external/cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>

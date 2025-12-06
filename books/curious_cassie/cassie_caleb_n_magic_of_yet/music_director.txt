@@ -1,0 +1,107 @@
+<music>
+Melancholic synth pads, soft rain ambience, sad electronic tones, slow tempo, minor key
+</music>
+
+<music>
+Warm acoustic synth, gentle electronic melody, hopeful ambient, family warmth, medium tempo, major key
+</music>
+
+<music>
+Peaceful electronic lullaby, soft synth textures, determined mood, gentle ambient, slow reflective tempo
+</music>
+
+<music>
+Bright synth lead, exciting electronic beats, confident energy, fast upbeat tempo, major key
+</music>
+
+<music>
+Disappointed synth tones, frustrated electronic mood, deflated ambient, slow sad tempo, minor key
+</music>
+
+<music>
+Gentle teaching synth, supportive electronic pads, focused learning mood, calm steady tempo
+</music>
+
+<music>
+Dramatic frustration synth, intense electronic textures, tantrum energy, chaotic ambient, agitated tempo
+</music>
+
+<music>
+Curious synth melody, problem-solving electronic tones, thoughtful mood, medium contemplative tempo
+</music>
+
+<music>
+Triumphant synth celebration, joyful electronic beats, magical accomplishment, bright uplifting tempo, major key
+</music>
+
+<music>
+Anxious synth pads, nervous electronic ambience, fearful tension, slow hesitant tempo, uncertain tones
+</music>
+
+<music>
+Triumphant breakthrough synth, victorious electronic celebration, pure joy, fast exciting tempo, bright major
+</music>
+
+<music>
+Peaceful floating synth, serene electronic waves, calm trust, slow relaxed tempo, tranquil ambience
+</music>
+
+<music>
+Playful introduction synth, curious electronic melody, family warmth, cheerful medium tempo, inviting mood
+</music>
+
+<music>
+Engaged learning synth, collaborative electronic tones, discovery mood, focused medium tempo, curious energy
+</music>
+
+<music>
+Abundant joy synth, colorful electronic celebration, family unity, warm happy tempo, rainbow textures
+</music>
+
+<music>
+Supportive teaching synth, gentle encouraging electronic, patient mood, calm understanding tempo, warm tones
+</music>
+
+<music>
+Proud emotional synth, recital ambience, courageous performance, tender electronic, meaningful slow tempo
+</music>
+
+<music>
+Reflective evening synth, peaceful electronic pads, wisdom mood, intimate soft tempo, contentment tones
+</music>
+
+<music>
+Gentle gardening synth, patient electronic melody, intergenerational warmth, slow peaceful tempo, nature ambience
+</music>
+
+<music>
+Enthusiastic family synth, engaged conversation electronic, joyful connection, animated medium tempo, togetherness mood
+</music>
+
+<music>
+Tender emotional synth, touching electronic melody, intergenerational love, slow heartfelt tempo, tears joy
+</music>
+
+<music>
+Hopeful beginning synth, bright summer electronic, anticipation mood, cheerful upbeat tempo, new adventures
+</music>
+
+<music>
+Struggling persistence synth, frustrated electronic tones, difficult middle, somber medium tempo, support ambience
+</music>
+
+<music>
+Victorious celebration synth, sunset triumph electronic, joyful accomplishment, fast happy tempo, golden success
+</music>
+
+<music>
+Encouraging friendship synth, playground electronic melody, kindness mood, warm gentle tempo, supportive tones
+</music>
+
+<music>
+Cozy family synth, dinner conversation electronic, connection warmth, peaceful medium tempo, home ambience
+</music>
+
+<music>
+Peaceful stargazing synth, contemplative electronic pads, hopeful night, slow serene tempo, infinite possibility
+</music>
