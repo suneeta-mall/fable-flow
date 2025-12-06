@@ -17,6 +17,7 @@ from autogen_core.models import (
     SystemMessage,
     UserMessage,
 )
+from bs4 import BeautifulSoup
 from loguru import logger
 from moviepy import AudioFileClip, VideoFileClip, concatenate_videoclips
 from rich.console import Console
@@ -662,33 +663,35 @@ class IllustratorAgent(RoutedAgent):
     async def _generate_cover_images(self, message: Manuscript) -> None:
         """Generate front and back cover images if they don't exist.
 
-        Uses the PDF page_size from config to maintain correct aspect ratio for covers.
+        Uses Amazon KDP eBook cover specifications for optimal quality:
+        - Ideal dimensions: 2560 x 1600 pixels
+        - Aspect ratio: 1.6:1 (height:width)
+        - Format: PNG/JPEG
+        - Color space: RGB
+
+        Reference: https://kdp.amazon.com/en_US/help/topic/G200645690
         """
         front_cover_path = self.output_dir / "front_cover.png"
         back_cover_path = self.output_dir / "back_cover.png"
 
-        # Calculate cover dimensions based on PDF page_size aspect ratio
-        # PDF page_size is in points (e.g., 6*72 x 9*72 = 432x648)
-        page_width, page_height = config.style.pdf.page_size
-        aspect_ratio = page_width / page_height
-
-        # Use high resolution for quality while maintaining aspect ratio
-        # Target height of 1536 pixels for good quality
-        cover_height = 1536
-        cover_width = int(cover_height * aspect_ratio)
+        # Ideal dimensions: 2560 x 1600 pixels (1.6:1 ratio)
+        # These dimensions work well for both eBook and PDF covers
+        cover_width = config.model.image_generation.cover_width
+        cover_height = config.model.image_generation.cover_height
+        aspect_ratio = cover_height / cover_width  # Should be 1.6
 
         logger.info(
-            f"IllustratorAgent: Using cover dimensions {cover_width}x{cover_height} "
-            f"(aspect ratio {aspect_ratio:.2f} from PDF page_size {page_width}x{page_height})"
+            f"IllustratorAgent: Using Amazon KDP cover dimensions {cover_width}x{cover_height} "
+            f"(aspect ratio {aspect_ratio:.2f}:1 for eBook/PDF compatibility)"
         )
 
         if not front_cover_path.exists():
             try:
-                title_info = (
-                    message.synopsis[:100] if message.synopsis else "children's educational story"
-                )
-                front_cover_prompt = f"""children's book cover with background suitable for title overlay: watercolor style, soft pastels, no humans, scene inspired by "{title_info}". CRITICAL: absolutely NO text, letters, words, titles, writing of any kind - pure art only."""
-
+                title_info = message.synopsis[:60] if message.synopsis else "magical adventure"
+                # Compressed prompt for token limit (77 tokens max)
+                # Emphasizes NO TEXT to ensure clean background for title overlay
+                # Modern, vibrant style with dynamic composition and informative scene
+                front_cover_prompt = f"""Whimsical watercolor children's book cover, vertical portrait. Soft pastels, modern, atmosphere ages 5-10. Natural scene. Professional storybook illustration, gentle brushstrokes, luminous colors, hand-painted texture. NO TEXT/WORDS. Theme: {title_info}"""
                 front_cover_data = await self._image_model.generate_image(
                     front_cover_prompt,
                     config.style.illustration,
@@ -705,9 +708,10 @@ class IllustratorAgent(RoutedAgent):
 
         if not back_cover_path.exists():
             try:
-                back_cover_prompt = """
-                Children's book back cover: simple watercolor pattern, very soft colors, no humans, no text, subtle abstract design. Clear space for text overlay.
-                """
+                # Optimized prompt for Flux model - back cover needs to be simpler
+                # with plenty of open space for book description and ISBN
+                # Compressed prompt for token limit (77 tokens max)
+                back_cover_prompt = """Delicate watercolor back cover, vertical portrait. Soft muted pastels: pale blue, lavender, peach, cream. Subtle abstract washes, minimal airy composition. 70% clean open space for text. Small decorative bokeh, sparkles, clouds at edges only. NO TEXT, NO LETTERS. Ethereal peaceful background, hand-painted texture, soft gradients."""
 
                 back_cover_data = await self._image_model.generate_image(
                     back_cover_prompt,
@@ -923,6 +927,9 @@ class BookProducerAgent(RoutedAgent):
         formatted_content = BookContentProcessor.verify_and_fix_author_attribution(
             formatted_content
         )
+
+        # Step 11: Remove quotes from poem boxes
+        formatted_content = BookContentProcessor.remove_poem_quotes(formatted_content)
 
         logger.info(
             f"BookProducerAgent: Generated complete book with {len(formatted_content)} characters"
@@ -1170,10 +1177,6 @@ OUTPUT: Return ONLY the caption text, nothing else.
             HTML for ToC and Preface
         """
         # Extract chapter titles from the already-generated HTML
-        import re
-
-        from bs4 import BeautifulSoup
-
         soup = BeautifulSoup(story_html, "html.parser")
         chapter_titles = [
             h2.get_text().strip() for h2 in soup.find_all("h2", class_="chapter-title")
@@ -1277,6 +1280,15 @@ OUTPUT: Return ONLY the caption text, nothing else.
     ) -> None:
         book_metadata = await self._generate_book_metadata(message, ctx)
 
+        # Extract subtitle from formatted HTML (overrides LLM-generated subtitle)
+        # This ensures consistency between HTML content and cover images
+        extracted_subtitle = BookContentProcessor.extract_subtitle_from_html(formatted_content)
+        if extracted_subtitle:
+            book_metadata["subtitle"] = extracted_subtitle
+            logger.info(
+                f"BookProducerAgent: Using subtitle from HTML for covers: '{extracted_subtitle}'"
+            )
+
         pdf_path = self.output_dir / "book.pdf"
         if not pdf_path.exists():
             self._pdf_generator.generate_pdf(formatted_content, message, pdf_path, book_metadata)
@@ -1309,7 +1321,7 @@ OUTPUT: Return ONLY the caption text, nothing else.
 
         Please provide:
         1. A short, catchy book title (2-5 words max, fun and exciting for children ages 5-10)
-        2. A brief subtitle if needed (optional, 1-4 words focusing on adventure/fun)
+        2. A brief, engaging subtitle (REQUIRED - 2-6 words that complement the title and hint at the adventure/theme)
         3. Author name (use "FableFlow" as the author)
         4. Publisher name (use "FableFlow Publishing")
         5. A kid-friendly description (2-3 sentences written FOR children, using "you" and exciting language)
@@ -1319,9 +1331,15 @@ OUTPUT: Return ONLY the caption text, nothing else.
         9. Fun facts about the story (3-4 interesting things kids would love to know)
         10. Parent/educator summary (brief overview for adults)
 
+        IMPORTANT: The subtitle must complement the title and give readers a taste of the story's theme or adventure.
+        Examples of good title/subtitle pairs:
+        - "Luna's Journey" / "A Space Adventure"
+        - "The Magic Garden" / "Where Flowers Talk"
+        - "Brave Little Robot" / "Finding Your Purpose"
+
         Format your response as:
         TITLE: [short, exciting title]
-        SUBTITLE: [brief subtitle or "None"]
+        SUBTITLE: [engaging subtitle that complements the title]
         AUTHOR: FableFlow
         PUBLISHER: FableFlow Publishing
         DESCRIPTION: [kid-friendly description using "you"]
@@ -1343,9 +1361,20 @@ OUTPUT: Return ONLY the caption text, nothing else.
         )
 
         metadata_response = metadata_result.content
+
+        # Extract title first to potentially use in subtitle default
+        title = self._extract_from_response(metadata_response, "TITLE:", "Amazing Adventure")
+        subtitle = self._extract_from_response(
+            metadata_response, "SUBTITLE:", "A Story of Discovery"
+        )
+
+        logger.info(
+            f"BookProducerAgent: Generated metadata - Title: '{title}', Subtitle: '{subtitle}'"
+        )
+
         return {
-            "title": self._extract_from_response(metadata_response, "TITLE:", "Amazing Adventure"),
-            "subtitle": self._extract_from_response(metadata_response, "SUBTITLE:", ""),
+            "title": title,
+            "subtitle": subtitle,
             "author": self._extract_from_response(metadata_response, "AUTHOR:", "FableFlow"),
             "publisher": self._extract_from_response(
                 metadata_response, "PUBLISHER:", "FableFlow Publishing"
@@ -1534,7 +1563,16 @@ OUTPUT: Return ONLY the caption text, nothing else.
         lines = response.split("\n")
         for line in lines:
             if line.strip().startswith(marker):
-                return line.replace(marker, "").strip()
+                extracted = line.replace(marker, "").strip()
+                # Handle "None" or empty responses
+                if extracted.lower() in ["none", "n/a", ""]:
+                    logger.debug(
+                        f"BookProducerAgent: Extracted '{extracted}' for {marker}, using default '{default}'"
+                    )
+                    return default
+                logger.debug(f"BookProducerAgent: Extracted '{extracted}' for {marker}")
+                return extracted
+        logger.debug(f"BookProducerAgent: No match for {marker}, using default '{default}'")
         return default
 
     def _append_missing_back_matter(self, content: str, missing_sections: list) -> str:

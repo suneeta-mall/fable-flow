@@ -2,7 +2,7 @@
 
 ![FableFlow - Where Stories Come to Life](docs/assets/logo_horizontal.svg){width=40%,align=center}---
 
-## *Science by the Sea*
+## *A Buoyancy and Marine Science Adventure*
 
 **Perfect for 5-10 years old** 📚 **Created by Suneeta Mall with FableFlow** ✨
 
@@ -10,7 +10,7 @@
 
 ## 🎉 Hey Kids! Are You Ready for an Adventure?
 
-Join Cassie and her little brother Caleb on an amazing adventure to Sydney Harbour! You'll bake delicious cakes, catch real fish, and discover why boats float while stones sink. Get ready to learn cool science secrets, meet marine biologists, and help protect the ocean—all in one exciting day!
+Jump into an amazing adventure with Cassie, a curious six-year-old just like you! When Cassie visits Sydney Harbour, she discovers that science is hiding everywhere—in cake batter, swimming fish, floating boats, and even in camouflaged crabs. You'll learn how to do cool experiments, sing catchy science songs, and discover why asking "But why?" is the best question ever!
 
 ![Story Adventure](image_0.png){width=60%}
 
@@ -18,7 +18,7 @@ Join Cassie and her little brother Caleb on an amazing adventure to Sydney Harbo
 
 Get ready to explore and learn amazing things:
 
-* You'll discover why sponge cakes are fluffy and mud cakes are dense by exploring density! You'll learn how fish breathe underwater with gills and swim with six different types of fins. You'll understand buoyancy—the invisible force that makes boats float—and meet Archimedes, the scientist who shouted "Eureka!" in his bathtub. Plus, you'll find out how to protect ocean animals and why marine scientists are ocean superheroes!
+* You'll discover why some things float while others sink, how fish breathe underwater using gills, what makes animals masters of disguise, and how density works (it's easier than you think!). You'll also learn that scientists ask questions all the time—just like you do! Plus, you'll find out about real marine science through fun experiments you can try at home.
 
 
 
@@ -32,7 +32,7 @@ Get ready to explore and learn amazing things:
 ![Story Friends](image_1.png){width=60%}
 
 ## 🌈 Adventures We'll Go On:
-**Marine biology, buoyancy and floating, density and weight, fish anatomy (gills, fins, swim bladders), scientific experimentation, environmental conservation, ocean ecosystem protection, hands-on learning through baking and fishing, curiosity-driven discovery** - and so much more!
+**Buoyancy and floating, density and sinking, marine biology, underwater creatures, scientific curiosity, hands-on experiments, Australian marine life, asking questions, observation skills, camouflage and adaptation** - and so much more!
 
 ---
 
@@ -160,12 +160,12 @@ Just like these famous scientists who were once curious kids too:
 
 **Educational Value & Learning Outcomes**
 
-This educational story follows curious six-year-old Cassie and her younger brother Caleb through a day of scientific discovery, from kitchen baking experiments exploring density to a Sydney Harbour fishing trip that introduces marine biology and buoyancy principles. The narrative seamlessly integrates STEM concepts with age-appropriate explanations, hands-on learning opportunities, and real-world applications. Children learn about fish anatomy, Archimedes' principle, environmental stewardship, and career opportunities in marine science through engaging storytelling. The book encourages scientific thinking, environmental responsibility, and curiosity-driven learning while maintaining an entertaining adventure narrative suitable for early elementary readers.
+This educational STEM adventure follows six-year-old Cassie and her younger brother Caleb as they explore Sydney Harbour and discover marine science concepts through hands-on experiences. The story seamlessly integrates scientific principles including buoyancy, density, marine biology, and adaptation, while featuring experiments that children can replicate at home. Inspired by Australian marine biologist Professor Emma Johnston, the book encourages inquiry-based learning and demonstrates how science connects to everyday life. Perfect for building scientific literacy and fostering curiosity in early elementary readers.
 
 **Key Learning Areas:**
 
 
-* **Science Concepts:** Marine biology, buoyancy and floating, density and weight, fish anatomy (gills, fins, swim bladders), scientific experimentation, environmental conservation, ocean ecosystem protection, hands-on learning through baking and fishing, curiosity-driven discovery
+* **Science Concepts:** Buoyancy and floating, density and sinking, marine biology, underwater creatures, scientific curiosity, hands-on experiments, Australian marine life, asking questions, observation skills, camouflage and adaptation
 
 * **Critical Thinking:** Encourages questioning and exploration
 

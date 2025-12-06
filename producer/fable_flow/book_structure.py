@@ -39,20 +39,6 @@ class BookStructureGenerator:
         if self.metadata.get("subtitle") in [None, "None", "none", ""]:
             self.metadata["subtitle"] = ""
 
-    def _get_subtitle_html(self, css_class: str) -> str:
-        """Get subtitle HTML only if subtitle exists and is not empty.
-
-        Args:
-            css_class: CSS class name for the subtitle element
-
-        Returns:
-            HTML string for subtitle or empty string
-        """
-        subtitle = self.metadata.get("subtitle", "")
-        if subtitle and subtitle.strip():
-            return f'<h2 class="{css_class}">{subtitle}</h2>'
-        return ""
-
     def generate_front_cover_html(self) -> str:
         """Generate front cover HTML with background image and text overlay.
 
@@ -60,11 +46,11 @@ class BookStructureGenerator:
             Complete HTML for front cover page-spread
         """
         title = self.metadata.get("title", "Untitled Story")
+        subtitle = self.metadata.get("subtitle", "A Discovery")
+
         # ALWAYS use config.book.draft_story_author for author attribution
         author = config.book.draft_story_author
         publisher = self.metadata.get("publisher", config.book.publisher)
-
-        subtitle_html = self._get_subtitle_html("front-cover-subtitle")
 
         logger.info(f"BookStructure: Generating front cover for '{title}' by {author}")
 
@@ -76,7 +62,7 @@ class BookStructureGenerator:
             </div>
             <div class="cover-text-overlay">
                 <h1 class="front-cover-title">{title}</h1>
-                {subtitle_html}
+                <h2 class="front-cover-subtitle">{subtitle}</h2>
                 <p class="front-cover-author">By {author}</p>
                 <p class="front-cover-publisher">{publisher}</p>
             </div>
@@ -96,11 +82,10 @@ class BookStructureGenerator:
             Complete HTML for title page-spread
         """
         title = self.metadata.get("title", "Untitled Story")
+        subtitle = self.metadata.get("subtitle", "A Discovery")
         # ALWAYS use config.book.draft_story_author for author attribution
         author = config.book.draft_story_author
         publisher = self.metadata.get("publisher", config.book.publisher)
-
-        subtitle_html = self._get_subtitle_html("title-page-subtitle")
 
         logger.info(f"BookStructure: Generating title page with FableFlow logo for {author}")
 
@@ -109,7 +94,7 @@ class BookStructureGenerator:
         <div class="explicit-title-page">
             <div class="title-page-content">
                 <h1 class="title-page-title">{title}</h1>
-                {subtitle_html}
+                <h2 class="title-page-subtitle">{subtitle}</h2>
                 <p class="title-page-author">By {author}</p>
 
                 <!-- POWERED BY FABLEFLOW LOGO -->
@@ -218,7 +203,7 @@ class BookStructureGenerator:
                     </div>
                     <div class="isbn-logo-section">
                         <p class="isbn">ISBN {isbn}</p>
-                        <img src="../../docs/assets/logo_horizontal.svg" alt="FableFlow Logo" class="back-cover-logo"/>
+                        <img src="images/logo_horizontal.png" alt="FableFlow Logo" class="back-cover-logo"/>
                     </div>
                 </div>
             </div>

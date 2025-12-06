@@ -2,13 +2,15 @@
 
 ![FableFlow - Where Stories Come to Life](docs/assets/logo_horizontal.svg){width=40%,align=center}---
 
-**Perfect for Ages 5-10 (perfect for early elementary readers and read-alouds)** 📚 **Created by Suneeta Mall with FableFlow** ✨
+## *A Growth Mindset Adventure*
+
+**Perfect for Ages 5-10 (perfect for early elementary readers and read-aloud sessions)** 📚 **Created by Suneeta Mall with FableFlow** ✨
 
 ---
 
 ## 🎉 Hey Kids! Are You Ready for an Adventure?
 
-Have you ever thought "I can't do this" and wanted to give up? Join Cassie and Caleb as they discover a tiny three-letter word that has superpowers—YET! You'll learn that your brain is like a muscle that gets stronger every time you try something hard, even when you make mistakes. Get ready for wobbly bike rides, toppling block towers, and the coolest secret: everyone is still learning!
+Have you ever thought "I can't do this"? Meet Cassie and Caleb, who discover that adding one tiny word—YET—changes everything! Join them as they tackle wobbly bikes, tricky math tests, and scary swimming lessons. You'll learn that your brain is like a superhero muscle that gets stronger every time you try something hard. Mistakes aren't failures—they're clues that help you grow!
 
 ![Story Adventure](image_0.png){width=60%}
 
@@ -16,21 +18,21 @@ Have you ever thought "I can't do this" and wanted to give up? Join Cassie and C
 
 Get ready to explore and learn amazing things:
 
-* You'll discover that your brain actually grows new connections when you practice hard things! You'll learn that mistakes aren't failures—they're clues that help you get better. You'll find out why asking for help makes you smarter, not weaker. And you'll understand that saying "I can't do this YET" instead of "I can't do this" changes everything about how you learn and grow.
+* You'll discover that your brain actually grows new connections every time you practice something hard (that's real science!). You'll learn why mistakes are actually your teachers, not your enemies, and how the word "yet" turns "I can't" into "I'm still learning." You'll see why asking for help makes you smarter and braver, and understand that everyone—even grown-ups—is always learning something new. Best of all, you'll find out that the messy, hard part of learning is exactly when your brain is getting its strongest workout!
 
 
 
 ## 🎨 Cool Things About This Story:
 
 
-* This story features a REAL scientist! Dr. Carol Dweck from Stanford University actually discovered that your brain builds new pathways (like trails in a forest) every time you practice something hard. | The word "YET" is only three letters long, but scientists have proven it can completely change how well you learn! | Your brain is the only organ in your body that gets better at its job the more mistakes you make—how cool is that? | When Cassie says "I can't do this YET," her brain actually starts working differently than when she says "I can't do this"—real science proves it!
+* Dr. Carol Dweck is a REAL scientist at Stanford University who discovered that believing your brain can grow actually makes it grow stronger! Every time you try something hard, your brain builds new pathways—like creating trails through a forest that get easier to walk on each time. The word "YET" is only three letters, but scientists have found it's one of the most powerful words for helping kids succeed. Cassie and Caleb learn that even their dad and grandma are still learning new things—because learning never stops, no matter how old you are!
 
 
 
 ![Story Friends](image_1.png){width=60%}
 
 ## 🌈 Adventures We'll Go On:
-**Growth mindset and the power of "yet" | Your brain can change and grow stronger (neuroplasticity) | Mistakes are teachers, not enemies | Asking for help is brave | Everyone is both a student and a teacher | Treating challenges like science experiments | The "messy middle" is where learning happens** - and so much more!
+**Growth mindset and neuroplasticity, turning mistakes into learning opportunities, the power of persistence and practice, asking for help as a strength, scientific thinking and treating challenges as experiments, brain science for kids, building confidence through effort, celebrating progress over perfection** - and so much more!
 
 ---
 
@@ -158,12 +160,12 @@ Just like these famous scientists who were once curious kids too:
 
 **Educational Value & Learning Outcomes**
 
-Based on Dr. Carol Dweck's groundbreaking research on growth mindset, this story transforms how children view challenges and mistakes. Through relatable scenarios—struggling with math tests, learning to ride bikes, and facing piano recitals—children learn that intelligence isn't fixed but can grow through effort and practice. The book introduces age-appropriate concepts of neuroplasticity and scientific thinking while providing practical language ("yet") that empowers children to embrace challenges. Ideal for building resilience, perseverance, and a love of learning in young readers during critical developmental years.
+Based on Dr. Carol Dweck's groundbreaking research on growth mindset, this story follows siblings Cassie and Caleb as they navigate common childhood challenges—academic struggles, physical skills, and performance anxiety. Through relatable scenarios and age-appropriate explanations of neuroplasticity, children learn that intelligence and abilities aren't fixed traits but can be developed through effort, strategy, and persistence. The narrative emphasizes that mistakes are essential to learning, asking for help is a sign of strength, and the struggle itself is evidence of brain growth. Ideal for supporting social-emotional learning, building resilience, and fostering a love of challenges in young learners.
 
 **Key Learning Areas:**
 
 
-* **Science Concepts:** Growth mindset and the power of "yet" | Your brain can change and grow stronger (neuroplasticity) | Mistakes are teachers, not enemies | Asking for help is brave | Everyone is both a student and a teacher | Treating challenges like science experiments | The "messy middle" is where learning happens
+* **Science Concepts:** Growth mindset and neuroplasticity, turning mistakes into learning opportunities, the power of persistence and practice, asking for help as a strength, scientific thinking and treating challenges as experiments, brain science for kids, building confidence through effort, celebrating progress over perfection
 
 * **Critical Thinking:** Encourages questioning and exploration
 
