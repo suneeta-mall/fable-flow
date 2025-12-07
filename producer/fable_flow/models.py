@@ -514,8 +514,17 @@ class EnhancedVideoModel:
             new_width = max(min(new_width, target_width), 512)
             new_height = max(min(new_height, target_height), 512)
 
+            # HunyuanVideo requires dimensions to be divisible by 16
+            # Round to nearest multiple of 16
+            new_width = round(new_width / 16) * 16
+            new_height = round(new_height / 16) * 16
+
+            # Ensure minimum dimensions are still divisible by 16
+            new_width = max(new_width, 512)
+            new_height = max(new_height, 512)
+
             image = image.resize((new_width, new_height), Image.Resampling.LANCZOS)
-            logger.info(f"Resized image to {new_width}x{new_height} for HunyuanVideo processing")
+            logger.info(f"Resized image to {new_width}x{new_height} (divisible by 16) for HunyuanVideo processing")
 
             # Generate video using HunyuanVideo-I2V pipeline
             # Always use CPU for generator to avoid device mismatch issues
