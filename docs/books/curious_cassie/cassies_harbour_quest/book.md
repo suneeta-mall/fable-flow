@@ -1,6 +1,6 @@
 # 🌟 Cassie's Harbour Quest
 
-![FableFlow - Where Stories Come to Life](assets/logo_horizontal.svg){width=40%,align=center}
+![FableFlow - Where Stories Come to Life](https://suneeta-mall.github.io/fable-flow/assets/logo_horizontal.svg){width=40%,align=center}
 
 ## *A Buoyancy and Marine Science Adventure*
 
@@ -35,6 +35,12 @@ Get ready to explore and learn amazing things:
 **Buoyancy and floating, density and sinking, marine biology, underwater creatures, scientific curiosity, hands-on experiments, Australian marine life, asking questions, observation skills, camouflage and adaptation** - and so much more!
 
 ---
+
+<div class="purchase-options" style="margin: 2rem 0; padding: 1.5rem; background: #f8f9fa; border-radius: 8px; text-align: center;">
+  <span style="font-size: 1.1em; color: #666; display: block; margin-bottom: 0.75rem;">📚 Buy on Amazon:</span>
+  <a href="https://www.amazon.com/dp/B0D34RXR7S" class="age-badge" style="background: #FF9900; color: white; text-decoration: none; margin: 0 0.5rem;" target="_blank">📱 Kindle</a>
+  <a href="https://www.amazon.com/dp/0645696358" class="age-badge" style="background: #232F3E; color: white; text-decoration: none; margin: 0 0.5rem;" target="_blank">📖 Paperback</a>
+</div>
 
 ## 📖 Choose Your Reading Adventure!
 

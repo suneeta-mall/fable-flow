@@ -1,57 +1,61 @@
-# Storyboard Animation Prompts for "Curious Cassie's Beach Ride Quest"
+# Animation Prompts for Curious Cassie's Beach Ride Quest
 
 <storyboard>
-Cassie sits peacefully building sandcastle, tongue poking out in concentration. Gentle breeze makes wattle branches sway rhythmically overhead. Golden flowers flutter slightly. Bees drift lazily between blooms. Cassie's hands pat sand slowly, methodically. Warm afternoon sunlight creates dappled shadows through leaves. Her expression shows focused contentment before adventure begins.
+Cassie sits building sandcastle, tongue poking out in concentration. Gentle breeze sways wattle tree branches, golden flowers bobbing. Bees drift lazily bloom to bloom. Cassie's hands pat sand rhythmically. She suddenly looks up with spark of curiosity in eyes. Warm afternoon light filters through leaves creating dappled shadows.
 </storyboard>
 
 <storyboard>
-Cassie and Caleb pretend to be walking trees with exaggerated slow-motion movements. Arms stretch wide like branches swaying. Both children move deliberately slowly, giggling with delight. Cassie demonstrates growing new roots by extending arms forward. Caleb stomps in comical slow motion. Mum watches from grass, laughing warmly. Playful atmosphere captures their imaginative understanding.
+Cassie and Caleb pretend to be walking trees, arms stretched wide like branches. Both move in exaggerated slow motion with huge delighted grins. Cassie demonstrates growing new roots gesture, Caleb copies enthusiastically but clumsily. Mum watches from grass, laughing warmly. Children's movements comically deliberate, faces showing pure imaginative joy.
 </storyboard>
 
 <storyboard>
-Cassie and Caleb jump high with pure joy, arms spread wide. Mid-air suspension shows hair and clothes lifting upward. Faces radiate delight and discovery. Light drizzle falls around them, droplets catching sunlight. They land with visible impact, bouncing slightly. Mum smiles encouragingly nearby. Scene captures the thrill of testing gravity through playful experimentation.
+Cassie and Caleb jump high with pure joy, arms spread wide. Light drizzle falls around them, droplets catching sunlight. At peak of jump, hair and clothes show upward momentum before gravity pulls them down. Children's faces radiate delight and discovery. Mum smiles encouragingly. Moment captures suspension between rising and falling.
 </storyboard>
 
 <storyboard>
-Interior car view focused on rearview mirror showing Mum's amused eyes crinkling with laughter. In back seat, Caleb looks eager and confused while Cassie grins knowingly. Mum and Cassie share knowing glance through mirror. Caleb's expression shifts from hopeful to sheepish. Still parked with house visible through windows. Warm, humorous family moment.
+Interior car view with rearview mirror showing Mum's smiling eyes meeting Cassie's gaze. Both share knowing laugh while Caleb looks confused but hopeful in background. Subtle head movements and eye contact create connection. Light mood, gentle humor. House visible through car windows showing they haven't moved yet.
 </storyboard>
 
 <storyboard>
-Cassie in car seat holds up all ten fingers triumphantly, spreading them wide like a star. Face glows with accomplishment and mathematical pride. Eyes sparkle with joy of solving the problem. She bounces slightly in seat with excitement. Suburban scenery blurs softly through window behind her. Expression captures pure delight of discovery and understanding.
+Cassie in car seat, face bright with concentration and triumph. She holds up all ten fingers spread wide like star toward viewer, counting enthusiastically. Eyes sparkle with mathematical accomplishment. Slight bouncing motion of excitement. Suburban scenery blurs softly past windows. Expression shows pride in solving problem.
 </storyboard>
 
 <storyboard>
-Cassie leans toward car window with wide, fascinated eyes watching intently. Through window, eucalyptus trees blur past creating strong sense of backward motion. Her face shows wonder and confusion. She presses closer to glass, studying the phenomenon. Bright daylight streams in. Expression captures curiosity about the visual paradox of relative motion.
+Cassie leans toward Caleb with big-sister authority, holding up fingers to show ten. Earnest teaching expression on face. Caleb watches with serious concentration, nodding and beginning to count on own small fingers. Both children engaged in sibling teaching moment. Sunlight streams through windows. Suburban streets pass outside.
 </storyboard>
 
 <storyboard>
-Cassie tosses ball gently upward, watching it rise with amazed expression. Ball floats at arc's peak, then drops back into her lap. Her mouth opens in delighted gasp of surprise. Hands outstretched in catching position. Caleb watches with wide-eyed fascination. Mum grins knowingly in rearview mirror. Moment captures scientific discovery and wonder.
+Cassie looks out car window with wide, fascinated eyes. Tall eucalyptus trees blur past window, creating sense of backward motion through motion blur effect. She leans toward window, expression showing curiosity and wonder mixed with confusion. Seatbelt visible, bright daylight streaming in. Trees appear to rush away creating visual puzzle.
 </storyboard>
 
 <storyboard>
-Through windshield, Cronulla Beach expands magnificently ahead with sparkling blue ocean and white-capped waves rolling onto golden sand. Seagulls soar across bright sky. Inside car, Cassie and Caleb lean forward eagerly, hands pressed against windows. Silhouettes show their excited anticipation. Norfolk pine tree visible near parking area. Bright, joyful arrival moment filled with promise.
+Cassie tosses ball gently upward with amazed expression as it drops back into her lap. Hands outstretched in catching position, mouth open in delighted gasp. Caleb watches with wide eyes and smile. Mum glances in rearview mirror with knowing grin. Ball shows slight downward motion. Moment captures scientific discovery and wonder.
 </storyboard>
 
 <storyboard>
-Cassie runs toward ocean with pure excitement, bare feet kicking up sand behind her. Little Caleb toddles after with arms pumping determinedly. Both faces show unbridled joy. Wide beach stretches under blue sky. Seagulls fly overhead. Foamy waves visible in background. Scene radiates freedom, adventure, and childhood delight at reaching the beach.
+View through windshield showing sparkling Cronulla Beach with white-capped waves rolling onto golden sand. Seagulls soar in bright blue sky. Inside car, silhouettes of Mum and excited children visible. Cassie and Caleb lean forward eagerly, hands pressed against windows. Sense of arrival and anticipation. Sunlight creates joyful atmosphere.
 </storyboard>
 
 <storyboard>
-Close-up of Cassie kneeling, pressing palm firmly into wet sand mound with expression of wonder and discovery. She pushes down deliberately, feeling resistance. Mum stands nearby smiling with delight at Cassie's observation. Caleb plays near shallow tidal pool in background. Colorful beach blanket and striped bag visible. Moment captures tactile discovery of Newton's Third Law.
+Cassie runs through beach sand toward ocean, bare feet kicking up sand particles. Caleb toddles behind with arms pumping determinedly. Both faces show pure excitement and delight. Seagulls fly overhead. Foamy waves visible in background. Golden sand stretches wide. Movement captures joyful energy and freedom of beach arrival.
 </storyboard>
 
 <storyboard>
-Cassie floats peacefully on back in shallow clear water, looking up at endless blue sky with contented, thoughtful expression. In background on beach, magnificent sandcastle stands complete with four towers decorated with shells, moat, and feather flag. Mum watches from blanket while Caleb plays near castle. Calm water reflects sky. Peaceful moment of reflection.
+Cassie kneels on beach pressing palm firmly into wet sand mound, face showing discovery and wonder. Hand pressed down with force, visual emphasis on push-back resistance. Mum stands nearby smiling with delight. Caleb plays near tidal pool in background. Colorful blanket and beach bag visible. Moment captures scientific revelation.
 </storyboard>
 
 <storyboard>
-Vibrant rainbow arcs brilliantly over ocean waves with fine spray mist in air. Young Caleb jumps excitedly, pointing at rainbow with sandy finger, bouncing with pure joy. Cassie and Mum stand nearby at water's edge, all gazing upward in wonder. Rainbow shows distinct color bands glowing against ocean. Golden afternoon light bathes scene. Magical moment of discovery.
+Cassie floats peacefully on back in shallow clear water, looking up at bright blue sky with contented, thoughtful expression. In background, magnificent sandcastle stands complete with four towers decorated with shells, moat, and feather flag. Mum watches from blanket while Caleb plays near castle. Gentle water movement, reflective peaceful atmosphere.
 </storyboard>
 
 <storyboard>
-Mum kneels and hugs Cassie tight at beach's edge as sun sets. Cassie's sandy hand held in mother's, both faces showing warmth and deep connection. Little Caleb stands close beside them. Fading rainbow still visible over ocean in background. Golden sunset light bathes scene in warm tones. Cassie's expression shows determination and wonder. Tender moment of inspiration.
+Vibrant rainbow arcs over ocean waves with fine mist spray. Caleb jumps excitedly pointing at rainbow with sandy finger, face radiating joy. Cassie and Mum stand at water's edge, all three silhouetted against golden afternoon light. Rainbow shows distinct color bands glowing brilliantly. Waves crash creating magical mist. Wonder and discovery atmosphere.
 </storyboard>
 
 <storyboard>
-Cassie and Caleb walk hand-in-hand across beach at sunset, leaving footprints in sand behind them. Both look tired but happy, backlit by gorgeous sunset sky painted in oranges, pinks, and purples. Mum walks slightly ahead carrying beach bags. Their small silhouettes against expansive beach and colorful sky emphasize day's big discoveries. Peaceful, reflective ending.
+Mum kneels hugging Cassie tight at beach's edge, Caleb standing close beside. Cassie's sandy hand held in mother's, faces showing warmth and love. Fading rainbow still visible over ocean in background. Golden sunset light bathes scene. Cassie's expression shows determination and wonder, Mum's face radiates pride and encouragement. Tender emotional connection.
+</storyboard>
+
+<storyboard>
+Cassie and Caleb walk hand-in-hand across beach at sunset, leaving footprints in sand behind. Mum walks ahead carrying beach bags. Sky painted brilliant oranges, pinks, purples across horizon. Both children tired but happy, silhouettes backlit by gorgeous sunset. Peaceful end-of-day atmosphere. Small figures against expansive beach emphasizing big ideas explored.
 </storyboard>

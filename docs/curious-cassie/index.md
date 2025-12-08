@@ -43,6 +43,10 @@
 
 ## 📚 Cassie's Adventures
 
+<div class="series-purchase">
+  <p>📖 <strong>Purchase the complete Curious Cassie series:</strong> <a href="https://www.amazon.com.au/dp/B0G5BNHWDG" target="_blank">Available on Amazon</a></p>
+</div>
+
 <div class="story-collection">
   <div class="story-item featured">
     <img src="../books/curious_cassie/cassie_caleb_n_magic_of_yet/image_1.png" alt="Cassie and Caleb" class="story-thumb">
@@ -60,6 +64,11 @@
         <span class="feature">🎙️ Narration Available</span>
       </div>
       <a href="../books/curious_cassie/cassie_caleb_n_magic_of_yet/book/" class="story-btn">Read Adventure →</a>
+      <div class="purchase-options" style="margin-top: 1rem;">
+        <span style="font-size: 0.9em; color: #666;">Buy on Amazon:</span>
+        <a href="https://www.amazon.com/dp/B0G5GBVR5M" class="age-badge" style="background: #FF9900; color: white; text-decoration: none;" target="_blank">📱 Kindle</a>
+        <a href="https://www.amazon.com/dp/0645696323" class="age-badge" style="background: #232F3E; color: white; text-decoration: none;" target="_blank">📖 Paperback</a>
+      </div>
     </div>
   </div>
 
@@ -79,6 +88,11 @@
         <span class="feature">🏖️ Beach Adventures</span>
       </div>
       <a href="../books/curious_cassie/curious_cassie_beach_ride_quests/book/" class="story-btn">Explore Quest →</a>
+      <div class="purchase-options" style="margin-top: 1rem;">
+        <span style="font-size: 0.9em; color: #666;">Buy on Amazon:</span>
+        <a href="https://www.amazon.com/dp/B0G5GNGGSN" class="age-badge" style="background: #FF9900; color: white; text-decoration: none;" target="_blank">📱 Kindle</a>
+        <a href="https://www.amazon.com/dp/B0G5FQVK1C" class="age-badge" style="background: #232F3E; color: white; text-decoration: none;" target="_blank">📖 Paperback</a>
+      </div>
     </div>
   </div>
 
@@ -98,6 +112,11 @@
         <span class="feature">⛵ Adventure Quest</span>
       </div>
       <a href="../books/curious_cassie/cassies_harbour_quest/book/" class="story-btn">Join Quest →</a>
+      <div class="purchase-options" style="margin-top: 1rem;">
+        <span style="font-size: 0.9em; color: #666;">Buy on Amazon:</span>
+        <a href="https://www.amazon.com/dp/B0D34RXR7S" class="age-badge" style="background: #FF9900; color: white; text-decoration: none;" target="_blank">📱 Kindle</a>
+        <a href="https://www.amazon.com/dp/0645696358" class="age-badge" style="background: #232F3E; color: white; text-decoration: none;" target="_blank">📖 Paperback</a>
+      </div>
     </div>
   </div>
 </div>
