@@ -1,89 +1,61 @@
-from unittest.mock import AsyncMock, MagicMock
+"""Test infrastructure: catch tests that pollute the source tree.
+
+A test that writes into the repo (e.g. by passing the project root or `Path()`
+as an `output_dir`) shows up as untracked files in `git status` and confuses
+downstream tooling. This autouse fixture snapshots the repo root before each
+test and fails the test if a new non-hidden entry appeared after.
+
+`tmp_path` is the only correct place for test file output.
+"""
+
+from __future__ import annotations
+
+import shutil
+from pathlib import Path
 
 import pytest
 
-from fable_flow.config import (
-    AgentTypesConfig,
-    APIConfig,
-    ContentSafetyConfig,
-    ImageGenerationConfig,
-    ModelConfig,
-    PathsConfig,
-    PromptsConfig,
-    Settings,
-    StyleConfig,
-    TextGenerationConfig,
-    TextToSpeechConfig,
-)
+REPO_ROOT = Path(__file__).resolve().parent.parent
+
+# Entries the test infra is allowed to create at the repo root.
+_ALLOWED_NEW_AT_ROOT = {
+    ".pytest_cache",
+    "htmlcov",
+    ".coverage",
+    ".ruff_cache",
+    ".mypy_cache",
+    "__pycache__",
+    ".cache",
+}
 
 
-@pytest.fixture
-def mock_story_data():
-    return {
-        "story": "A magical tale unfolds in an enchanted forest...",
-        "synopsis": "An epic adventure of friendship and courage...",
-    }
+def _snapshot_repo_root() -> set[str]:
+    if not REPO_ROOT.exists():
+        return set()
+    return {p.name for p in REPO_ROOT.iterdir()}
 
 
-@pytest.fixture
-def mock_model_client():
-    client = MagicMock()
-    client.create = AsyncMock()
-    return client
-
-
-@pytest.fixture
-def mock_runtime():
-    runtime = AsyncMock()
-    runtime.register_factory = AsyncMock()
-    runtime.start = AsyncMock()
-    runtime.publish_message = AsyncMock()
-    runtime.stop_when_idle = AsyncMock()
-    return runtime
-
-
-@pytest.fixture
-def test_data_dir(tmp_path):
-    data_dir = tmp_path / "data"
-    data_dir.mkdir()
-    return data_dir
-
-
-@pytest.fixture
-def test_output_dir(tmp_path):
-    output_dir = tmp_path / "output"
-    output_dir.mkdir()
-    return output_dir
-
-
-@pytest.fixture
-def mock_settings(tmp_path):
-    return Settings(
-        model=ModelConfig(
-            text_generation=TextGenerationConfig(
-                story="test", content_moderation="test", proofreading="test"
-            ),
-            content_safety=ContentSafetyConfig(safety_model="test", scientific_accuracy="test"),
-            image_generation=ImageGenerationConfig(
-                model="test-image-model", style_consistency="test-style-model"
-            ),
-            text_to_speech=TextToSpeechConfig(model="test-tts-model", device="cpu"),
-            music_generation={"model": "test-music-model"},
-            video_generation={
-                "model": "test-video-model",
-                "num_frames": 81,
-                "num_inference_steps": 50,
-                "guidance_scale": 6,
-                "fps": 8,
-            },
-        ),
-        paths=PathsConfig(base=tmp_path / "base", output=tmp_path / "output"),
-        api=APIConfig(
-            keys={
-                "openai": "test-openai-key",
-            }
-        ),
-        style=StyleConfig(),
-        prompts=PromptsConfig(),
-        agent_types=AgentTypesConfig(),
+@pytest.fixture(autouse=True)
+def _fail_on_repo_root_writes():
+    """After each test, fail if a new entry appeared at the repo root."""
+    before = _snapshot_repo_root()
+    yield
+    after = _snapshot_repo_root()
+    leaked = (after - before) - _ALLOWED_NEW_AT_ROOT
+    leaked = {n for n in leaked if not n.startswith(".")}
+    if not leaked:
+        return
+    # Clean up so subsequent tests don't see the residue.
+    for name in leaked:
+        target = REPO_ROOT / name
+        if target.is_dir():
+            shutil.rmtree(target, ignore_errors=True)
+        else:
+            try:
+                target.unlink()
+            except OSError:
+                pass
+    pytest.fail(
+        f"Test wrote artifacts to the repo root: {sorted(leaked)}. "
+        "Use the `tmp_path` fixture for any file/dir output."
     )

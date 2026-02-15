@@ -1,0 +1,192 @@
+{
+  "project": {
+    "title": "Cassie, Caleb, and the Eye That Learned to See",
+    "subtitle": "How Computers Came to See the World",
+    "series": "Curious Cassie",
+    "volume": 4,
+    "target_age": 7,
+    "age_range": "5-10",
+    "genre": "educational biography",
+    "tagline": "Some questions are so big, we taught a machine to help us answer them."
+  },
+  "characters": [
+    {
+      "name": "Cassie",
+      "age": 6,
+      "role": "protagonist",
+      "personality": "curious, adventurous, kind, asks endless questions, loves figuring out how things work",
+      "appearance": {
+        "heritage": "Indian Australian",
+        "skin_tone": "warm honey-brown",
+        "hair": "shoulder-length wavy black hair with natural shine",
+        "eyes": "bright curious brown eyes",
+        "distinctive_features": ["wide expressive eyes", "infectious smile", "dimples when she smiles"]
+      },
+      "typical_clothing": "colourful contemporary children's clothing, often with playful patterns of stars, circuits, or animals"
+    },
+    {
+      "name": "Caleb",
+      "age": 3,
+      "role": "supporting",
+      "relationship": "Cassie's younger brother",
+      "personality": "playful, wonder-filled, copies everything Cassie does, learns by touching and pointing",
+      "appearance": {
+        "heritage": "Indian Australian",
+        "skin_tone": "warm honey-brown",
+        "hair": "curly black hair",
+        "eyes": "expressive brown eyes",
+        "distinctive_features": ["chubby toddler cheeks", "gap-toothed smile"]
+      },
+      "typical_clothing": "striped t-shirts, comfortable shorts, light-up sneakers"
+    },
+    {
+      "name": "Mum",
+      "age": 35,
+      "role": "supporting",
+      "relationship": "Cassie and Caleb's mother",
+      "personality": "warm, encouraging, asks Cassie thoughtful questions back, believes in following curiosity wherever it leads",
+      "appearance": {
+        "heritage": "Indian Australian",
+        "skin_tone": "warm honey-brown",
+        "hair": "long black hair often in a practical ponytail",
+        "eyes": "kind brown eyes",
+        "distinctive_features": ["gentle smile", "laugh lines around eyes"]
+      },
+      "typical_clothing": "casual stylish clothing, soft cardigans, comfortable trainers"
+    }
+  ],
+  "story_seed": {
+    "theme": "how computers learned to see the world, and the curious young scientist who helped them",
+    "premise": "When Cassie's phone surprises her by knowing exactly who is in every photo, she sets out to discover how a machine could possibly learn to see — and finds her answer in the story of a girl who once ran a dry cleaner in New Jersey and grew up to teach computers how to look at the world.",
+    "setting": {
+      "primary": "Sydney Powerhouse Museum, on a sunny Saturday, during a special family exhibition called 'How Computers See'",
+      "secondary": "the train ride into the city, and home at bedtime",
+      "locations_visited": [
+        "The Pixel Wall — an enormous interactive screen where photos zoom in until they dissolve into tiny coloured squares",
+        "The Sorting Game — a touchscreen station where visitors 'teach' a friendly cartoon robot to recognise everyday objects by sorting pictures into piles",
+        "The Million Pictures Wall — a floor-to-ceiling mosaic of thousands of labelled photos (apple, sunset, dingo, dosa, daffodil) inspired by ImageNet",
+        "The See-and-Say Booth — a camera-and-microphone demo that names whatever you show it (with delightful mistakes)",
+        "The Story Auditorium — a tiny cinema room with rotating recorded messages from real scientists, where today's speaker is Dr Fei-Fei Li"
+      ]
+    },
+    "tone_and_voice": "Warm, curious, playful. Sentences are short and rhythmic. Cassie's voice does most of the questioning; Mum reflects questions back rather than answering them flat; Caleb provides comic relief and tender moments. No jargon survives without being playfully unpacked. Wonder beats every other emotion. Mistakes are funny, not scary.",
+    "recurring_motifs": [
+      "The question 'How does it know?' — first asked by Cassie in chapter 1, repeated by Caleb in chapter 4, asked by Cassie of herself in chapter 7, and finally taught by Cassie to Caleb in chapter 8",
+      "Tiny coloured dots — pixels reappear as a visual metaphor across illustrations: in the photos on Mum's phone, in the museum's pixel wall, in the spots on a ladybug, in the stars at bedtime",
+      "Pointing and naming — the toddler way of learning, mirrored in how AI learns from labelled pictures",
+      "Cassie teaching Caleb — every chapter contains a small moment of Cassie teaching her brother something, which structurally rhymes with how humans teach AI"
+    ],
+    "vocabulary_introduced": [
+      { "word": "pixel", "kid_friendly_meaning": "one of the tiny coloured dots that pictures on screens are made of" },
+      { "word": "label", "kid_friendly_meaning": "a name we attach to something so a computer (or a little brother) knows what it is" },
+      { "word": "example", "kid_friendly_meaning": "one of many things you look at to learn a pattern" },
+      { "word": "dataset", "kid_friendly_meaning": "a great big pile of examples gathered together for learning" },
+      { "word": "audacious", "kid_friendly_meaning": "brave and a little bit cheeky, in the best possible way" }
+    ],
+    "story_arc": {
+      "act_1_wonder": "Cassie notices her phone 'knows' who Caleb is in photos and is stunned. She asks how, and Mum doesn't quite have the full answer — but spots a museum exhibition that might.",
+      "act_2_exploration": "At the museum, Cassie discovers pixels, plays a sorting game that makes her realise teaching is harder than it looks, sees the enormous Million Pictures Wall, and laughs at the See-and-Say machine when it makes silly mistakes.",
+      "act_3_meeting_the_scientist": "Cassie watches Dr Fei-Fei Li's recorded message and hears, in Fei-Fei's own voice, the story of a girl who moved across the world, worked in a dry cleaner, and wondered if computers might learn the way babies do.",
+      "act_4_aha": "Cassie connects everything — the phone, the pixels, the pictures, her own way of teaching Caleb new words. She realises that AI is being taught, all the time, by people who care.",
+      "act_5_resolution": "Walking home, Cassie starts teaching Caleb to ask 'How does it know?' At bedtime, she tells Mum she wants to grow up to teach AIs nice things."
+    },
+    "chapter_outline": [
+      {
+        "number": 1,
+        "title": "The Phone That Knew",
+        "beats": "Saturday morning. Cassie watches Mum scroll photos. The phone groups them: 'Caleb', 'Cassie', 'Beach'. Cassie asks how. Mum doesn't quite know. They spot the museum exhibition. They decide to go.",
+        "introduces": "the recurring question 'How does it know?'"
+      },
+      {
+        "number": 2,
+        "title": "Pixels on the Train",
+        "beats": "On the train into the city, Cassie zooms in on a photo until it dissolves into squares. She tells Caleb a picture is made of tiny coloured dots. Caleb tries to count them and gives up at seven.",
+        "introduces": "pixels"
+      },
+      {
+        "number": 3,
+        "title": "Teaching the Robot",
+        "beats": "At the Sorting Game station, Cassie tries to teach a cartoon robot what a cat is. The robot keeps getting confused by tigers, foxes, and one very fluffy slipper. Cassie tries to teach Caleb the same thing — he gets it in three tries. She wonders why the robot needed twenty.",
+        "introduces": "the gap between human and machine learning"
+      },
+      {
+        "number": 4,
+        "title": "A Wall of Everything",
+        "beats": "They arrive at the Million Pictures Wall. Cassie is awestruck. Mum reads the sign: this is a copy of something called ImageNet, made by a scientist named Fei-Fei Li. Caleb points at a banana and says 'nana'. Cassie laughs and says, 'Exactly!'",
+        "introduces": "ImageNet, and Fei-Fei Li by name"
+      },
+      {
+        "number": 5,
+        "title": "The Machine That Said 'Moon'",
+        "beats": "At the See-and-Say Booth, the camera correctly names Cassie's drawing of a dog, but calls her cat 'rabbit' and her stick-figure Dad 'moon'. Cassie howls with laughter. Then she notices: the machine only knows what someone showed it. If nobody showed it Dad, how could it know?",
+        "introduces": "the idea that AI's mistakes are echoes of how it was taught"
+      },
+      {
+        "number": 6,
+        "title": "The Girl Who Asked Audacious Questions",
+        "beats": "In the Story Auditorium, a recorded message plays. A woman with a kind voice introduces herself: Dr Fei-Fei Li. She tells the children about moving from Beijing to New Jersey at sixteen, learning English, working in her family's dry-cleaning shop, and wondering — while she stared at the rows of labelled shirts — whether computers might learn to see the way babies do, by looking at a great many things and being told what each one was. Cassie sits very, very still.",
+        "introduces": "Fei-Fei's biography, in her own voice"
+      },
+      {
+        "number": 7,
+        "title": "The Aha",
+        "beats": "Outside the auditorium, Cassie connects it all aloud — pixels, pictures, the wall, the way she taught Caleb to say 'banana', the phone that knew Caleb's face. She asks Mum, 'But who decides what to teach the computer?' Mum says, 'Smart, kind people who care about getting it right. Like Fei-Fei.' Cassie thinks for a long time.",
+        "introduces": "the human responsibility behind AI — gently"
+      },
+      {
+        "number": 8,
+        "title": "Teaching the World to See",
+        "beats": "Walking back to the train, Cassie starts pointing and naming, the way she once did when Caleb was learning to talk. 'Pigeon. Bus. Pavement. Sky.' Caleb joins in. At bedtime, Cassie tells Mum she wants to teach AIs nice things when she grows up. Mum says, 'That sounds like an audacious question to grow into.' Cassie smiles, and somewhere in the night, a phone quietly labels another photograph.",
+        "introduces": "the takeaway — curiosity is a verb"
+      }
+    ],
+    "featured_moment": {
+      "where": "Chapter 6, the Story Auditorium",
+      "purpose": "Deliver Fei-Fei's biography authentically without breaking the story to lecture",
+      "core_message": "Move from China to America at sixteen; learn English; help run the family dry-cleaning shop; notice that babies see millions of things before they learn what anything is; wonder — audaciously — whether computers might need the same; build ImageNet; remember that curiosity is the start of everything",
+      "draft_text": "Hello, curious friends. My name is Fei-Fei. When I was about ten years older than some of you, I moved from a city called Beijing, all the way across the ocean, to a small town in America. I didn't speak any English. My family worked very hard — my parents and I ran a little shop that cleaned other people's clothes. I helped after school. And the whole time, I kept asking questions. Big ones. Small ones. Audacious ones. One day I asked a very strange question: when a baby learns to see the world, she looks at thousands and thousands of things, and slowly she learns what each one is. What if a computer needed the same? Nobody had given a computer enough pictures yet. So we made a great big collection — millions of pictures, all with their names — and we showed it to the machines. And the machines, slowly, learned to see. If there's one thing I'd love for you to take home today, it's this: the best discoveries start with a question that feels a little bit too big. Ask it anyway."
+    },
+    "learning_objectives": [
+      "Computers don't see pictures the way our eyes do — to a computer, a picture is made of millions of tiny coloured dots called pixels, which it reads as numbers",
+      "Humans, especially babies, learn to see by looking at the world over and over and hearing things named — and AI learns in a similar way, by being shown millions of labelled pictures",
+      "An AI is only as good as what it's been taught: show it lots of cats, it learns 'cat'; show it none, and it has no idea",
+      "The wonderfully named ImageNet — a huge collection of labelled pictures — was built by Dr Fei-Fei Li and her team, and helped computers around the world finally learn to see",
+      "Dr Fei-Fei Li was born in China and moved to America as a teenager, working in her family's dry-cleaning shop while studying — a reminder that big discoveries can begin from very ordinary places, and that asking 'audacious questions' is what scientists do",
+      "AI is a tool made by people — the kinder and more careful the people who shape it, the kinder and more careful the tool becomes",
+      "Asking 'How does it know?' is a tiny question with enormous power — it works on phones, on robots, on grown-ups, and on yourself",
+      "Curiosity isn't reserved for grown-ups in laboratories: every time you wonder how something really works, you are doing the same thing scientists do"
+    ],
+    "dedication_text": "For Dr Fei-Fei Li — who asked audacious questions, taught computers to see, and reminded us that curiosity, kindness, and care are what make a tool worth building.",
+    "back_matter": {
+      "for_kids": "A short page connecting Cassie's discoveries to real ideas: pixels, labels, examples, datasets. Include a 'Try this at home' invitation — sort your toys into piles and notice how hard it is to explain to a grown-up exactly what rule you used.",
+      "for_parents": "A short note on responsible AI literacy for under-tens: how to talk about machine learning without fearmongering, why labelling and bias matter, and how the question 'How does it know?' can become a household habit. Aim for two short paragraphs. Avoid jargon.",
+      "extended_biography": "Fei-Fei Li was born in Chengdu, China in 1976. She moved with her parents to Parsippany, New Jersey at 16, learning English while working in the family dry-cleaning shop. She earned a full scholarship to Princeton, completed a PhD at Caltech, and went on to build ImageNet (2007–2009), the labelled-image dataset that catalysed modern deep learning. She has directed the Stanford AI Lab, co-founded AI4ALL to broaden participation in AI, and co-founded the Stanford Institute for Human-Centered AI. Her memoir is 'The Worlds I See' (2023)."
+    },
+    "draft_story": "CHAPTER ONE — THE PHONE THAT KNEW\n\nIt was a Saturday morning, and the kind of sunshine was coming through the kitchen window that made everything look slightly magical, including the toast.\n\nCassie was sitting on the bench next to Mum, swinging her feet. Caleb was under the table, building a tower out of cereal boxes. And Mum was scrolling through photos on her phone, smiling at them as if they were old friends.\n\n'Look at this one,' Mum said, turning the phone so Cassie could see. 'You and Caleb at the beach.'\n\nCassie leaned in.\n\n'And this one,' said Mum. 'You at Grandma's birthday.'\n\n'How did you find them so fast?' Cassie asked.\n\n'The phone sorts them,' Mum said. 'See? It puts all the Caleb pictures in one group. All the Cassie pictures in another.'\n\nCassie blinked. She looked at the phone. She looked at Caleb under the table, who was now wearing a cereal box on his head.\n\n'But Mum,' she said slowly, 'how does it know that's Caleb?'\n\nMum opened her mouth. Then she closed it. Then she said, very honestly, 'You know what, sweetheart — I'm not entirely sure.'\n\nCassie sat very still. This, in Cassie's experience, was the most interesting kind of answer a grown-up could give.\n\nMum picked up her phone again and tapped something. 'Oh,' she said. 'Look at this.'\n\nIt was a notice from the Powerhouse Museum. Bright letters across the top read: HOW COMPUTERS SEE — A FAMILY EXHIBITION.\n\n'I think,' said Mum, 'we might have somewhere to go today.'\n\nUnder the table, Caleb said, 'GO!'\n\nCassie was already looking for her shoes.\n\n\nCHAPTER TWO — PIXELS ON THE TRAIN\n\nThe train rattled towards the city. Cassie sat by the window with Mum's phone in her lap. Caleb sat opposite, kicking his legs and counting telephone poles, mostly incorrectly.\n\nCassie pinched her fingers on the screen the way Mum had shown her, and the photo grew bigger. Then bigger. Then bigger.\n\nAnd then something funny happened.\n\nCaleb's face — the soft brown cheeks, the curly hair, the gap-toothed grin — began to break apart.\n\nFirst into smudges. Then into squares. And then into tiny, tiny coloured squares, lined up neatly like a mosaic floor.\n\n'Caleb,' Cassie whispered. 'Look.'\n\nCaleb scrambled across and pressed his nose to the screen.\n\n'That's me?' he said.\n\n'That's you,' said Cassie. 'But really, really close up.'\n\nThe little squares had names, she remembered — Dad had told her once. They were called pixels.\n\n'Pix-elles,' Cassie said carefully.\n\n'Pickles,' said Caleb.\n\n'Pixels,' said Cassie, laughing. 'They're the tiny dots that pictures are made of. Every single picture on a screen, anywhere in the world, is just lots and lots of tiny coloured dots.'\n\nCaleb looked at the picture. Then he looked at his own arm. Then he looked back at the picture, suspicious.\n\n'Don't worry,' said Cassie. 'You're not made of dots in real life.'\n\nCaleb went back to counting telephone poles.\n\nBut Cassie kept zooming. In and out. In and out. From Caleb-the-boy, to Caleb-the-pattern, and back again. And she thought to herself: if a computer was looking at this picture, what would it see?\n\nWould it see her brother?\n\nOr would it just see a great many tiny coloured dots, and have no idea at all?\n\n\nCHAPTER THREE — TEACHING THE ROBOT\n\nThe Powerhouse Museum smelled, as it always did, of polished wood and faintly of glue. Cassie loved it instantly.\n\nA sign with a friendly cartoon robot pointed them down a corridor lit in soft blues and teals: HOW COMPUTERS SEE — THIS WAY!\n\nThe first thing they came to was a touchscreen table called The Sorting Game. On the screen was the cartoon robot, who looked rather like a friendly toaster with eyes. Around him were pictures — dozens of them — and three empty piles labelled CAT, DOG, and NOT A CAT OR A DOG.\n\n'Easy,' said Cassie.\n\nShe started sorting. A picture of a tabby — CAT. A golden retriever — DOG. A banana — NOT.\n\nThen the pictures got harder.\n\nA tiger. Was that a cat? It looked like a cat. A very big cat. Cassie hesitated, then dropped it in CAT.\n\nThe friendly toaster blinked. 'Hmm,' it said, 'are you sure?'\n\nA fox. That looked more like a dog. Or did it? Cassie put it in NOT, just to be safe.\n\nA slipper that looked weirdly fluffy and had two button eyes. Cassie hesitated for a long time. Caleb leaned over and said firmly, 'Cat.'\n\nWhen they had sorted twenty pictures, the toaster gave them a score. Sixteen out of twenty.\n\n'Sixteen!' said Cassie, frowning. 'I thought I knew what a cat was.'\n\nMum knelt down. 'You do. But explaining the rule to a robot — that's harder than knowing it yourself, isn't it?'\n\nCassie turned to Caleb. 'Caleb,' she said seriously. 'What's a cat?'\n\nCaleb thought about it. 'Meow,' he said.\n\n'And what about a tiger?'\n\n'Big meow.'\n\n'And a fluffy slipper with eyes?'\n\nCaleb considered. 'Silly.'\n\n'See?' Cassie said to the toaster. 'He figured it out in three tries. How many tries did you need?'\n\nThe screen below the toaster lit up. It read: I LEARNED THIS BY LOOKING AT 1,500,000 PICTURES.\n\nCassie stared.\n\nOne. Million. Five hundred thousand.\n\nThat was a lot of cats.\n\n\nCHAPTER FOUR — A WALL OF EVERYTHING\n\nThey turned a corner and stopped walking.\n\nIn front of them, from floor to ceiling, was a wall made entirely of photographs. Tiny ones. Hundreds and hundreds — no, thousands — all in neat little squares, each with a label beneath it in cheerful letters.\n\nAPPLE. SUNSET. DINGO. DOSA. DAFFODIL. KITE. KOOKABURRA. KETTLE.\n\n'Mum,' Cassie breathed. 'Mum, look.'\n\nCaleb pointed at a square in the bottom corner. 'Nana!' he said proudly.\n\nIt was, in fact, a picture of a banana.\n\n'Exactly,' said Cassie, who was so impressed with him she nearly burst.\n\nMum read aloud from the plaque beside the wall.\n\n'This wall is inspired by a real collection of pictures called ImageNet,' she read. 'ImageNet contains over fourteen million labelled photographs — gathered, named, and organised by people all around the world. It was built by a scientist called Dr Fei-Fei Li, who wanted to give computers something they had never had before: enough examples to learn from.'\n\n'Fee-Fee Lee,' Cassie repeated, like trying on a new pair of shoes.\n\n'Fei-Fei,' said Mum gently. 'She thought that maybe computers weren't bad at seeing because they were dumb. Maybe they were bad at seeing because nobody had ever shown them enough things.'\n\nCassie looked up at the wall. She tried to imagine fourteen million pictures. She couldn't, quite. But she could imagine someone — a girl with a kind face, perhaps — patiently labelling them, one after another, after another, after another.\n\nAnd she thought: I would like to meet that girl.\n\n\nCHAPTER FIVE — THE MACHINE THAT SAID 'MOON'\n\nThe See-and-Say Booth was Caleb's favourite thing in the museum, possibly forever.\n\nIt was a little wooden hut with a camera on top and a big speaker on the front. You went inside, you held something up to the camera, and the speaker told you, in a cheerful voice, what it thought you were holding.\n\nCassie went first.\n\nShe held up her drawing of a dog. (She had brought her notebook, as Cassie always did.)\n\n'Dog!' said the speaker.\n\nCassie beamed.\n\nShe held up her drawing of a cat.\n\n'Rabbit!' said the speaker.\n\nCassie blinked.\n\nShe held up her drawing of Dad — a stick figure with a round head, no hair, and a very small triangle for a body.\n\nThe machine paused.\n\n'Moon!' said the speaker confidently.\n\nCassie laughed so hard she had to sit down. Caleb laughed because Cassie was laughing. Mum laughed because nobody could not laugh at the idea of Dad being a moon.\n\nWhen she had caught her breath, Cassie sat very still and thought about it.\n\nThe machine had been right about the dog. Wrong about the cat. Very wrong about Dad.\n\nWhy?\n\n'I think,' she said slowly, 'somebody showed it lots of dogs.'\n\n'And?' said Mum.\n\n'And maybe not very many cats. Or none of them looked like mine.'\n\n'And Dad?'\n\nCassie giggled again. 'Nobody showed it Dad. So it just guessed the closest thing it knew. Something round, with nothing on top.'\n\nMum smiled. 'That,' she said, 'is exactly right.'\n\nCaleb held up his stuffed elephant.\n\n'Elephant!' said the speaker.\n\nCaleb nodded gravely, as if this had been the correct answer all along.\n\n\nCHAPTER SIX — THE GIRL WHO ASKED AUDACIOUS QUESTIONS\n\nThe Story Auditorium was a small dark room with red velvet seats and a screen at the front. They were the only ones inside. Cassie chose seats in the very middle. Caleb chose the chair next to her, then immediately swapped to the chair next to that one, then swapped back.\n\nThe lights dimmed.\n\nOn the screen appeared a woman with a kind face and warm brown eyes, sitting in front of a bookshelf. Beneath her, in soft letters, it read: DR FEI-FEI LI.\n\n'Hello, curious friends,' said Dr Li. Her voice was warm and a little bit musical. 'My name is Fei-Fei.'\n\nCassie sat very still.\n\n'When I was about ten years older than some of you,' Dr Li said, 'I moved from a city called Beijing, all the way across the ocean, to a small town in America. I didn't speak any English. Not one word.\n\n'My family worked very hard. My parents and I ran a little shop that cleaned other people's clothes. I helped after school and on weekends. I answered the telephone. I sorted the shirts. I learned new English words by reading the labels on the tags.\n\n'And the whole time, I kept asking questions. Big ones. Small ones. Audacious ones.'\n\nThe word audacious was new. Cassie made a small note of it, the way she did with all good words.\n\n'One day,' Dr Li went on, 'I asked a very strange question. I was thinking about babies. When a baby is born, she sees thousands and thousands of things, every day, for years. Faces. Spoons. Dogs. Daffodils. The sky. Slowly, slowly, she learns what each one is.\n\n'And I thought: what if a computer needed the same? What if nobody had ever given a computer enough pictures yet?'\n\nCassie nodded so hard her hair bounced.\n\n'So my friends and I,' said Dr Li, 'made a great big collection of pictures. Fourteen million of them. Every one of them named. We showed it to the machines, and slowly — very slowly — the machines began to learn to see.\n\n'If there is one thing I would love for you to take home today, it is this: the best discoveries start with a question that feels a little bit too big. Don't be afraid of those questions. Ask them anyway.'\n\nThe screen went dark.\n\nFor a long moment, Cassie didn't move.\n\n'Mum,' she said quietly. 'I think she just answered my question.'\n\nMum put an arm around her. 'Which one?'\n\nCassie smiled in the dark. 'All of them.'\n\n\nCHAPTER SEVEN — THE AHA\n\nOutside the auditorium, the museum corridor was suddenly full of children and parents and someone selling ice cream. Cassie barely noticed.\n\nShe was thinking.\n\n'Mum,' she said. 'The phone knew Caleb because somebody showed it lots of pictures of Caleb.'\n\n'Yes,' said Mum.\n\n'And the machine called Dad a moon because nobody showed it Dad.'\n\n'Yes.'\n\n'And the wall of pictures — that's how computers learn what things are. By looking at lots of them, with their names underneath.'\n\n'Yes.'\n\nCassie stopped walking.\n\n'But Mum,' she said, 'who decides what to show the computer? Who picks the pictures?'\n\nMum knelt down so they were eye to eye.\n\n'That,' she said, 'is the most important question you have asked all day.'\n\nCassie waited.\n\n'People decide,' said Mum. 'People like Fei-Fei. People who care about getting it right. Who care about being fair. Who care about being kind.'\n\n'And if the people aren't kind?' Cassie asked.\n\n'Then the machine learns the wrong things,' Mum said simply. 'Which is why we need lots of kind, curious people to help shape it. People who ask questions. People like you.'\n\nCassie looked at her shoes. She looked at Caleb, who was attempting to eat an ice cream from the wrong end. She looked at the photo wall behind them, gleaming.\n\nAnd she thought, very seriously, that when she grew up, she might like to be one of those people.\n\n\nCHAPTER EIGHT — TEACHING THE WORLD TO SEE\n\nThey walked back towards the train station the long way, through Darling Harbour, because Caleb wanted to see the boats.\n\nThe sun was getting low. The water was full of tiny golden dots, the way water always is in the late afternoon. Pixels, Cassie thought, smiling.\n\n'Caleb,' she said. 'See that? What is it?'\n\n'Pigeon,' said Caleb.\n\n'And that?'\n\n'Bus.'\n\n'And that?'\n\n'Sky!' said Caleb proudly. 'Sky-sky-sky.'\n\nCassie laughed. 'You're teaching it to me,' she said.\n\nBut what she meant was — she was teaching him. And he was teaching her. And both of them, in some quiet way she couldn't quite explain yet, were teaching the whole world how to see.\n\nThat night, at bedtime, Cassie lay in the dark and listened to Mum read.\n\n'Mum,' she said when the chapter was done, 'when I grow up, I want to teach AIs nice things.'\n\nMum smiled.\n\n'That sounds,' she said, kissing Cassie's forehead, 'like an audacious question to grow into.'\n\nAnd somewhere in the night, in a pocket on the kitchen bench, a phone quietly noticed a new photograph, looked at its tiny coloured dots, and labelled it — because someone, somewhere, had taught it how.\n\nThe end."
+  },
+  "production_config": {
+    "book": {
+      "format": ["pdf", "epub"],
+      "page_count_target": 80,
+      "illustration_style": "digital watercolour with subtle circuit-line accents, warm honey and amber tones for the human/home/family scenes, soft teal and lavender highlights for the digital/data/museum scenes, gentle and inspiring mood, multicultural cast portrayed authentically",
+      "illustration_motifs": [
+        "Tiny coloured dots reappearing in scenes (pixels in photos, spots on ladybugs, golden flecks on water, stars at bedtime) to weave the pixel motif visually",
+        "Cassie's notebook appearing in nearly every scene — a quiet symbol of curiosity travelling with her",
+        "Soft labels floating near objects in the museum scenes (cat / dingo / dosa), echoing ImageNet visually without saying its name twice",
+        "Fei-Fei's auditorium scene illuminated only by the screen — a quiet, almost sacred moment"
+      ]
+    },
+    "movie": {
+      "enabled": true,
+      "include_narration": true,
+      "include_subtitles": true,
+      "music_style": "warm acoustic guitar and soft synth pads, curious twinkling motifs when computers 'see' something for the first time, gentle piano for reflective moments, a single quietly hopeful violin theme during the Fei-Fei auditorium scene, hopeful and inquisitive tone throughout"
+    }
+  },
+  "dedicated_to": {
+    "name": "Dr Fei-Fei Li",
+    "field": "computer science, artificial intelligence, computer vision",
+    "notable_for": "ImageNet (the labelled-image dataset that catalysed modern deep learning), former director of the Stanford AI Lab, co-founder of AI4ALL and the Stanford Institute for Human-Centered AI, lifelong advocate for human-centred and ethical AI, author of The Worlds I See",
+    "why_this_dedication": "Because she paid attention to how children learn, and because she reminds every reader of this series that asking audacious questions is what curiosity grows up to become."
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "project": {
+    "title": "Cassie's Beach Adventure",
+    "series": "Curious Cassie",
+    "volume": 1,
+    "target_age": 6,
+    "genre": "educational adventure"
+  },
+  "characters": [
+    {
+      "name": "Cassie",
+      "age": 6,
+      "role": "protagonist",
+      "personality": "curious, adventurous, kind, loves learning about nature",
+      "appearance": {
+        "heritage": "Indian Australian",
+        "skin_tone": "warm honey-brown",
+        "hair": "shoulder-length wavy black hair with natural shine",
+        "eyes": "bright curious brown eyes",
+        "distinctive_features": [
+          "wide expressive eyes",
+          "infectious smile",
+          "dimples when she smiles"
+        ]
+      },
+      "typical_clothing": "colorful contemporary children's clothing, bright sundresses or overalls, often with ocean or nature themes"
+    },
+    {
+      "name": "Caleb",
+      "age": 3,
+      "role": "supporting",
+      "relationship": "Cassie's younger brother",
+      "personality": "playful, curious, learning from Cassie, loves following his sister",
+      "appearance": {
+        "heritage": "Indian Australian",
+        "skin_tone": "warm honey-brown",
+        "hair": "curly black hair",
+        "eyes": "expressive brown eyes",
+        "distinctive_features": [
+          "chubby toddler cheeks",
+          "gap-toothed smile"
+        ]
+      },
+      "typical_clothing": "striped t-shirts, comfortable shorts, light-up sneakers"
+    },
+    {
+      "name": "Mum",
+      "age": 35,
+      "role": "supporting",
+      "relationship": "Cassie and Caleb's mother",
+      "personality": "warm, encouraging, patient, loves teaching her children",
+      "appearance": {
+        "heritage": "Indian Australian",
+        "skin_tone": "warm honey-brown",
+        "hair": "long black hair often in a practical ponytail",
+        "eyes": "kind brown eyes",
+        "distinctive_features": [
+          "gentle smile",
+          "laugh lines around eyes"
+        ]
+      },
+      "typical_clothing": "casual comfortable clothing, sun hat for beach days"
+    }
+  ],
+  "story_seed": {
+    "theme": "ocean exploration and learning about tides",
+    "setting": "Sydney Harbor beach on a sunny morning",
+    "learning_objectives": [
+      "tides are caused by the moon's gravity",
+      "tide pools are home to unique ocean creatures",
+      "different creatures live at different tide levels",
+      "respecting nature and being gentle with sea creatures"
+    ]
+  },
+  "production_config": {
+    "book": {
+      "format": ["pdf", "epub"],
+      "page_count_target": 24,
+      "illustration_style": "digital watercolor blend with soft colors and gentle textures"
+    },
+    "movie": {
+      "enabled": true,
+      "include_narration": true,
+      "include_subtitles": true,
+      "music_style": "gentle orchestral with ocean sounds and playful melodies"
+    }
+  },
+  "dedicated_to": {
+    "name": "Rachel Carson",
+    "field": "marine biology",
+    "notable_for": "Silent Spring, modern environmental movement, ocean conservation"
+  }
+}

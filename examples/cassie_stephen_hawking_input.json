@@ -1,0 +1,95 @@
+{
+  "project": {
+    "title": "Cassie Meets Stephen Hawking",
+    "series": "Curious Cassie",
+    "volume": 2,
+    "target_age": 7,
+    "genre": "educational biography"
+  },
+  "characters": [
+    {
+      "name": "Cassie",
+      "age": 6,
+      "role": "protagonist",
+      "personality": "curious, adventurous, kind, loves learning about science and asking questions",
+      "appearance": {
+        "heritage": "Indian Australian",
+        "skin_tone": "warm honey-brown",
+        "hair": "shoulder-length wavy black hair with natural shine",
+        "eyes": "bright curious brown eyes",
+        "distinctive_features": [
+          "wide expressive eyes",
+          "infectious smile",
+          "dimples when she smiles"
+        ]
+      },
+      "typical_clothing": "colorful contemporary children's clothing, bright dresses or overalls, often with space or science themes"
+    },
+    {
+      "name": "Caleb",
+      "age": 3,
+      "role": "supporting",
+      "relationship": "Cassie's younger brother",
+      "personality": "playful, curious, learning from Cassie, loves following his sister",
+      "appearance": {
+        "heritage": "Indian Australian",
+        "skin_tone": "warm honey-brown",
+        "hair": "curly black hair",
+        "eyes": "expressive brown eyes",
+        "distinctive_features": [
+          "chubby toddler cheeks",
+          "gap-toothed smile"
+        ]
+      },
+      "typical_clothing": "striped t-shirts, comfortable shorts, light-up sneakers"
+    },
+    {
+      "name": "Dad",
+      "age": 38,
+      "role": "supporting",
+      "relationship": "Cassie and Caleb's father",
+      "personality": "enthusiastic, knowledgeable, patient teacher, loves science and history",
+      "appearance": {
+        "heritage": "Indian Australian",
+        "skin_tone": "warm honey-brown",
+        "hair": "short black hair with hints of gray",
+        "eyes": "intelligent brown eyes behind wire-rimmed glasses",
+        "distinctive_features": [
+          "warm smile",
+          "expressive hands when explaining things"
+        ]
+      },
+      "typical_clothing": "casual button-down shirts, khakis, comfortable shoes for walking"
+    }
+  ],
+  "story_seed": {
+    "theme": "learning about Stephen Hawking's life, discoveries, and perseverance",
+    "setting": "Sydney Science Museum with special Stephen Hawking exhibition, library, and home",
+    "learning_objectives": [
+      "Stephen Hawking was a brilliant scientist who studied black holes and the universe",
+      "He had a condition called ALS but never gave up on his dreams",
+      "Science is about asking questions and being curious about how things work",
+      "Anyone can be a scientist, no matter what challenges they face",
+      "The universe is full of amazing mysteries waiting to be discovered",
+      "Perseverance and determination help us overcome obstacles"
+    ]
+  },
+  "production_config": {
+    "book": {
+      "format": ["pdf", "epub"],
+      "page_count_target": 100,
+      "illustration_style": "digital watercolor blend with soft colors, starry space themes, warm earth tones for indoor scenes, inspiring and uplifting visual style"
+    },
+    "movie": {
+      "enabled": true,
+      "include_narration": true,
+      "include_subtitles": true,
+      "music_style": "inspirational orchestral with gentle piano, wonder and discovery themes, cosmic and ethereal elements for space scenes"
+    }
+  },
+  "dedicated_to": {
+    "name": "Stephen Hawking",
+    "field": "theoretical physics and cosmology",
+    "notable_for": "A Brief History of Time, black hole thermodynamics, Hawking radiation"
+  }
+}

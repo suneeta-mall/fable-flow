@@ -1,0 +1,73 @@
+"""Schemas for FableFlow input specification and data structures."""
+
+from __future__ import annotations
+
+from fable_flow.schemas.book_content import (
+    Biography,
+    BookContent,
+    BookMetadata,
+    Chapter,
+    CharacterReference,
+    Experiment,
+    IllustrationSpec,
+    ReflectionSection,
+)
+from fable_flow.schemas.input_spec import (
+    Appearance,
+    BackMatterPlan,
+    BookProductionConfig,
+    ChapterOutlineItem,
+    Character,
+    CharacterRole,
+    DedicatedPersonality,
+    FableFlowInput,
+    FeaturedMoment,
+    MovieProductionConfig,
+    ProductionConfig,
+    ProjectMetadata,
+    Setting,
+    StorySeed,
+    VocabularyWord,
+)
+from fable_flow.schemas.scene_manifest import (
+    ImageAsset,
+    MusicAsset,
+    NarrationAsset,
+    SceneManifest,
+    SceneSpec,
+    SubtitleAsset,
+    VideoAsset,
+)
+
+__all__ = [
+    "Appearance",
+    "BackMatterPlan",
+    "Biography",
+    "BookContent",
+    "BookMetadata",
+    "BookProductionConfig",
+    "Chapter",
+    "ChapterOutlineItem",
+    "Character",
+    "CharacterReference",
+    "CharacterRole",
+    "DedicatedPersonality",
+    "Experiment",
+    "FableFlowInput",
+    "FeaturedMoment",
+    "ImageAsset",
+    "IllustrationSpec",
+    "MovieProductionConfig",
+    "MusicAsset",
+    "NarrationAsset",
+    "ProductionConfig",
+    "ProjectMetadata",
+    "ReflectionSection",
+    "SceneManifest",
+    "SceneSpec",
+    "Setting",
+    "StorySeed",
+    "SubtitleAsset",
+    "VideoAsset",
+    "VocabularyWord",
+]

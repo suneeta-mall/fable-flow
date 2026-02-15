@@ -56,7 +56,7 @@ illustration_style = config.style.illustration
 The configuration system supports environment variables. You can override configuration values using environment variables with the following format:
 
 ```
-MODEL__DEFAULT=google/gemma-3-27b-it
+MODEL__DEFAULT=google/gemma-4-31B-it
 MODEL__SERVER__URL=http://localhost:8000/v1
 API__KEYS__OPENAI=your-api-key
 ```
