@@ -34,4 +34,7 @@ jobs:
         run: python -m pip install -r .github/workflows/ci-requirements.txt
 
       - name: Deploy pages
-        run: mkdocs gh-deploy --force      
+        env:
+          NO_MKDOCS_2_WARNING: "true"
+          DISABLE_MKDOCS_2_WARNING: "true"
+        run: mkdocs gh-deploy --force

@@ -24,6 +24,7 @@ from reportlab.platypus import (
 )
 
 from fable_flow.config import config
+from fable_flow.publishers._markdown import to_pdf
 from fable_flow.schemas.book_content import (
     Biography,
     BookContent,
@@ -184,7 +185,7 @@ def _add_paragraphs(story_flow: list, text: str, body_style: ParagraphStyle) -> 
     for paragraph in text.split("\n\n"):
         paragraph = paragraph.strip()
         if paragraph:
-            story_flow.append(Paragraph(paragraph.replace("\n", " "), body_style))
+            story_flow.append(Paragraph(to_pdf(paragraph.replace("\n", " ")), body_style))
 
 
 def _render_illustration(
@@ -206,7 +207,7 @@ def _render_illustration(
         story_flow.append(Spacer(1, 24))
     story_flow.append(img)
     if illustration.caption:
-        story_flow.append(Paragraph(illustration.caption, styles["caption"]))
+        story_flow.append(Paragraph(to_pdf(illustration.caption), styles["caption"]))
     if illustration.placement == "full_page":
         story_flow.append(PageBreak())
 
@@ -284,7 +285,7 @@ def _render_poem(
         if not line:
             poem_block.append(Spacer(1, 8))
             continue
-        poem_block.append(Paragraph(line, styles["poem"]))
+        poem_block.append(Paragraph(to_pdf(line), styles["poem"]))
 
     poem_block.extend(
         [
@@ -313,7 +314,7 @@ def _render_reflection(
     story_flow.append(Paragraph("Think About It", styles["chapter"]))
     story_flow.append(Spacer(1, 18))
     for i, question in enumerate(questions, 1):
-        story_flow.append(Paragraph(f"{i}. {question}", styles["list_item"]))
+        story_flow.append(Paragraph(f"{i}. {to_pdf(question)}", styles["list_item"]))
         story_flow.append(Spacer(1, 8))
 
 
@@ -328,22 +329,22 @@ def _render_experiment(
     story_flow.append(Paragraph(experiment.title, styles["chapter"]))
     story_flow.append(Spacer(1, 12))
 
-    story_flow.append(Paragraph(f"<i>{experiment.concept}</i>", styles["body"]))
+    story_flow.append(Paragraph(f"<i>{to_pdf(experiment.concept)}</i>", styles["body"]))
 
     story_flow.append(Paragraph("You will need", styles["section_heading"]))
     for material in experiment.materials:
-        story_flow.append(Paragraph(f"• {material}", styles["list_item"]))
+        story_flow.append(Paragraph(f"• {to_pdf(material)}", styles["list_item"]))
 
     story_flow.append(Paragraph("Steps", styles["section_heading"]))
     for i, step in enumerate(experiment.steps, 1):
-        story_flow.append(Paragraph(f"{i}. {step}", styles["list_item"]))
+        story_flow.append(Paragraph(f"{i}. {to_pdf(step)}", styles["list_item"]))
 
     story_flow.append(Paragraph("What to look for", styles["section_heading"]))
-    story_flow.append(Paragraph(experiment.what_to_observe, styles["body"]))
+    story_flow.append(Paragraph(to_pdf(experiment.what_to_observe), styles["body"]))
 
     if experiment.safety_note:
         story_flow.append(Paragraph("Safety", styles["section_heading"]))
-        story_flow.append(Paragraph(experiment.safety_note, styles["body"]))
+        story_flow.append(Paragraph(to_pdf(experiment.safety_note), styles["body"]))
 
 
 def _render_biography(
@@ -360,16 +361,16 @@ def _render_biography(
     story_flow.append(Paragraph(subtitle, styles["meta"]))
     story_flow.append(Spacer(1, 12))
 
-    story_flow.append(Paragraph(f"<i>{biography.one_line}</i>", styles["body"]))
+    story_flow.append(Paragraph(f"<i>{to_pdf(biography.one_line)}</i>", styles["body"]))
     story_flow.append(Spacer(1, 6))
     _add_paragraphs(story_flow, biography.summary, styles["body"])
 
     story_flow.append(Paragraph("Fun facts", styles["section_heading"]))
     for fact in biography.fun_facts:
-        story_flow.append(Paragraph(f"• {fact}", styles["list_item"]))
+        story_flow.append(Paragraph(f"• {to_pdf(fact)}", styles["list_item"]))
 
     story_flow.append(Paragraph("Why this matters", styles["section_heading"]))
-    story_flow.append(Paragraph(biography.why_inspiring, styles["body"]))
+    story_flow.append(Paragraph(to_pdf(biography.why_inspiring), styles["body"]))
 
 
 def _build_front_matter(

@@ -97,7 +97,7 @@ vllm-serve:
 
 docs-serve:
 	@echo "Starting MkDocs on http://localhost:8080"
-	@$(UV) run --group docs mkdocs serve --livereload -a localhost:8080 &
+	@NO_MKDOCS_2_WARNING=true DISABLE_MKDOCS_2_WARNING=true $(UV) run --group docs mkdocs serve --livereload -a localhost:8080 &
 	@sleep 2
 	@echo "Docs at http://localhost:8080"
 

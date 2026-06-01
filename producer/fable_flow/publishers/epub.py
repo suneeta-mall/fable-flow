@@ -13,6 +13,7 @@ from pathlib import Path
 from loguru import logger
 
 from fable_flow.config import config
+from fable_flow.publishers._markdown import to_html
 from fable_flow.schemas.book_content import (
     Biography,
     BookContent,
@@ -134,7 +135,7 @@ def _chapter_html(chapter: Chapter, image_assets: dict[str, str]) -> str:
     inline_iter = iter(inline)
     inline_after = max(1, len(paragraphs) // max(1, len(inline) + 1)) if inline else 0
     for idx, paragraph in enumerate(paragraphs, 1):
-        parts.append(f'<p class="body">{escape(paragraph)}</p>')
+        parts.append(f'<p class="body">{to_html(paragraph)}</p>')
         if inline_after and idx % inline_after == 0:
             next_ill = next(inline_iter, None)
             if next_ill is not None:
@@ -165,7 +166,7 @@ def _poem_html(poem_text: str) -> str:
         if not line:
             lines_html.append('<p class="poem-stanza-break"></p>')
         else:
-            lines_html.append(f'<p class="poem-line">{escape(line)}</p>')
+            lines_html.append(f'<p class="poem-line">{to_html(line)}</p>')
     body = "\n".join(lines_html)
     return (
         '<div class="poem">'
@@ -178,15 +179,15 @@ def _poem_html(poem_text: str) -> str:
 
 def _reflection_html(questions: list[str]) -> str:
     """Render reflection block — `.reflection` CSS forces a page break before it."""
-    items = "\n".join(f"    <li>{escape(q)}</li>" for q in questions)
+    items = "\n".join(f"    <li>{to_html(q)}</li>" for q in questions)
     return f'<div class="reflection"><h2>Think About It</h2><ol>\n{items}\n</ol></div>'
 
 
 def _experiment_html(experiment: Experiment) -> str:
-    materials = "\n".join(f"    <li>{escape(m)}</li>" for m in experiment.materials)
-    steps = "\n".join(f"    <li>{escape(s)}</li>" for s in experiment.steps)
+    materials = "\n".join(f"    <li>{to_html(m)}</li>" for m in experiment.materials)
+    steps = "\n".join(f"    <li>{to_html(s)}</li>" for s in experiment.steps)
     safety = (
-        f'<div class="safety"><strong>Safety:</strong> {escape(experiment.safety_note)}</div>'
+        f'<div class="safety"><strong>Safety:</strong> {to_html(experiment.safety_note)}</div>'
         if experiment.safety_note
         else ""
     )
@@ -201,7 +202,7 @@ def _experiment_html(experiment: Experiment) -> str:
 <div class="experiment">
 <h2>Try This at Home</h2>
 <h3>{escape(experiment.title)}</h3>
-<p class="concept">{escape(experiment.concept)}</p>
+<p class="concept">{to_html(experiment.concept)}</p>
 
 <h3>You will need</h3>
 <ul>
@@ -214,7 +215,7 @@ def _experiment_html(experiment: Experiment) -> str:
 </ol>
 
 <h3>What to look for</h3>
-<p>{escape(experiment.what_to_observe)}</p>
+<p>{to_html(experiment.what_to_observe)}</p>
 
 {safety}
 </div>
@@ -223,12 +224,12 @@ def _experiment_html(experiment: Experiment) -> str:
 
 
 def _biography_html(biography: Biography) -> str:
-    fun_facts = "\n".join(f"    <li>{escape(f)}</li>" for f in biography.fun_facts)
+    fun_facts = "\n".join(f"    <li>{to_html(f)}</li>" for f in biography.fun_facts)
     subtitle = biography.title
     if biography.lifespan:
         subtitle = f"{biography.title} · {biography.lifespan}"
     summary_paragraphs = "\n".join(
-        f"<p>{escape(p.strip())}</p>" for p in biography.summary.split("\n\n") if p.strip()
+        f"<p>{to_html(p.strip())}</p>" for p in biography.summary.split("\n\n") if p.strip()
     )
     return f"""<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
@@ -241,7 +242,7 @@ def _biography_html(biography: Biography) -> str:
 <div class="biography">
 <h2>Meet {escape(biography.name)}</h2>
 <p class="subtitle">{escape(subtitle)}</p>
-<p class="one-line">{escape(biography.one_line)}</p>
+<p class="one-line">{to_html(biography.one_line)}</p>
 
 {summary_paragraphs}
 
@@ -251,7 +252,7 @@ def _biography_html(biography: Biography) -> str:
 </ul>
 
 <h3>Why this matters</h3>
-<p>{escape(biography.why_inspiring)}</p>
+<p>{to_html(biography.why_inspiring)}</p>
 </div>
 </body>
 </html>"""
@@ -265,7 +266,7 @@ def _illustration_html(ill: IllustrationSpec, image_assets: dict[str, str], full
     # `description` is the image-gen prompt — never user-facing. Caption is the
     # editorial line shown to the reader; alt text falls back to it for a11y.
     alt = escape(ill.caption or ill.scene_context)
-    caption_html = f'<div class="caption">{escape(ill.caption)}</div>' if ill.caption else ""
+    caption_html = f'<div class="caption">{to_html(ill.caption)}</div>' if ill.caption else ""
     return f'<div class="{css_class}"><img src="{href}" alt="{alt}"/>{caption_html}</div>'
 
 
@@ -314,7 +315,7 @@ def _dedication_html(text: str) -> str:
   <link rel="stylesheet" type="text/css" href="style.css"/>
 </head>
 <body>
-<div class="dedication"><em>{escape(text)}</em></div>
+<div class="dedication"><em>{to_html(text)}</em></div>
 </body>
 </html>"""
 
@@ -338,7 +339,7 @@ def _cover_html(image_href: str, title: str, css_class: str) -> str:
 
 
 def _for_parents_html(text: str) -> str:
-    paragraphs = "\n".join(f"<p>{escape(p.strip())}</p>" for p in text.split("\n\n") if p.strip())
+    paragraphs = "\n".join(f"<p>{to_html(p.strip())}</p>" for p in text.split("\n\n") if p.strip())
     return f"""<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
