@@ -1,52 +1,30 @@
 # Video Production
 
-Fable Flow's video production feature transforms your story into engaging, animated videos. Using advanced AI models, it creates dynamic visual narratives that combine illustrations, narration, and music into a cohesive multimedia experience.
+FableFlow turns your story into an animated video, combining illustrations, narration, and music through a three-agent system.
 
 ## Overview
 
-The video production pipeline creates videos through a **three-agent system** that orchestrates:
-
-* Scene animation and image-to-video conversion
-* Narration and audio synchronization
-* Music integration and mixing
-* Visual effects and transitions
-* Final assembly and rendering
+The pipeline animates scenes (image-to-video), synchronizes narration and audio, integrates music, applies transitions and effects, and renders the final video.
 
 ## Agent Architecture
 
-FableFlow uses a three-agent video production system:
+Three agents collaborate:
 
 - **Movie Director Agent** - Plans scenes, determines camera movements, creates storyboards
 - **Animator Agent** - Converts illustrations to video using image-to-video AI models
 - **Movie Producer Agent** - Assembles all elements (images, narration, music) into final video
 
-These agents collaborate to create cohesive multimedia storytelling experiences.
-
 ## Key Features
 
 ### Animation Generation
 
-The system provides:
-
-* Scene-based animations
-* Character movements
-* Educational visualizations
-* Dynamic transitions
-* Camera movements
+Produces scene-based animations with character movement, camera moves, and dynamic transitions.
 
 ### Video Enhancement
 
-Enhances videos with:
-
-* Professional transitions
-* Visual effects
-* Text overlays
-* Educational graphics
-* Timing synchronization
+Adds transitions, visual effects, text overlays, and timing synchronization.
 
 ### Output Format
-
-Generates video in:
 
 * **MP4** (H.264/AAC) - Universal format for web, mobile, and desktop playback
   - Codec: libx264 (video), aac (audio)
@@ -63,23 +41,14 @@ Generates video in:
 4. Watch generated video in the Media Gallery
 5. Monitor three-stage production: Director → Animator → Producer
 
-### Option 2: CLI - Individual Video Production
+### Option 2: CLI
 
 ```bash
-# Generate video (requires processed story, images, narration, music)
-fable-flow director produce
+# Run the full generation pipeline (video production runs as a stage within it)
+fable-flow generate examples/cassie_beach_adventure_input.json
 ```
 
-Note: Video production depends on outputs from illustration, narration, and music agents.
-
-### Option 3: CLI - Full Publishing Pipeline
-
-```bash
-# Run complete pipeline including video
-fable-flow publisher process
-```
-
-This ensures all dependencies (story, illustrations, narration, music) are created first.
+Video production runs as a stage within `fable-flow generate`, after the illustration, narration, and music stages it depends on. This ensures all dependencies (story, illustrations, narration, music) are created first. Use `--resume` to re-run only missing pieces. The stage can also be re-run from FableFlow Studio.
 
 ### Configuration
 
@@ -112,8 +81,6 @@ style:
 
 ## Output
 
-The video pipeline generates:
-
 **Main Output:**
 ```
 output/
@@ -140,7 +107,7 @@ output/
 
 ## Integration
 
-Video production works seamlessly with:
+Video production feeds into:
 
 * **Story Processing** - Uses enhanced text
 * **Illustration Generation** - Uses visual assets
@@ -149,26 +116,10 @@ Video production works seamlessly with:
 
 ## Best Practices
 
-1. **Animation Style**
-    * Match target audience
-    * Consider educational goals
-    * Ensure smooth transitions
-    * Maintain consistency
-
-2. **Video Quality**
-    * Check resolution
-    * Verify frame rate
-    * Test audio sync
-    * Review transitions
-
-3. **Asset Management**
-    * Organize by scene
-    * Track versions
-    * Backup original files
-    * Document settings
+1. **Animation Style** - match the audience and educational goals, with smooth, consistent transitions.
+2. **Video Quality** - check resolution, frame rate, and audio sync.
+3. **Asset Management** - organize by scene, track versions, and back up originals.
 
 ### Getting Help
 
-- Check the [full documentation](../README.md)
-- Report issues on [GitHub](https://github.com/suneeta-mall/fable-flow/issues)
-- Join our [community discussions](https://github.com/suneeta-mall/fable-flow/discussions) 
+See the [full documentation](../README.md), [GitHub issues](https://github.com/suneeta-mall/fable-flow/issues), and [community discussions](https://github.com/suneeta-mall/fable-flow/discussions).

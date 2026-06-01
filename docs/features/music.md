@@ -1,57 +1,31 @@
 # Music Generation
 
-Fable Flow's music generation feature creates custom soundtracks that enhance your story's emotional impact and educational value. Using advanced AI models, it generates original music that matches your story's mood, pace, and themes.
+FableFlow generates original soundtracks that match your story's mood, pace, and themes.
 
 ## Overview
 
-The music generation pipeline creates soundtracks through:
-
-* Mood analysis
-* Theme identification
-* Instrument selection
-* Composition generation
-* Audio mixing
+The pipeline analyzes mood, identifies themes, selects instruments, composes the music, and mixes the audio.
 
 ## Key Features
 
 ### Music Generation
 
-The system provides:
-
-* Original compositions
-* Mood-appropriate music
-* Educational themes
-* Character motifs
-* Scene-specific tracks
+Produces original, mood-appropriate compositions, including character motifs and scene-specific tracks.
 
 ### Audio Enhancement
 
-Enhances music with:
-
-* Professional mixing
-* Volume balancing
-* Sound effects
-* Transitions
-* Narration integration
+Handles mixing, volume balancing, transitions, and integration with narration.
 
 ### Multiple Output Formats
 
-Supports various audio formats:
-
-* WAV for high quality
-* MP3 for compatibility
-* M4A for mobile devices
-* OGG for web use
-* AAC for streaming
+Outputs WAV, MP3, M4A, OGG, and AAC for high-quality, mobile, web, and streaming use.
 
 ## Agent Architecture
 
-FableFlow uses a two-agent music system:
+Two agents work together:
 
 - **Music Director Agent** - Analyzes story mood, plans musical themes, determines instrumentation
 - **Musician Agent** - Generates original compositions using AI music models
-
-These agents create soundtracks that enhance emotional impact and complement the storytelling.
 
 ## Usage
 
@@ -62,19 +36,14 @@ These agents create soundtracks that enhance emotional impact and complement the
 3. Run the publisher pipeline
 4. Listen to generated music in the Media Gallery
 
-### Option 2: CLI - Individual Music Generation
+### Option 2: CLI
 
 ```bash
-# Generate music (requires processed story)
-fable-flow music produce
+# Run the full generation pipeline (music generation runs as a stage within it)
+fable-flow generate examples/cassie_beach_adventure_input.json
 ```
 
-### Option 3: CLI - Full Publishing Pipeline
-
-```bash
-# Run complete pipeline including music
-fable-flow publisher process
-```
+Music generation runs as a stage within `fable-flow generate`. Use `--resume` to re-run only missing pieces. The stage can also be re-run from FableFlow Studio.
 
 ### Configuration
 
@@ -95,8 +64,6 @@ style:
 
 ## Output
 
-The music pipeline generates:
-
 * `music/` directory containing:
     * Main soundtrack
     * Scene-specific tracks
@@ -107,7 +74,7 @@ The music pipeline generates:
 
 ## Integration
 
-Music generation works seamlessly with:
+Music feeds into:
 
 * **Story Processing** - Uses mood analysis
 * **Video Production** - Provides soundtrack
@@ -116,23 +83,9 @@ Music generation works seamlessly with:
 
 ## Best Practices
 
-1. **Mood Selection**
-    * Match story tone
-    * Consider audience
-    * Ensure appropriateness
-    * Maintain consistency
-
-2. **Audio Quality**
-    * Check mixing
-    * Verify balance
-    * Test transitions
-    * Review integration
-
-3. **Asset Management**
-    * Organize by scene
-    * Track versions
-    * Backup original files
-    * Document settings
+1. **Mood Selection** - match the story tone and audience, and keep moods consistent.
+2. **Audio Quality** - check mixing, balance, and transitions.
+3. **Asset Management** - organize by scene, track versions, and back up originals.
 
 ## Troubleshooting
 
@@ -149,6 +102,4 @@ Music generation works seamlessly with:
 
 ### Getting Help
 
-- Check the [full documentation](../README.md)
-- Report issues on [GitHub](https://github.com/suneeta-mall/fable-flow/issues)
-- Join our [community discussions](https://github.com/suneeta-mall/fable-flow/discussions) 
+See the [full documentation](../README.md), [GitHub issues](https://github.com/suneeta-mall/fable-flow/issues), and [community discussions](https://github.com/suneeta-mall/fable-flow/discussions).

@@ -1,10 +1,10 @@
 # Configuration Guide
 
-This guide explains how to customize Fable Flow's behavior using the `config.yaml` file. All settings are optional and will use sensible defaults if not specified.
+Customize Fable Flow's behavior with the `config.yaml` file. All settings are optional; unset values fall back to defaults.
 
 ## Basic Structure
 
-The configuration file uses YAML format. Here's the basic structure:
+The configuration file uses YAML format:
 
 ```yaml
 # Model Configuration
@@ -254,7 +254,7 @@ style:
 
 ## Environment Variables
 
-The configuration system supports environment variables. You can override configuration values using environment variables with the following format:
+Override any configuration value with an environment variable using this format:
 
 ```bash
 MODEL__DEFAULT=claude-opus-4-20250514

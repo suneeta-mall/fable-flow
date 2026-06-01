@@ -2,13 +2,13 @@
 
 ## Multi-Step Production & Community Workflow
 
-This document breaks down the FableFlow ecosystem into clear, readable steps showing how stories go from creation to publication.
+How stories go from creation to publication, step by step.
 
 ---
 
 ## Step 1: High-Level Overview
 
-The complete FableFlow journey from author to readers:
+The FableFlow journey from author to readers:
 
 ```mermaid
 %%{init: {'theme':'neutral'}}%%
@@ -46,14 +46,14 @@ flowchart LR
 1. **Author** writes in Studio
 2. **Review** process refines content
 3. **Production** generates multimedia
-4. **Publishing** to multiple formats of books on FableFlow website
+4. **Publishing** to multiple book formats on the FableFlow website
 5. **Community** reads and provides feedback
 
 ---
 
 ## Step 2: Author & Studio Interaction
 
-How authors create and manage stories using FableFlow Studio:
+How authors create and manage stories in FableFlow Studio:
 
 ```mermaid
 %%{init: {'theme':'neutral'}}%%
@@ -92,7 +92,7 @@ flowchart TB
 **Studio Features:**
 
 - **Project Browser**: Dashboard of all stories
-- **Monaco Editor**: Professional code editor
+- **Monaco Editor**: Code editor
 - **Version Compare**: Side-by-side diffs
 - **Media Gallery**: Preview outputs
 - **Live Progress**: Real-time notifications
@@ -239,10 +239,10 @@ flowchart TB
 
 **Key Points:**
 
-- All agents start simultaneously when manuscript is approved
+- All agents start simultaneously when the manuscript is approved
 - Illustration path completes first → feeds into Book & Movie
 - Music path feeds into Movie
-- Narration creates separate audio product
+- Narration creates a separate audio product
 - Movie Producer assembles images + music + scenes
 
 **Dashed arrows (-.->)** show dependencies where outputs are used by other agents.
@@ -324,7 +324,7 @@ flowchart TB
 
 ## Step 6: Website & Community
 
-Publishing and feedback ecosystem:
+Publishing and feedback:
 
 ```mermaid
 %%{init: {'theme':'neutral'}}%%
@@ -456,24 +456,23 @@ flowchart TB
 
 **For Authors:**
 
-- ✅ Professional Studio (Monaco editor, version control)
-- ✅ Real-time production monitoring (WebSocket)
-- ✅ Multi-format output (5 formats)
-- ✅ Community feedback integration
+- Studio with Monaco editor and version control
+- Real-time production monitoring (WebSocket)
+- Multi-format output (5 formats)
+- Community feedback integration
 
 **For Readers:**
 
-- ✅ Free access to quality stories
-- ✅ Multiple formats (PDF/EPUB/HTML/Audio/Video)
-- ✅ Educational content (STEM)
-- ✅ Interactive multimedia
+- Free access to stories
+- Multiple formats (PDF/EPUB/HTML/Audio/Video)
+- Educational content (STEM)
+- Interactive multimedia
 
 **For Platform:**
 
-- ✅ AI-powered pipeline
-- ✅ Open-source community
-- ✅ Scalable architecture
-- ✅ Professional quality
+- AI-powered pipeline
+- Open-source community
+- Scalable architecture
 
 ---
 
@@ -505,9 +504,3 @@ flowchart TB
 - **Framework**: MkDocs + Material theme
 - **Hosting**: GitHub Pages
 - **Features**: Blog, Search, PDF/EPUB readers
-
----
-
-**FableFlow** - Where imagination meets technology! 🚀📚
-
-*Built with ❤️ by the FableFlow community*

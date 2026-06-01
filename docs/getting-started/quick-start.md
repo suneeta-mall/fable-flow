@@ -1,230 +1,114 @@
 # Quick Start Tutorial
 
-Welcome to Fable Flow! This tutorial will guide you through creating your first AI-powered multimedia story in just a few steps. By the end, you'll have a complete story with narration, illustrations, and music.
+Create your first AI-powered children's book and movie. By the end you'll have a complete book (PDF/EPUB) with illustrations, plus an optional movie adaptation with narration and music.
 
 ## Prerequisites
 
-Before starting this tutorial, make sure you have:
-
-- ✅ Fable Flow installed ([Installation Guide](installation.md))
-- ✅ Your virtual environment activated
-- ✅ A simple story or text ready to transform
+- Fable Flow installed ([Installation Guide](installation.md))
+- Your virtual environment activated
+- An input spec (a `FableFlowInput` JSON file) ready
 
 ## Tutorial Overview
 
-We'll create a multimedia version of a short story in these steps:
+Steps to build a multimedia story:
 
-1. **Prepare Your Story** - Set up your input text
-2. **Process the Story** - Enhance with AI
-3. **Generate Narration** - Create audio
-4. **Create Illustrations** - Generate visuals  
-5. **Add Music** - Compose background score
-6. **Assemble Final Product** - Combine everything
+1. **Prepare Your Input Spec** - Start from an example JSON spec
+2. **Validate the Spec** - Check it before generating
+3. **Generate the Book and Movie** - Run the pipeline
+4. **View Your Creation** - Open the generated artifacts
 
-Let's get started! 🚀
+## Step 1: Prepare Your Input Spec
 
-## Step 1: Prepare Your Story
+FableFlow takes a JSON **input spec** (a `FableFlowInput`), not a plain story file. The repository ships ready-to-use examples in `examples/`:
 
-First, let's create a simple story to work with. Create a new file called `my_first_story.txt`:
+- `examples/cassie_beach_adventure_input.json`
+- `examples/cassie_fei_fei_li_input.json`
+- `examples/cassie_stephen_hawking_input.json`
+
+Copy one as a starting point and edit the project metadata, characters, and story seed:
 
 ```bash
 mkdir -p stories
-cat > stories/my_first_story.txt << 'EOF'
-The Curious Robot
-
-Once upon a time, in a bustling laboratory, there lived a small robot named Sparky. Sparky had bright blue eyes that glowed with curiosity and a shiny silver body that reflected the colorful lights of the lab.
-
-Every day, Sparky watched the scientists work on amazing experiments. He dreamed of helping them discover something wonderful. One morning, Sparky noticed a strange plant growing in the corner of the lab. Its leaves shimmered with an unusual golden glow.
-
-"What makes you so special?" Sparky asked the plant, his optical sensors whirring with excitement.
-
-The plant seemed to hum in response, and suddenly, Sparky realized that it was responding to the frequency of his electronic voice! Together, they had discovered a new form of plant-robot communication.
-
-From that day forward, Sparky and the golden plant worked together, helping the scientists make incredible discoveries about the connection between technology and nature.
-EOF
+cp examples/cassie_beach_adventure_input.json stories/my_first_story_input.json
 ```
 
-## Step 2: Process the Story
+The spec defines the project metadata, characters, settings, and a story seed describing the theme and plot. The generation pipeline drafts, edits, and proofs the story, structures it into chapters, places illustrations, and then optionally adapts it into a movie.
 
-Now let's enhance our story using Fable Flow's AI story processing:
+## Step 2: Validate the Spec
+
+Check that your input spec is well-formed before generating:
 
 ```bash
-# Process and enhance the story
-fable-flow story process --input stories/my_first_story.txt --output output/
+# Validate the input spec
+fable-flow validate stories/my_first_story_input.json
 ```
 
-This command will:
-- ✨ Enhance the narrative structure
-- 📝 Optimize language and pacing
-- 🎯 Ensure age-appropriate content
-- 📊 Generate scene breakdowns for illustration
+This verifies the JSON parses into a valid `FableFlowInput` and reports any validation errors.
 
-**Expected Output:**
-```
-✅ Story processing complete!
-📁 Enhanced story saved to: output/enhanced_story.txt
-📋 Scene breakdown saved to: output/scenes.json
-⏱️ Processing time: 2.3 seconds
-```
+## Step 3: Generate the Book and Movie
 
-## Step 3: Generate Narration
-
-Convert your enhanced story into professional audio narration:
+Run the full pipeline (book generation followed by movie adaptation):
 
 ```bash
-# Generate narration from the enhanced story
-fable-flow director produce --input output/enhanced_story.txt --voice-style friendly
+# Generate from the input spec
+fable-flow generate stories/my_first_story_input.json --output output/
 ```
 
-Options for voice style:
-- `friendly` - Warm, engaging tone (great for children's stories)
-- `professional` - Clear, authoritative tone
-- `dramatic` - Expressive, theatrical tone
-- `calm` - Soothing, gentle tone
+The pipeline runs all stages: drafting and editing the story, structuring chapters, placing and generating illustrations, then producing narration, music, and video for the movie. There are no separate per-stage commands; everything runs as stages of `generate`.
 
-**Expected Output:**
-```
-🎙️ Generating narration...
-🔊 Voice synthesis complete!
-📁 Audio files saved to: output/audio/
-   - intro.wav
-   - chapter_1.wav
-   - chapter_2.wav
-   - conclusion.wav
-⏱️ Total audio duration: 3 minutes 45 seconds
-```
+Useful flags:
 
-## Step 4: Create Illustrations
+- `--output/-o DIR` - choose the output directory
+- `--model/-m NAME` - select the LLM used for text generation
+- `--book-only` - generate just the book (skip the movie adaptation)
+- `--skip-book-publish` - skip rendering the PDF/EPUB
+- `--resume` - resume a previously interrupted run
 
-Generate beautiful illustrations for your story:
+To generate only the book:
 
 ```bash
-# Generate illustrations based on scene descriptions
-fable-flow illustrator draw --input output/scenes.json --style cartoon
+fable-flow generate stories/my_first_story_input.json --output output/ --book-only
 ```
 
-Available illustration styles:
-- `cartoon` - Friendly, colorful illustrations perfect for children
-- `realistic` - Detailed, lifelike artwork
-- `minimalist` - Clean, simple designs
-- `watercolor` - Soft, artistic style
-
-**Expected Output:**
-```
-🎨 Creating illustrations...
-✅ Generated 5 illustrations:
-   - sparky_in_lab.png
-   - golden_plant.png  
-   - sparky_discovers.png
-   - communication.png
-   - working_together.png
-📁 Images saved to: output/images/
-```
-
-## Step 5: Add Background Music
-
-Create a musical score that complements your story:
+You can also drive the same pipeline through the Makefile:
 
 ```bash
-# Generate background music
-fable-flow music produce --input output/enhanced_story.txt --mood uplifting
-```
-
-Music mood options:
-- `uplifting` - Cheerful, inspiring melodies
-- `mysterious` - Intriguing, suspenseful tones
-- `peaceful` - Calm, soothing background
-- `adventurous` - Exciting, dynamic rhythms
-
-**Expected Output:**
-```
-🎵 Composing background music...
-🎼 Generated 3 music tracks:
-   - intro_theme.wav
-   - discovery_theme.wav
-   - conclusion_theme.wav
-📁 Music saved to: output/music/
-```
-
-## Step 6: Assemble Final Product
-
-Combine all elements into a complete multimedia presentation:
-
-```bash
-# Create final video/presentation
-fable-flow publisher process --input output/ --format video
-```
-
-Available output formats:
-- `video` - MP4 video with narration, images, and music
-- `presentation` - Interactive slideshow
-- `epub` - Enhanced digital book
-- `pdf` - Printable illustrated book
-
-**Expected Output:**
-```
-🎬 Assembling final product...
-✅ Video created successfully!
-📁 Final output: output/my_first_story_complete.mp4
-📊 Video details:
-   - Duration: 3 minutes 45 seconds
-   - Resolution: 1920x1080
-   - Format: MP4
-   - Size: 45.2 MB
+make run INPUT=stories/my_first_story_input.json OUTPUT=output/
 ```
 
 ## View Your Creation
 
-Congratulations! 🎉 You've created your first multimedia story. Let's see what you've made:
+The book artifacts (PDF/EPUB) and the movie (MP4) are written under your output directory:
 
 ```bash
-# View the final video (Linux/macOS)
-open output/my_first_story_complete.mp4
+# Open the generated PDF (Linux)
+xdg-open output/*.pdf
 
-# Or on Linux with default video player
-xdg-open output/my_first_story_complete.mp4
+# macOS
+open output/*.pdf
 
 # Windows
-start output/my_first_story_complete.mp4
+start output\*.pdf
 ```
-
-## What You've Accomplished
-
-In just a few commands, you've:
-
-- ✅ **Enhanced** a simple story with AI
-- 🎙️ **Generated** professional narration
-- 🎨 **Created** beautiful illustrations
-- 🎵 **Composed** background music
-- 🎬 **Assembled** everything into a polished video
 
 ## Next Steps
 
-Now that you've created your first multimedia story, you can:
-
-### Experiment with Different Styles
+### Generate from the Other Examples
 ```bash
-# Try different illustration styles
-fable-flow illustrator draw --input output/scenes.json --style watercolor
-
-# Experiment with voice options
-fable-flow director produce --input output/enhanced_story.txt --voice-style dramatic
-
-# Test different music moods
-fable-flow music produce --input output/enhanced_story.txt --mood mysterious
+fable-flow generate examples/cassie_fei_fei_li_input.json --output output/fei_fei/
+fable-flow generate examples/cassie_stephen_hawking_input.json --output output/hawking/
 ```
 
-### Work with Your Own Stories
+### Try a Different LLM
 ```bash
-# Process your own story file
-fable-flow story process --input path/to/your/story.txt --output my_output/
+# Select the language model used for text generation
+fable-flow generate stories/my_first_story_input.json --model qwen2.5
 ```
 
-### Customize the Output
+### Book-Only Runs
 ```bash
-# Create different output formats
-fable-flow publisher process --input output/ --format epub
-fable-flow publisher process --input output/ --format presentation
+# Generate the book without the movie adaptation
+fable-flow generate stories/my_first_story_input.json --book-only
 ```
 
 ### Explore Advanced Features
@@ -239,13 +123,13 @@ fable-flow publisher process --input output/ --format presentation
 ### Common Issues
 
 **Issue**: "No API key found"
-**Solution**: Set up your API configuration in `.env` file or use local models
+**Solution**: Set up your model configuration in the `.env` file (`MODEL_SERVER_URL`, `MODEL_API_KEY`, `DEFAULT_MODEL`) or use local models
 
 **Issue**: Illustrations look inconsistent
-**Solution**: Use `--consistent-style` flag or adjust the style parameters
+**Solution**: Adjust the image model settings in `config/default.yaml`
 
 **Issue**: Audio quality is poor
-**Solution**: Check your audio settings or try a different voice model
+**Solution**: Check your TTS settings in `config/default.yaml`
 
 **Issue**: Video generation fails
 **Solution**: Ensure you have enough disk space and all dependencies installed
@@ -255,9 +139,3 @@ fable-flow publisher process --input output/ --format presentation
 - 📖 Check the [full documentation](../README.md)
 - 🐛 Report issues on [GitHub](https://github.com/suneeta-mall/fable-flow/issues)
 - 💬 Join discussions in the [community forum](https://github.com/suneeta-mall/fable-flow/discussions)
-
-## Congratulations! 
-
-You've successfully completed the Fable Flow quick start tutorial. You're now ready to transform any story into an engaging multimedia experience. The possibilities are endless! ✨
-
-**Share Your Creation**: We'd love to see what you've made! Share your stories with the community and inspire others to explore the magic of AI-powered storytelling. 

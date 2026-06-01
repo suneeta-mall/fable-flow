@@ -1,6 +1,6 @@
 # Troubleshooting Guide 🔧
 
-This guide helps you resolve common issues when installing, configuring, and using FableFlow. Most problems have straightforward solutions!
+Resolve common issues when installing, configuring, and using FableFlow.
 
 ## 🚀 Installation Issues
 
@@ -81,14 +81,12 @@ FileNotFoundError: [Errno 2] No such file or directory: 'config/default.yaml'
 
 **Solutions**:
 ```bash
-# Create default configuration
-fable-flow init
+# There is no init command; configuration is edited directly.
+# Ensure config/default.yaml exists and copy the example env file:
+cp .env.example .env
 
-# Or copy from examples
-cp examples/config/basic.yaml config/my_config.yaml
-
-# Specify config file explicitly
-fable-flow create --config /path/to/your/config.yaml
+# Edit config/default.yaml and .env to set your values
+# (see ../getting-started/configuration.md)
 ```
 
 ### API Key Issues
@@ -97,22 +95,18 @@ fable-flow create --config /path/to/your/config.yaml
 
 **Solutions**:
 ```bash
-# Check if API keys are set
-echo $OPENAI_API_KEY
-echo $REPLICATE_TOKEN
+# Check if the model server settings are set (defined in .env)
+echo $MODEL_SERVER_URL
+echo $MODEL_API_KEY
+echo $DEFAULT_MODEL
 
-# Set API keys in environment
-export OPENAI_API_KEY="your-key-here"
-export REPLICATE_TOKEN="your-token-here"
+# Set them in .env
+MODEL_SERVER_URL="https://your-openai-compatible-server/v1"
+MODEL_API_KEY="your-key-here"
+DEFAULT_MODEL="your-model-name"
 
-# Or set in configuration file
-# config/your_config.yaml
-api_keys:
-  openai: "your-key-here"
-  replicate: "your-token-here"
-
-# Test API connectivity
-fable-flow test-api --provider openai
+# Verify the OpenAI-compatible server is reachable
+curl $MODEL_SERVER_URL/models
 ```
 
 ### Configuration Validation Errors
@@ -121,14 +115,11 @@ fable-flow test-api --provider openai
 
 **Solutions**:
 ```bash
-# Validate your configuration
-fable-flow validate-config config/your_config.yaml
+# Validate your input spec
+fable-flow validate examples/cassie_beach_adventure_input.json
 
-# Use the configuration wizard
-fable-flow config-wizard
-
-# Check against example configurations
-diff config/your_config.yaml examples/config/basic.yaml
+# There is no config wizard; edit config/default.yaml and .env directly
+# (see ../getting-started/configuration.md)
 ```
 
 ## 🎨 Story Generation Issues
@@ -155,11 +146,11 @@ enhancement:
 
 **Debugging steps**:
 ```bash
-# Test text generation in isolation
-fable-flow generate text --input "test story" --debug
+# Generate book content only, into a debug directory for inspection
+fable-flow generate examples/cassie_beach_adventure_input.json --book-only --output debug/
 
-# Review intermediate outputs
-fable-flow create --save-intermediate --output debug/
+# Inspect the intermediate artifacts written under the output directory
+ls -la debug/
 ```
 
 ### Image Generation Failures
@@ -183,11 +174,11 @@ image_generation:
 
 **Debugging steps**:
 ```bash
-# Test image generation separately
-fable-flow generate images --story-file your_story.md --debug
+# Run a full generation into a debug directory and inspect the images
+fable-flow generate examples/cassie_beach_adventure_input.json --output debug/
 
-# Review generated prompts
-fable-flow create --save-prompts --output debug/
+# Review the generated illustration assets and prompts
+ls -la debug/
 ```
 
 ### Audio Generation Issues
@@ -212,12 +203,12 @@ audio_generation:
 
 **Debugging steps**:
 ```bash
-# Test audio generation
-fable-flow generate audio --text "test narration" --debug
+# Run a full generation and inspect the produced narration audio
+fable-flow generate examples/cassie_beach_adventure_input.json --output debug/
 
 # Check audio file properties
-file output/narration.wav
-ffprobe output/narration.wav
+file debug/narration.wav
+ffprobe debug/narration.wav
 ```
 
 ## 🔧 Performance Issues
@@ -362,8 +353,8 @@ chmod 644 output/*
 file output/story.pdf
 pdfinfo output/story.pdf
 
-# Regenerate with different format
-fable-flow create --output-format pdf,epub,html
+# Regenerate the book and its published outputs
+fable-flow generate examples/cassie_beach_adventure_input.json --output output/
 ```
 
 ### Missing Output Files
@@ -385,12 +376,12 @@ generation:
 
 **Debugging**:
 ```bash
-# Check logs for errors
-fable-flow create --log-level debug --log-file generation.log
-tail -f generation.log
+# Re-run generation, capturing logs for errors
+fable-flow generate examples/cassie_beach_adventure_input.json --output output/ 2>&1 | tee generation.log
+grep -i "error\|failed" generation.log
 
-# Verify intermediate files
-ls -la output/intermediate/
+# Verify the produced files
+ls -la output/
 ```
 
 ## 🐛 Debug Mode and Logging
@@ -398,28 +389,25 @@ ls -la output/intermediate/
 ### Enable Debug Output
 
 ```bash
-# Run with full debugging
-fable-flow create --debug --verbose --log-level debug
+# Run a generation into a debug directory, capturing all output to a log
+fable-flow generate examples/cassie_beach_adventure_input.json --output debug/ 2>&1 | tee debug/generation.log
 
-# Save all intermediate outputs
-fable-flow create --save-intermediate --output debug/
-
-# Generate detailed report
-fable-flow create --generate-report --report debug/report.html
+# Inspect the artifacts produced under the output directory
+ls -la debug/
 ```
 
 ### Log Analysis
 
 ```bash
-# View recent logs
-tail -100 ~/.fable-flow/logs/latest.log
+# View recent logs (from the run above)
+tail -100 debug/generation.log
 
 # Search for specific errors
-grep -i error ~/.fable-flow/logs/latest.log
-grep -i "failed" ~/.fable-flow/logs/latest.log
+grep -i error debug/generation.log
+grep -i "failed" debug/generation.log
 
 # Monitor logs in real-time
-tail -f ~/.fable-flow/logs/latest.log
+tail -f debug/generation.log
 ```
 
 ## 🔍 Getting Help
@@ -432,15 +420,15 @@ tail -f ~/.fable-flow/logs/latest.log
 4. **Update software**: Make sure you have the latest version
 
 ```bash
-# Get version information
-fable-flow --version
-fable-flow info
+# Get version / package information
+uv run fable-flow --help
+uv pip show fable-flow
 
-# Run system check
-fable-flow doctor
+# Run the test suite as a system check
+make test
 
-# Generate diagnostic report
-fable-flow diagnose --output diagnostic_report.txt
+# Verify the package imports in the virtual environment
+uv run python -c "import fable_flow; print('ok')"
 ```
 
 ### Community Support
@@ -474,38 +462,36 @@ rm -rf ~/.fable-flow/
 rm -rf venv/  # if using virtual environment
 
 # Fresh installation
-python -m venv venv
-source venv/bin/activate  # or venv\Scripts\activate on Windows
-pip install --upgrade pip
-pip install fable-flow
-fable-flow init
+make install
+
+# Recreate your environment file
+cp .env.example .env
+# then edit .env and config/default.yaml (see ../getting-started/configuration.md)
 ```
 
 ### Update Everything
 
 ```bash
-# Update FableFlow
-pip install --upgrade fable-flow
+# Update FableFlow and reinstall dependencies
+git pull && make install
 
-# Update all dependencies
-pip install --upgrade -r requirements.txt
-
-# Clear caches
-pip cache purge
-fable-flow clear-cache
+# There is no cache command; to start clean, delete prior artifacts
+# and re-run (optionally without --resume)
+rm -rf output/<name>/
+fable-flow generate examples/cassie_beach_adventure_input.json --output output/
 ```
 
 ### Verify Installation
 
 ```bash
 # Test basic functionality
-fable-flow --help
-fable-flow init
-fable-flow test-system
+uv run fable-flow --help
+make test
+uv run python -c "import fable_flow; print('ok')"
 
-# Create a simple test story
-echo "Once upon a time..." > test_story.txt
-fable-flow create --input test_story.txt --config config/minimal.yaml
+# Validate and generate using the example input spec
+fable-flow validate examples/cassie_beach_adventure_input.json
+make run INPUT=examples/cassie_beach_adventure_input.json
 ```
 
 ---
@@ -523,5 +509,3 @@ fable-flow create --input test_story.txt --config config/minimal.yaml
 - Version control your configuration files
 - Monitor API usage and costs
 - Keep API keys secure and rotate them regularly
-
-Still having issues? Don't hesitate to reach out to our [community](https://github.com/suneeta-mall/fable-flow/discussions) - we're here to help! 🤝

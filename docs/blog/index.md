@@ -23,7 +23,7 @@ title: Curiosity Chronicles
   <h2><a href="2024/03/15/the-curiosity-imperative-why-wonder-is-the-foundation-of-future-ready-learning/">The Curiosity Imperative: Why Wonder is the Foundation of Future-Ready Learning</a></h2>
 
   <p class="post-excerpt-large">
-    In our digital age, children are increasingly subjected to passive entertainment that systematically diminishes their innate curiosity. This founding essay explores why nurturing wonder in early childhood is more critical now than ever before—and how AI-powered multi-sensory storytelling can help preserve and amplify the curiosity that will define the next generation's success.
+    Children today are increasingly steeped in passive entertainment that dims their innate curiosity. This founding essay explores why nurturing wonder in early childhood matters more than ever—and how AI-powered multi-sensory storytelling can help preserve it.
   </p>
 
   <div class="post-highlights">
@@ -33,7 +33,7 @@ title: Curiosity Chronicles
     </div>
     <div class="highlight-item">
       <strong>Science-Backed Learning</strong>
-      <p>How multi-sensory storytelling creates 40% improved comprehension</p>
+      <p>How multi-sensory storytelling deepens comprehension</p>
     </div>
     <div class="highlight-item">
       <strong>Future-Ready Mindsets</strong>
@@ -61,13 +61,13 @@ title: Curiosity Chronicles
   </div>
 
   <div class="topic-card">
-    <h3>🤖 AI as Creative Amplifier</h3>
-    <p>How artificial intelligence democratizes storytelling without replacing human creativity, vision, or values</p>
+    <h3>AI as Creative Amplifier</h3>
+    <p>How AI democratizes storytelling without replacing human creativity, vision, or values</p>
   </div>
 
   <div class="topic-card">
     <h3>✍️ Craft of Storytelling</h3>
-    <p>From manuscript to multi-sensory magic—the art and technique of creating educational narratives that inspire</p>
+    <p>From manuscript to multi-sensory experience—the technique of creating educational narratives</p>
   </div>
 
   <div class="topic-card">
@@ -92,7 +92,7 @@ title: Curiosity Chronicles
 
 <div class="conversation-section">
   <h3>Your Voice Matters</h3>
-  <p>The Curiosity Chronicles isn't just our platform—it's a community conversation about the future of learning, creativity, and childhood wonder in the age of AI.</p>
+  <p>The Curiosity Chronicles is a community conversation about the future of learning, creativity, and childhood wonder in the age of AI.</p>
 
   <div class="conversation-cta">
     <a href="https://github.com/suneeta-mall/fable-flow/discussions" target="_blank" class="btn btn-primary">💬 Join Discussions</a>

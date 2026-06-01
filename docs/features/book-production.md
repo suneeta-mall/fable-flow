@@ -1,43 +1,23 @@
 # Book Production
 
-FableFlow's book production feature transforms your story into professional, multi-format books ready for digital and print distribution. Using advanced layout algorithms and AI-powered formatting, it creates beautifully structured books in PDF, EPUB, and HTML formats.
+FableFlow turns your story into PDF, EPUB, and HTML books ready for digital and print distribution.
 
 ## Overview
 
-The book production pipeline creates complete books through:
-
-* Professional layout and typography
-* Contextual illustration placement
-* Multi-format generation (PDF, EPUB, HTML)
-* Table of contents and navigation
-* Cover design and metadata
+The pipeline handles layout and typography, contextual illustration placement, multi-format generation, table of contents and navigation, and cover design and metadata.
 
 ## Agent Architecture
 
-FableFlow uses a dedicated **Book Producer Agent** that:
-
-- Structures enhanced manuscript into book format
-- Integrates illustrations from the Illustrator Agent
-- Generates professional layouts for each format
-- Creates covers, TOC, front matter, and back matter
-- Ensures consistency across all output formats
-
-The Book Producer works after story processing and illustration generation are complete.
+A dedicated **Book Producer Agent** structures the manuscript, integrates illustrations from the Illustrator Agent, generates per-format layouts, and creates covers, TOC, front matter, and back matter, keeping all formats consistent. It runs after story processing and illustration generation.
 
 ## Book Formats
 
 ### 📕 PDF (Print & Digital)
 
-**Generated using ReportLab**
-
-- Print-ready layout with proper margins
-- Bookmarks for navigation
-- Page numbers and headers
-- Professional typography
-- High-resolution images
-- Embedded fonts
+**Generated using ReportLab.** Print-ready layout with margins, bookmarks, page numbers and headers, professional typography, high-resolution images, and embedded fonts.
 
 **Structure:**
+
 - Front Cover (with title overlay on illustration)
 - Title Page
 - Publication Information (copyright, credits)
@@ -50,64 +30,29 @@ The Book Producer works after story processing and illustration generation are c
 
 ### 📗 EPUB (E-Readers)
 
-**Generated as EPUB3 format**
+**Generated as EPUB3.** NCX navigation, OPF manifest, responsive reflowable layout, embedded illustrations, chapter navigation, and library metadata.
 
-- NCX navigation for e-readers
-- OPF manifest for content organization
-- Responsive layout for different screen sizes
-- Embedded illustrations
-- Chapter navigation
-- Metadata for library systems
-
-**Features:**
-- E-reader optimized (Kindle, Kobo, Apple Books)
-- Reflowable text
-- Adjustable font sizes
-- Night mode compatible
-- Accessibility features
+**Features:** optimized for Kindle, Kobo, and Apple Books with adjustable font sizes, night mode, and accessibility support.
 
 ### 🌐 HTML (Web & Preview)
 
-**Generated as responsive HTML5**
+**Generated as responsive HTML5.** Browser preview, interactive navigation, embedded images, a print stylesheet, and mobile-optimized layout.
 
-- Web-friendly, responsive design
-- Browser preview capability
-- Interactive navigation
-- Embedded images
-- Print stylesheet
-- Mobile-optimized
-
-**Use Cases:**
-- Website embedding
-- Online reading
-- Quick preview
-- Interactive storytelling
+**Use Cases:** website embedding, online reading, quick preview, and interactive storytelling.
 
 ## Key Features
 
 ### Professional Book Structure
 
-Automatically generates:
-
-* **Front Matter** - Cover, title page, copyright, dedication, TOC
-* **Body Content** - Chapters with illustrations, proper spacing
-* **Back Matter** - About author, index, additional resources
+Generates front matter (cover, title page, copyright, dedication, TOC), body content (chapters with illustrations), and back matter (about the author, index, resources).
 
 ### Intelligent Illustration Placement
 
-- Contextual image placement
-- Caption generation
-- Proper spacing and flow
-- Print and digital optimization
-- Resolution handling
+Places images contextually with captions, proper spacing, and resolution handling for both print and digital.
 
 ### Typography & Layout
 
-- Age-appropriate font selection
-- Optimal line spacing and margins
-- Chapter styling and headers
-- Page breaks and flow
-- Professional formatting
+Selects age-appropriate fonts and applies line spacing, margins, chapter styling, and page breaks.
 
 ## Usage
 
@@ -119,14 +64,17 @@ Automatically generates:
 4. Download books from the Media Gallery in all three formats
 5. Preview HTML version directly in browser
 
-### Option 2: CLI - Full Publishing Pipeline
+### Option 2: CLI
 
 ```bash
-# Run complete pipeline including book production
-fable-flow publisher process
+# Run the full generation pipeline (book production runs as a stage within it)
+fable-flow generate examples/cassie_beach_adventure_input.json
+
+# Generate the book only, without the movie
+fable-flow generate examples/cassie_beach_adventure_input.json --book-only
 ```
 
-The Book Producer Agent runs after story processing and illustration generation.
+The Book Producer Agent runs after story processing and illustration generation. Use `--resume` to re-run only missing pieces. The stage can also be re-run from FableFlow Studio.
 
 ### Configuration
 
@@ -168,7 +116,7 @@ book:
   edition: "First Edition"
 ```
 
-**Note:** Most styling (fonts, colors, spacing) is defined in `producer/fable_flow/config.py` as part of the `PDFConfig` class. These include:
+**Note:** Most styling (fonts, colors, spacing) is defined in `producer/fable_flow/config.py` as part of the `PDFConfig` class:
 
 - Font families (title_font, body_font, caption_font, etc.)
 - Font sizes (title_font_size: 24, body_font_size: 16, etc.)
@@ -179,12 +127,7 @@ See `producer/fable_flow/config.py:57-155` for complete PDF styling options.
 
 ## Output
 
-The book production pipeline generates:
-
-**In FableFlow Studio:**
-- Download links for all three formats
-- HTML preview in browser
-- Real-time generation progress
+**In FableFlow Studio:** download links for all three formats, HTML preview in browser, and real-time generation progress.
 
 **CLI Output Files:**
 ```
@@ -213,31 +156,16 @@ Book production integrates with:
 
 ## File Implementation
 
-- **PDF Generation**: `producer/fable_flow/pdf.py` (ReportLab-based)
-- **EPUB Generation**: `producer/fable_flow/epub.py` (EPUB3 standard)
-- **HTML Generation**: LLM-powered structured content
-- **Book Structure**: `producer/fable_flow/book_structure.py`
-- **Book Utilities**: `producer/fable_flow/book_utils.py`
+- **PDF Generation**: `producer/fable_flow/publishers/pdf.py` (ReportLab-based)
+- **EPUB Generation**: `producer/fable_flow/publishers/epub.py` (EPUB 3 standard)
+- **Book Content Schema**: `producer/fable_flow/schemas/book_content.py` (the `BookContent` schema)
+- **Book Assembly**: `producer/fable_flow/agents/book_assembly.py` (`create_book_content`)
 
 ## Best Practices
 
-1. **Format Selection**
-    * Generate all three formats for maximum reach
-    * Use PDF for print-on-demand services
-    * Use EPUB for e-book stores
-    * Use HTML for website embedding
-
-2. **Quality Control**
-    * Review PDF layout before printing
-    * Test EPUB on multiple e-readers
-    * Check HTML responsiveness
-    * Verify image quality and placement
-
-3. **Distribution**
-    * Include proper metadata (ISBN, author, copyright)
-    * Test on target platforms before publishing
-    * Provide multiple download options
-    * Consider accessibility features
+1. **Format Selection** - generate all three: PDF for print-on-demand, EPUB for e-book stores, HTML for website embedding.
+2. **Quality Control** - review PDF layout, test EPUB on multiple e-readers, and check HTML responsiveness and image placement.
+3. **Distribution** - include proper metadata (ISBN, author, copyright) and test on target platforms before publishing.
 
 ## Publishing Workflow
 
@@ -267,9 +195,10 @@ Book production integrates with:
 
 #### When EPUB Conversion Fails on Kindle/Publishing Sites
 
-If your EPUB shows errors when uploading to Amazon KDP, Apple Books, or other publishing platforms, or when converting to MOBI/AZW3, use **Calibre** to debug and identify the issues.
+If your EPUB shows errors on Amazon KDP, Apple Books, or other platforms, or when converting to MOBI/AZW3, use **Calibre** to debug.
 
 **Common EPUB Errors:**
+
 - `Failed to find image: OEBPS/images/filename.ext` - Missing or incorrectly referenced image files
 - `TOC item not found in document` - Navigation points to non-existent files
 - `Invalid XHTML` - Malformed HTML/XML structure
@@ -301,27 +230,22 @@ ebook-convert book.epub book.mobi --output-profile kindle
 ebook-convert book.epub book.azw3 --output-profile kindle
 ```
 
-**What Calibre Checks:**
-- ✓ All referenced images exist
-- ✓ All TOC items point to valid files
-- ✓ XHTML is well-formed
-- ✓ Metadata is complete
-- ✓ File structure is correct
-- ✓ Kindle compatibility
+**What Calibre Checks:** referenced images exist, TOC items point to valid files, XHTML is well-formed, metadata is complete, file structure is correct, and Kindle compatibility.
 
 **Step 3: Read Error Messages**
 
-Calibre will output detailed errors like:
+Calibre outputs detailed errors like:
 ```
 Failed to find image: OEBPS/images/logo_horizontal.svg
 TOC item Cover [OEBPS/cover.xhtml] not found in document
 ```
 
-These errors tell you exactly what's wrong with your EPUB.
+These tell you exactly what's wrong with your EPUB.
 
 **Step 4: Fix Issues in FableFlow**
 
 Common fixes:
+
 1. **Missing images** - Ensure all referenced images are in `output/` directory
 2. **Wrong image format** - Check if EPUB references `.svg` but only `.png` exists
 3. **Incorrect TOC** - Verify all TOC entries match actual XHTML files
@@ -335,7 +259,7 @@ After fixing issues:
 rm output/book.epub
 
 # Run book production again
-fable-flow publisher process
+fable-flow generate examples/cassie_beach_adventure_input.json --book-only --resume
 ```
 
 #### Alternative: Online EPUB Validators
@@ -354,6 +278,7 @@ java -jar epubcheck-5.1.0/epubcheck.jar book.epub
 ```
 
 **Online Validators:**
+
 - [EPUBCheck Online](http://validator.idpf.org/) - Official IDPF validator
 - [Pagina EPUB Checker](https://www.pagina.gmbh/produkte/epub-checker/) - Detailed validation
 
@@ -387,21 +312,25 @@ If Amazon KDP rejects your EPUB:
 #### Publishing Platform Requirements
 
 **Amazon Kindle (KDP):**
+
 - Accepts EPUB 2.0 and 3.0
 - Automatically converts to Kindle format
 - Recommends using Kindle Previewer first
 
 **Apple Books:**
+
 - Requires EPUB 3.0
 - Strict XHTML validation
 - Use Apple Books Previewer for testing
 
 **Google Play Books:**
+
 - Accepts EPUB 2.0 and 3.0
 - More lenient validation
 - Good for testing if others fail
 
 **Kobo:**
+
 - Accepts EPUB 2.0 and 3.0
 - Similar requirements to Kindle
 
@@ -416,6 +345,7 @@ If Amazon KDP rejects your EPUB:
 #### FableFlow EPUB Features
 
 FableFlow generates EPUB 3.0 with:
+
 - ✓ Both `toc.ncx` (EPUB 2.0 compatibility) and `nav.xhtml` (EPUB 3.0)
 - ✓ Proper metadata (ISBN, author, publisher, description)
 - ✓ Cover image with high contrast text overlay
@@ -427,7 +357,7 @@ If you still encounter issues after validation, please report them on [GitHub Is
 ### Getting Help
 
 - Check the [complete workflow documentation](../fableflow-workflow.md)
-- Review [book structure implementation](../../producer/fable_flow/book_structure.py)
+- Review the [book content schema](https://github.com/suneeta-mall/fable-flow/blob/main/producer/fable_flow/schemas/book_content.py)
 - Report issues on [GitHub](https://github.com/suneeta-mall/fable-flow/issues)
 - Join our [community discussions](https://github.com/suneeta-mall/fable-flow/discussions)
 
@@ -438,7 +368,3 @@ View published books created with FableFlow:
 * [Curious Cassie Series](../curious-cassie/) - Complete book examples
 * [The Magic of YET!](../books/curious_cassie/cassie_caleb_n_magic_of_yet/book.md) - Full book with all formats
 * [Beach Ride Quest](../books/curious_cassie/curious_cassie_beach_ride_quests/book.md) - Children's educational book
-
----
-
-**Book Production** is a core feature that makes FableFlow unique - transforming your story into professional, multi-format publications ready for global distribution.

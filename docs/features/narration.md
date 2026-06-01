@@ -1,57 +1,28 @@
 # AI Narration
 
-Fable Flow's narration feature transforms your story into engaging, professional-quality audio narration. Using advanced text-to-speech technology, it creates natural-sounding voiceovers that bring your story to life.
+FableFlow converts your story into audio narration using text-to-speech.
 
 ## Overview
 
-The narration pipeline converts your story into audio through:
-
-* Voice selection and customization
-* Emotional tone matching
-* Pacing and emphasis control
-* Background music integration
-* Sound effect placement
+The pipeline handles voice selection, emotional tone matching, pacing and emphasis, and integration with background music and sound effects.
 
 ## Key Features
 
 ### Voice Generation
 
-The system provides:
-
-* Multiple voice options
-* Age-appropriate tones
-* Emotional expression
-* Character voice differentiation
-* Educational clarity
+Offers multiple voices with age-appropriate tones, emotional expression, and per-character differentiation.
 
 ### Audio Enhancement
 
-Enhances narration with:
-
-* Natural pauses and pacing
-* Emotional emphasis
-* Character voice distinction
-* Educational tone adjustment
-* Background music integration
+Applies natural pauses, emphasis, and tone adjustments, then balances narration against background music.
 
 ### Multiple Output Formats
 
-Supports various audio formats:
-
-* WAV for high quality
-* MP3 for compatibility
-* M4A for mobile devices
-* OGG for web use
-* AAC for streaming
+Outputs WAV, MP3, M4A, OGG, and AAC for high-quality, mobile, web, and streaming use.
 
 ## Agent Architecture
 
-FableFlow uses a dedicated **Narrator Agent** that:
-
-- Converts manuscript text to natural-sounding speech
-- Applies appropriate emotional tone and pacing
-- Generates high-quality audio files for storytelling
-- Integrates with video and book production
+A dedicated **Narrator Agent** converts manuscript text to speech, applies tone and pacing, produces audio files, and integrates with video and book production.
 
 ## Usage
 
@@ -62,19 +33,14 @@ FableFlow uses a dedicated **Narrator Agent** that:
 3. Run the publisher pipeline
 4. Listen to generated narration in the Media Gallery
 
-### Option 2: CLI - Individual Narration
+### Option 2: CLI
 
 ```bash
-# Generate narration (requires processed story)
-fable-flow narration produce
+# Run the full generation pipeline (narration runs as a stage within it)
+fable-flow generate examples/cassie_beach_adventure_input.json
 ```
 
-### Option 3: CLI - Full Publishing Pipeline
-
-```bash
-# Run complete pipeline including narration
-fable-flow publisher process
-```
+Narration runs as a stage within `fable-flow generate`. Use `--resume` to re-run only missing pieces. The stage can also be re-run from FableFlow Studio.
 
 ### Configuration
 
@@ -97,8 +63,6 @@ style:
 
 ## Output
 
-The narration pipeline generates:
-
 * `audio/` directory containing:
     * Main narration files
     * Character voice files
@@ -109,7 +73,7 @@ The narration pipeline generates:
 
 ## Integration
 
-Narration works seamlessly with:
+Narration feeds into:
 
 * **Story Processing** - Uses enhanced text
 * **Video Production** - Provides audio tracks
@@ -118,23 +82,9 @@ Narration works seamlessly with:
 
 ## Best Practices
 
-1. **Voice Selection**
-    * Match target audience
-    * Consider story tone
-    * Ensure clarity
-    * Maintain consistency
-
-2. **Audio Quality**
-    * Check pronunciation
-    * Verify pacing
-    * Test emotional tone
-    * Review background music
-
-3. **File Management**
-    * Organize by chapter
-    * Track versions
-    * Backup original files
-    * Document settings
+1. **Voice Selection** - match the audience and story tone, and keep voices consistent.
+2. **Audio Quality** - check pronunciation, pacing, tone, and music balance.
+3. **File Management** - organize by chapter, track versions, and back up originals.
 
 ## Troubleshooting
 
@@ -151,6 +101,4 @@ Narration works seamlessly with:
 
 ### Getting Help
 
-- Check the [full documentation](../README.md)
-- Report issues on [GitHub](https://github.com/suneeta-mall/fable-flow/issues)
-- Join our [community discussions](https://github.com/suneeta-mall/fable-flow/discussions) 
+See the [full documentation](../README.md), [GitHub issues](https://github.com/suneeta-mall/fable-flow/issues), and [community discussions](https://github.com/suneeta-mall/fable-flow/discussions).

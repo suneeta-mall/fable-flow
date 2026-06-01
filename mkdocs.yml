@@ -163,9 +163,11 @@ nav:
 # Creation & Community
 - ✨ Creator's Corner:
   - create/index.md
-  - Getting Started: getting-started/installation.md
-  - Quick Tutorial: getting-started/quick-start.md
-  - Configuration: getting-started/configuration.md
+  - Getting Started:
+    - getting-started/index.md
+    - Installation: getting-started/installation.md
+    - Quick Tutorial: getting-started/quick-start.md
+    - Configuration: getting-started/configuration.md
 - 🌟 Community: 
   - community/index.md
   - Guidelines: community/guidelines.md

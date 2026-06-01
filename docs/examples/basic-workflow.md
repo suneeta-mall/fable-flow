@@ -1,6 +1,6 @@
 # Basic Workflow Example 🚀
 
-This guide demonstrates a complete FableFlow workflow from initial story idea to finished multimedia book. Follow along to see how all the components work together.
+A complete FableFlow workflow from story idea to finished multimedia book.
 
 ## 📝 Story Concept
 
@@ -9,76 +9,41 @@ This guide demonstrates a complete FableFlow workflow from initial story idea to
 **Theme**: Overcoming anxiety and making new friends  
 **Educational Focus**: Social-emotional learning  
 
-## Step 1: Initial Story Draft
+## Step 1: Author the Input Spec
 
-```markdown
-# Emma's First Day at School
+FableFlow generates from a JSON **input spec** (a `FableFlowInput`) rather than a raw story file. Start by copying one of the bundled examples and editing the project metadata, characters, and story seed:
 
-Emma felt butterflies in her tummy as she looked at the big school building. 
-It was her very first day, and everything seemed so new and different.
-
-"What if nobody wants to be my friend?" she whispered to her mom.
-
-Her mom smiled and gave her a hug. "Just be yourself, Emma. 
-You're kind and funny - I know you'll make wonderful friends."
-
-Emma took a deep breath and walked into her new classroom...
+```bash
+cp examples/cassie_beach_adventure_input.json examples/emma_story_input.json
 ```
 
-## Step 2: Configuration Setup
+The story seed captures the concept above - the theme of overcoming anxiety, the school setting, and the social-emotional learning focus - which the pipeline expands into a full narrative.
 
-Create a configuration file for your story:
+## Step 2: Validate the Spec
 
-```yaml
-# config/emma_story.yaml
-story:
-  title: "Emma's First Day at School"
-  target_age: "5-7 years"
-  reading_level: "early_elementary"
-  themes: ["social_skills", "confidence", "friendship"]
+Check the spec parses into a valid `FableFlowInput` before generating:
 
-processing:
-  enhance_text: true
-  generate_illustrations: true
-  create_narration: true
-  add_background_music: true
-
-illustration:
-  style: "warm_cartoon"
-  character_consistency: true
-  scene_count: 8
-  
-narration:
-  voice_type: "child_friendly_female"
-  pacing: "slow_and_clear"
-  emotions: true
-
-music:
-  mood: "gentle_optimistic"
-  instruments: ["piano", "strings"]
-  volume_level: "background"
+```bash
+# Validate the input spec
+fable-flow validate examples/emma_story_input.json
 ```
 
 ## Step 3: Running FableFlow
 
-Execute the story processing pipeline:
+Execute the generation pipeline:
 
 ```bash
-# Install and activate FableFlow
-pip install fable-flow
-fable-flow init
+# Install FableFlow
+make install
 
-# Process the story
-fable-flow create \
-  --input stories/emma_draft.md \
-  --config config/emma_story.yaml \
-  --output output/emma_story
+# Generate the book and movie from the input spec
+fable-flow generate examples/emma_story_input.json --output output/emma_story
 ```
 
 ## Step 4: AI Enhancement Process
 
 ### Text Enhancement
-FableFlow improves the story structure and language:
+FableFlow improves story structure and language:
 
 ```markdown
 # Emma's First Day at School
@@ -101,7 +66,7 @@ and stepped through the bright yellow doors of adventure...
 ```
 
 ### Illustration Generation
-The AI creates consistent illustrations:
+The AI creates consistent illustrations across scenes:
 
 1. **Scene 1**: Emma and mom outside school building
 2. **Scene 2**: Emma entering the classroom
@@ -113,31 +78,22 @@ The AI creates consistent illustrations:
 8. **Scene 8**: Happy goodbye at the end of the day
 
 ### Audio Production
-- **Narration**: Natural, expressive voice reading
+- **Narration**: Expressive voice reading
 - **Character Voices**: Distinct voices for Emma, Mom, and Teacher
-- **Background Music**: Gentle piano melody that builds confidence
+- **Background Music**: Gentle piano melody
 - **Sound Effects**: School bell, children playing, footsteps
 
 ## Step 5: Output Formats
 
-FableFlow generates multiple formats:
+FableFlow writes the book artifacts and the movie into the output directory:
 
 ```
 output/emma_story/
-├── online/
-│   ├── index.html          # Interactive web version
-│   ├── style.css           # Custom styling
-│   └── assets/
-│       ├── images/         # All illustrations
-│       ├── audio/          # Narration files
-│       └── music/          # Background music
-├── emma_story.pdf          # Print-ready version
-├── emma_story.epub         # E-reader compatible
-├── emma_story_slides.pptx  # Classroom presentation
-└── metadata/
-    ├── educational_guide.md # Discussion questions
-    ├── activity_ideas.md   # Extension activities
-    └── story_analysis.json # Technical metadata
+├── book_content.json       # Structured book (BookContent)
+├── illustrations/          # Generated illustrations
+├── *.pdf                   # Print-ready book
+├── *.epub                  # E-reader compatible
+└── *.mp4                   # Movie adaptation
 ```
 
 ## Step 6: Quality Review
@@ -150,7 +106,7 @@ output/emma_story/
 
 ### Technical Quality Check
 - ✅ Consistent character appearance across illustrations
-- ✅ Clear, professional narration
+- ✅ Clear narration
 - ✅ Appropriate background music volume
 - ✅ Proper formatting in all output formats
 
@@ -162,7 +118,7 @@ output/emma_story/
 
 ## Step 7: Educational Resources
 
-FableFlow automatically generates teaching materials:
+FableFlow generates teaching materials:
 
 ### Discussion Questions
 - How did Emma feel before her first day? Have you ever felt that way?
@@ -202,10 +158,9 @@ FableFlow automatically generates teaching materials:
 ## 🔄 Iteration and Improvement
 
 ### Gathering Feedback
-- Test with target age group
+- Test with the target age group
 - Get input from parents and teachers
 - Monitor engagement and comprehension
-- Collect suggestions for improvement
 
 ### Refinement Options
 - Adjust reading level based on feedback
@@ -213,11 +168,11 @@ FableFlow automatically generates teaching materials:
 - Fine-tune narration pacing
 - Add or modify educational components
 
-### Version Management
-FableFlow tracks versions and changes:
+### Re-generating After Changes
+Edit the input spec and re-run the pipeline to produce an updated version:
 ```bash
-fable-flow version --story emma_story --list
-fable-flow update --story emma_story --config config/emma_story_v2.yaml
+fable-flow validate examples/emma_story_input.json
+fable-flow generate examples/emma_story_input.json --output output/emma_story_v2
 ```
 
 ## 📊 Success Metrics
@@ -257,22 +212,13 @@ fable-flow update --story emma_story --config config/emma_story_v2.yaml
 - **Start Simple**: Begin with clear, straightforward narratives
 - **Know Your Audience**: Research age-appropriate content and interests
 - **Test Early**: Get feedback from children and educators throughout development
-- **Iterate Frequently**: Use feedback to improve your story continuously
 
 ### Technical Best Practices
-- **Version Control**: Keep track of different story versions
+- **Version Control**: Track different story versions
 - **Backup Everything**: Maintain copies of all source materials
 - **Quality Checks**: Review all generated content before publishing
 - **Accessibility First**: Design for inclusive access from the beginning
 
-### Community Engagement
-- **Share Your Process**: Document your creation journey for others
-- **Seek Feedback**: Engage with the FableFlow community for input
-- **Contribute Back**: Help improve the platform and help other creators
-- **Celebrate Success**: Share your achievements and inspire others
-
 ---
 
-This example demonstrates the complete FableFlow workflow from concept to finished story. Each project will be unique, but this framework provides a solid foundation for creating engaging, educational multimedia stories.
-
-Ready to start your own story? Check out our [Quick Start Guide](../getting-started/quick-start.md) to begin your creative journey!
+Ready to start your own story? See the [Quick Start Guide](../getting-started/quick-start.md).

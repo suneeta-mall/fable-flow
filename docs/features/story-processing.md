@@ -1,58 +1,40 @@
 # Story Processing & Editorial Review
 
-FableFlow's story processing feature transforms your text into an enhanced, multimedia-ready narrative through a comprehensive AI-powered editorial review pipeline. This powerful system analyzes, structures, and optimizes your story through five specialized review stages while maintaining its core message and educational value.
+FableFlow runs your text through a five-stage AI editorial pipeline that analyzes, structures, and prepares it for multimedia production while preserving its message and educational value.
 
 ## Overview
 
-The story processing pipeline takes your input text and enhances it through a **5-stage AI editorial review process**:
+The pipeline enhances your input through five review stages:
 
-1. **Friendly Proof** - Initial feedback on readability, flow, and engagement
-2. **Critical Review** - Professional editorial analysis of structure, character development, and narrative
-3. **Content Check** - Safety validation, age-appropriateness, and educational value assessment
-4. **Story Edit** - Structure improvements, pacing optimization, and narrative enhancement
-5. **Format Proof** - Final polish, formatting, and preparation for multimedia production
+1. **Friendly Proof** - readability, flow, and engagement feedback
+2. **Critical Review** - structure, character development, and narrative analysis
+3. **Content Check** - safety, age-appropriateness, and educational value
+4. **Story Edit** - structure, pacing, and narrative improvements
+5. **Format Proof** - final polish, formatting, and prep for production
 
 ### Author Control
 
-At each stage, you review the AI feedback and **approve or request revisions**. If you reject feedback at any stage, you can revise your manuscript and restart the review process. This ensures you maintain creative control while benefiting from AI-powered editorial insights.
+At each stage you approve or request revisions. Reject feedback to revise your manuscript and restart the review, keeping creative control over the AI's suggestions.
 
 ## Key Features
 
 ### Intelligent Story Analysis
 
-The system analyzes your story for:
-
-* Narrative structure and flow
-* Character development and consistency
-* Educational value and learning objectives
-* Engagement level and age-appropriateness
-* Scientific accuracy (when applicable)
+Analyzes narrative structure and flow, character consistency, educational value, age-appropriateness, and scientific accuracy where applicable.
 
 ### Content Enhancement
 
-Automatically improves your story by:
-
-* Optimizing language and vocabulary for target audience
-* Enhancing pacing and narrative flow
-* Adding educational elements and discussion points
-* Ensuring consistent tone and style
-* Maintaining scientific accuracy
+Optimizes vocabulary for the target audience, improves pacing, adds discussion points, and keeps tone and scientific accuracy consistent.
 
 ### Scene Preparation
 
-Prepares your story for multimedia production by:
-
-* Breaking down scenes for illustration
-* Identifying key moments for visual emphasis
-* Creating image prompts for illustration generation
-* Structuring content for video production
-* Planning music and sound effect placement
+Breaks the story into scenes, flags key visual moments, generates image prompts, and plans music and sound placement for downstream production.
 
 ## Usage
 
 ### Option 1: FableFlow Studio (Recommended)
 
-Use the web-based Studio interface for the best experience:
+Use the web-based Studio interface:
 
 1. Start Studio: `make studio-start`
 2. Navigate to http://localhost:3000
@@ -63,25 +45,18 @@ Use the web-based Studio interface for the best experience:
 7. Review AI feedback at each editorial stage
 8. Approve or request revisions
 
-### Option 2: CLI - Individual Story Processing
+### Option 2: CLI
 
 ```bash
-# Process story manuscript only
-fable-flow story process
+# Run the full generation pipeline (story processing runs as a stage within it)
+fable-flow generate examples/cassie_beach_adventure_input.json
 ```
 
-### Option 3: CLI - Full Publishing Pipeline
-
-```bash
-# Run complete end-to-end pipeline (includes story processing + multimedia)
-fable-flow publisher process
-```
-
-This runs all production stages: story review → illustrations → narration → music → books → video
+Story processing runs as a stage within `fable-flow generate`. This runs all production stages: story review → illustrations → narration → music → books → video. Use `--book-only` to stop after the book (no movie), and `--resume` to re-run only missing pieces. The stage can also be re-run from FableFlow Studio.
 
 ### Configuration
 
-Story processing can be customized through the `config/default.yaml` file or `.env` environment variables:
+Customize via `config/default.yaml` or `.env`:
 
 ```yaml
 model:
@@ -99,15 +74,10 @@ FableFlow supports OpenAI API standards, including Claude API, vLLM, and other c
 
 ## Output
 
-The story processing pipeline generates:
-
-**In FableFlow Studio:**
-- Real-time editorial feedback displayed in the UI
-- Version comparison view for before/after
-- Interactive approval/rejection workflow
-- Live progress notifications
+**In FableFlow Studio:** real-time editorial feedback, before/after version comparison, an approval/rejection workflow, and live progress notifications.
 
 **CLI Output Files:**
+
 - `manuscript.txt` - Enhanced manuscript after all review stages
 - `editorial_feedback/` - Feedback from each review stage
 - `metadata.json` - Processing metadata and settings
@@ -115,19 +85,19 @@ The story processing pipeline generates:
 
 ## Agent Architecture
 
-FableFlow uses specialized AI agents for each review stage:
+Each stage has a dedicated agent:
 
-- **Friendly Proofreader Agent** - Initial readability and engagement check
-- **Critical Reviewer Agent** - Professional editorial analysis
-- **Content Safety Checker Agent** - Safety and appropriateness validation
-- **Story Editor Agent** - Structure and narrative improvements
-- **Format Proofreader Agent** - Final polish and formatting
+- **Friendly Proofreader Agent** - readability and engagement
+- **Critical Reviewer Agent** - editorial analysis
+- **Content Safety Checker Agent** - safety and appropriateness
+- **Story Editor Agent** - structure and narrative
+- **Format Proofreader Agent** - final polish and formatting
 
-These agents work asynchronously using message passing, allowing for efficient parallel processing in the full publisher pipeline.
+Agents communicate via message passing, enabling parallel processing in the full publisher pipeline.
 
 ## Integration
 
-The processed story feeds into downstream production agents:
+The processed story feeds downstream agents:
 
 - **Illustration Planner/Illustrator Agents** - Generate contextual illustrations
 - **Book Producer Agent** - Create PDF, EPUB, and HTML books
@@ -139,20 +109,9 @@ See [complete workflow documentation](../fableflow-workflow.md) for the full age
 
 ## Best Practices
 
-1. **Input Quality**
-    - Provide clear, well-structured input text
-    - Include any specific educational objectives
-    - Specify target age group if relevant
-
-2. **Processing Options**
-    - Use appropriate model for your content type
-    - Adjust temperature for creativity vs. consistency
-    - Set seed for reproducible results
-
-3. **Output Management**
-    - Review enhanced content before proceeding
-    - Use scene breakdown for illustration planning
-    - Consider analysis suggestions for improvements
+1. **Input Quality** - provide clear, well-structured text with educational objectives and target age group.
+2. **Processing Options** - pick a model suited to your content; tune temperature for creativity vs. consistency; set a seed for reproducibility.
+3. **Output Management** - review enhanced content and use the scene breakdown for illustration planning.
 
 ## Troubleshooting
 
@@ -169,6 +128,4 @@ See [complete workflow documentation](../fableflow-workflow.md) for the full age
 
 ### Getting Help
 
-- Check the [full documentation](../README.md)
-- Report issues on [GitHub](https://github.com/suneeta-mall/fable-flow/issues)
-- Join our [community discussions](https://github.com/suneeta-mall/fable-flow/discussions) 
+See the [full documentation](../README.md), [GitHub issues](https://github.com/suneeta-mall/fable-flow/issues), and [community discussions](https://github.com/suneeta-mall/fable-flow/discussions).

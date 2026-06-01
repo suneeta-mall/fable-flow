@@ -7,7 +7,7 @@
     "volume": 4,
     "target_age": 7,
     "page_count": 25,
-    "author": "FableFlow AI",
+    "author": "Suneeta Mall",
     "genre": "educational biography",
     "dedication_text": "For Dr Fei-Fei Li — who crossed oceans, sorted shirts, and asked the audacious question that taught the world's computers to see. And for every curious child who is brave enough to ask 'how does it know?' — may you grow up to teach the machines of the future to be kind, fair, and full of wonder."
   },
@@ -31,7 +31,7 @@
             "Mum"
           ],
           "scene_context": "morning, kitchen, curious",
-          "image_path": "illustrations/chapter_1_ill_1.png"
+          "image_path": "output/cassie_fei_fei_li_input/illustrations/chapter_1_ill_1.png"
         },
         {
           "page": 5,
@@ -42,7 +42,7 @@
             "Cassie"
           ],
           "scene_context": "close-up, phone screen, discovery",
-          "image_path": "illustrations/chapter_1_ill_2.png"
+          "image_path": "output/cassie_fei_fei_li_input/illustrations/chapter_1_ill_2.png"
         }
       ],
       "reflection": {
@@ -72,7 +72,7 @@
             "Mum"
           ],
           "scene_context": "day, train, energetic",
-          "image_path": "illustrations/chapter_2_ill_1.png"
+          "image_path": "output/cassie_fei_fei_li_input/illustrations/chapter_2_ill_1.png"
         },
         {
           "page": 7,
@@ -83,7 +83,7 @@
             "Cassie"
           ],
           "scene_context": "close-up, window, imagination",
-          "image_path": "illustrations/chapter_2_ill_2.png"
+          "image_path": "output/cassie_fei_fei_li_input/illustrations/chapter_2_ill_2.png"
         }
       ],
       "reflection": {
@@ -112,7 +112,7 @@
             "Caleb"
           ],
           "scene_context": "museum, interactive exhibit, focused",
-          "image_path": "illustrations/chapter_3_ill_1.png"
+          "image_path": "output/cassie_fei_fei_li_input/illustrations/chapter_3_ill_1.png"
         },
         {
           "page": 10,
@@ -123,7 +123,7 @@
             "Caleb"
           ],
           "scene_context": "museum, funny, mistake",
-          "image_path": "illustrations/chapter_3_ill_2.png"
+          "image_path": "output/cassie_fei_fei_li_input/illustrations/chapter_3_ill_2.png"
         }
       ],
       "reflection": {
@@ -152,7 +152,7 @@
             "Caleb"
           ],
           "scene_context": "museum, awe, scale",
-          "image_path": "illustrations/chapter_4_ill_1.png"
+          "image_path": "output/cassie_fei_fei_li_input/illustrations/chapter_4_ill_1.png"
         },
         {
           "page": 13,
@@ -163,7 +163,7 @@
             "Cassie"
           ],
           "scene_context": "conceptual, inspiration, history",
-          "image_path": "illustrations/chapter_4_ill_2.png"
+          "image_path": "output/cassie_fei_fei_li_input/illustrations/chapter_4_ill_2.png"
         }
       ],
       "reflection": {
@@ -191,7 +191,7 @@
             "Cassie"
           ],
           "scene_context": "museum, booth, laughter",
-          "image_path": "illustrations/chapter_5_ill_1.png"
+          "image_path": "output/cassie_fei_fei_li_input/illustrations/chapter_5_ill_1.png"
         },
         {
           "page": 16,
@@ -202,7 +202,7 @@
             "Caleb"
           ],
           "scene_context": "museum, booth, proud",
-          "image_path": "illustrations/chapter_5_ill_2.png"
+          "image_path": "output/cassie_fei_fei_li_input/illustrations/chapter_5_ill_2.png"
         }
       ],
       "reflection": {
@@ -231,7 +231,7 @@
             "Caleb"
           ],
           "scene_context": "auditorium, dark, inspired",
-          "image_path": "illustrations/chapter_6_ill_1.png"
+          "image_path": "output/cassie_fei_fei_li_input/illustrations/chapter_6_ill_1.png"
         },
         {
           "page": 19,
@@ -240,7 +240,7 @@
           "caption": "Learning the world, one label at a time.",
           "characters": [],
           "scene_context": "flashback, laundry shop, learning",
-          "image_path": "illustrations/chapter_6_ill_2.png"
+          "image_path": "output/cassie_fei_fei_li_input/illustrations/chapter_6_ill_2.png"
         }
       ],
       "reflection": {
@@ -269,7 +269,7 @@
             "Mum"
           ],
           "scene_context": "museum, corridor, epiphany",
-          "image_path": "illustrations/chapter_7_ill_1.png"
+          "image_path": "output/cassie_fei_fei_li_input/illustrations/chapter_7_ill_1.png"
         },
         {
           "page": 22,
@@ -278,7 +278,7 @@
           "caption": "A computer can only see what we choose to show it.",
           "characters": [],
           "scene_context": "conceptual, fairness, education",
-          "image_path": "illustrations/chapter_7_ill_2.png"
+          "image_path": "output/cassie_fei_fei_li_input/illustrations/chapter_7_ill_2.png"
         }
       ],
       "reflection": {
@@ -308,7 +308,7 @@
             "Mum"
           ],
           "scene_context": "harbour, sunset, playful",
-          "image_path": "illustrations/chapter_8_ill_1.png"
+          "image_path": "output/cassie_fei_fei_li_input/illustrations/chapter_8_ill_1.png"
         },
         {
           "page": 25,
@@ -319,7 +319,7 @@
             "Cassie"
           ],
           "scene_context": "bedroom, night, hopeful",
-          "image_path": "illustrations/chapter_8_ill_2.png"
+          "image_path": "output/cassie_fei_fei_li_input/illustrations/chapter_8_ill_2.png"
         }
       ],
       "reflection": {
@@ -385,9 +385,9 @@
   },
   "back_matter_for_parents": "**Why this book matters now.** This book introduces children aged 5–10 to one of the most important ideas of their lifetime: that artificial intelligence isn't magic, isn't a brain, and isn't really 'thinking' the way they are. It's a pattern-finder taught by people. Helping a child grasp this — gently, without fearmongering — is one of the most empowering gifts you can give them. A child who understands that AI is *taught* understands two crucial things at once: that it can be wrong (because its teachers were limited or careless), and that it can be improved (because its teachers can choose differently). This is the foundation of healthy AI literacy.\n\n**How to use the book together.** As you read, encourage your child to ask 'How does it know?' about anything around them — the photo app, the voice assistant, the recommendation feed on a tablet. The question itself is the lesson. When they get an answer (or a guess), follow up with 'And how does *that* know?' — the curiosity ladder is endless and rewarding. Pay special attention to Chapters 5 and 7, where the book gently introduces the idea that AI's mistakes are echoes of *what its teachers chose to show it*. This is the kid-friendly seed of bias, fairness, and inclusion in machine learning. You don't need to use those words; the story does the work. Afterwards, you might ask your child whether something from your own home or family — a food, a face, a name, a story — would have been in the computer's 'scrapbook'. Notice what they say. That noticing is the beginning of digital citizenship.\n\n**Conversations this book opens up.** Children may come away with new questions — about their phones, about screens, about what's true online. Use the book as a springboard. Some questions worth exploring together: *Who decides what the computer learns? Who is missing from its pictures? When the computer is wrong, who fixes it? Could you be one of the people who builds it?* You don't need answers. You only need to take the questions seriously. Like Dr Fei-Fei Li, the best AI educators in your child's life will be the grown-ups who treat audacious questions as gifts — not nuisances. We hope this book becomes the start of many such conversations in your family.",
   "cover": {
-    "front_path": "covers/front.png",
-    "back_path": "covers/back.png",
-    "front_base_path": "covers/front_base.png",
-    "back_base_path": "covers/back_base.png"
+    "front_path": "output/cassie_fei_fei_li_input/covers/front.png",
+    "back_path": "output/cassie_fei_fei_li_input/covers/back.png",
+    "front_base_path": "output/cassie_fei_fei_li_input/covers/front_base.png",
+    "back_base_path": "output/cassie_fei_fei_li_input/covers/back_base.png"
   }
 }

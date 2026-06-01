@@ -1,22 +1,20 @@
 # Contributing Guidelines
 
-Thank you for your interest in contributing to Fable Flow! 🎉 We welcome contributions from developers, writers, designers, and storytellers who want to help make AI-powered storytelling accessible to everyone.
+Thank you for your interest in contributing to Fable Flow! We welcome developers, writers, designers, and storytellers.
 
 ## 🌟 Ways to Contribute
 
 ### 🐛 Bug Reports
-- Report issues you encounter
-- Provide detailed reproduction steps
+- Report issues with detailed reproduction steps
 - Include system information and error messages
 
 ### 💡 Feature Requests
-- Suggest new capabilities
-- Propose improvements to existing features
-- Share your use cases and requirements
+- Suggest new capabilities or improvements
+- Share your use cases
 
 ### 🔧 Code Contributions
 - Fix bugs and improve performance
-- Add new features and capabilities
+- Add new features
 - Enhance documentation and examples
 
 ### 📚 Documentation
@@ -27,7 +25,6 @@ Thank you for your interest in contributing to Fable Flow! 🎉 We welcome contr
 ### 🎨 Creative Contributions
 - Share example stories and projects
 - Create templates and presets
-- Design better user interfaces
 
 ## 🚀 Getting Started
 
@@ -71,8 +68,6 @@ git checkout -b feature/your-feature-name
 
 ### Code Standards
 
-We follow these coding standards to maintain code quality:
-
 #### Python Code Style
 - **Formatter**: Black (line length: 100)
 - **Linter**: Ruff with strict settings
@@ -94,6 +89,7 @@ mypy producer/
 
 #### Pre-commit Hooks
 Our pre-commit hooks automatically:
+
 - Format code with Black
 - Sort imports with isort
 - Lint with Ruff
@@ -102,7 +98,7 @@ Our pre-commit hooks automatically:
 
 ### Testing Requirements
 
-All contributions must include appropriate tests:
+All contributions must include appropriate tests.
 
 #### Unit Tests
 ```bash
@@ -129,6 +125,7 @@ make test-cov-html
 ```
 
 **Coverage Requirements:**
+
 - Minimum 80% overall coverage
 - New code should have 90%+ coverage
 - Critical paths must have 100% coverage
@@ -136,9 +133,9 @@ make test-cov-html
 ### Documentation Standards
 
 #### Code Documentation
-- **Docstrings**: Use Google-style docstrings for all public functions
-- **Type Hints**: Include comprehensive type annotations
-- **Examples**: Provide usage examples in docstrings
+- **Docstrings**: Google-style for all public functions
+- **Type Hints**: Comprehensive annotations
+- **Examples**: Usage examples in docstrings
 
 ```python
 def process_story(story_text: str, options: StoryOptions) -> ProcessedStory:
@@ -164,9 +161,9 @@ def process_story(story_text: str, options: StoryOptions) -> ProcessedStory:
 ```
 
 #### Documentation Files
-- **Markdown**: Use clear, well-structured Markdown
-- **Code Examples**: Include working, tested examples
-- **Cross-references**: Link related documentation sections
+- **Markdown**: Clear, well-structured
+- **Code Examples**: Working, tested examples
+- **Cross-references**: Link related sections
 
 ## 📝 Commit Guidelines
 
@@ -204,7 +201,7 @@ test(integration): add tests for video generation pipeline
 
 ### Branch Naming
 
-Use descriptive branch names with prefixes:
+Use descriptive prefixes:
 
 ```
 feature/story-language-support
@@ -239,8 +236,6 @@ refactor/config-system
 
 ### Pull Request Template
 
-When creating a PR, include:
-
 ```markdown
 ## Description
 Brief description of changes and motivation.
@@ -268,35 +263,20 @@ If applicable, add screenshots or examples.
 
 ### Review Process
 
-1. **Automated Checks**: CI/CD pipeline runs tests and quality checks
-2. **Code Review**: Maintainers review code for quality and design
+1. **Automated Checks**: CI/CD runs tests and quality checks
+2. **Code Review**: Maintainers review for quality and design
 3. **Testing**: Manual testing of new features if needed
 4. **Approval**: At least one maintainer approval required
-5. **Merge**: Squash and merge to main branch
+5. **Merge**: Squash and merge to main
 
 ## 🎯 Development Focus Areas
 
 ### Current Priorities
 
-1. **Performance Optimization**
-   - Faster model loading and inference
-   - Memory usage optimization
-   - Parallel processing improvements
-
-2. **Model Integration**
-   - Support for more AI models
-   - Local model deployment
-   - Custom model fine-tuning
-
-3. **User Experience**
-   - Better error messages and debugging
-   - Improved CLI interface
-   - Web interface development
-
-4. **Content Quality**
-   - Better story enhancement algorithms
-   - Improved illustration consistency
-   - Advanced music generation
+1. **Performance Optimization** - faster model loading and inference, memory and parallel processing
+2. **Model Integration** - more AI models, local deployment, custom fine-tuning
+3. **User Experience** - better error messages, improved CLI, web interface
+4. **Content Quality** - story enhancement, illustration consistency, music generation
 
 ### Future Roadmap
 
@@ -307,13 +287,8 @@ If applicable, add screenshots or examples.
 
 ## 🏆 Recognition
 
-Contributors are recognized in several ways:
-
 ### Contributors Wall
-All contributors are listed in our [Contributors](../contributors.md) page with:
-- Profile links and contributions
-- Special recognition for major contributions
-- Annual contributor highlights
+All contributors are listed on our [Contributors](../contributors.md) page.
 
 ### Contributor Levels
 - **🌱 New Contributor**: First contribution merged
@@ -321,36 +296,29 @@ All contributors are listed in our [Contributors](../contributors.md) page with:
 - **🌳 Core Contributor**: Significant ongoing contributions
 - **🏆 Maintainer**: Leadership and project maintenance
 
-### Swag and Rewards
-- Contributor stickers and swag
-- Conference speaking opportunities
-- LinkedIn recommendations
-- Resume reference letters
-
 ## 🤝 Community Guidelines
 
 ### Code of Conduct
 
 We follow the [Contributor Covenant Code of Conduct](https://www.contributor-covenant.org/). Key points:
 
-- **Be Respectful**: Treat all community members with respect
-- **Be Inclusive**: Welcome people of all backgrounds and experience levels
+- **Be Respectful**: Treat all members with respect
+- **Be Inclusive**: Welcome all backgrounds and experience levels
 - **Be Collaborative**: Work together constructively
-- **Be Patient**: Help newcomers learn and grow
+- **Be Patient**: Help newcomers learn
 
 ### Communication Channels
 
 - **GitHub Discussions**: General questions and ideas
 - **GitHub Issues**: Bug reports and feature requests
-- **Discord** (coming soon): Real-time chat and collaboration
+- **Discord** (coming soon): Real-time chat
 - **Email**: Direct contact for sensitive issues
 
 ### Getting Help
 
-- **New Contributors**: Tag issues with `good-first-issue`
-- **Documentation**: Comprehensive guides and examples
+- **New Contributors**: Look for `good-first-issue` labels
+- **Documentation**: Guides and examples
 - **Mentorship**: Experienced contributors willing to help
-- **Office Hours**: Regular community sessions (announced on Discord)
 
 ## 📋 Issue Guidelines
 
@@ -401,12 +369,6 @@ How would this feature be used?
 Add any other context or screenshots.
 ```
 
-## 🎉 Thank You!
-
-Your contributions make Fable Flow better for everyone. Whether you're fixing a typo, adding a feature, or sharing your story creations, every contribution matters.
-
-**Questions?** Don't hesitate to ask! We're here to help and excited to see what you'll create with Fable Flow.
-
 ---
 
-*Happy Contributing! 🚀* 
+**Questions?** Ask in GitHub Discussions. We're happy to help.

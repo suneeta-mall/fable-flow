@@ -5,8 +5,8 @@ title: Creator's Corner
 # Creator's Corner
 
 <div align="center" class="creator-hero">
-  <h2>Amplify Your Creativity, Inspire Curiosity</h2>
-  <p class="creator-subtitle">Transform your educational narratives into multi-sensory experiences that nurture the next generation's capacity for wonder, critical thinking, and discovery</p>
+  <h2>Amplify Your Creativity</h2>
+  <p class="creator-subtitle">Turn your educational narratives into multi-sensory experiences that nurture curiosity, critical thinking, and discovery</p>
 
   <div class="creator-cta">
     <a href="#quick-start" class="btn btn-large btn-primary">Start Creating</a>
@@ -18,9 +18,9 @@ title: Creator's Corner
 
 ## Why Create with FableFlow?
 
-Traditional children's publishing requires $10,000-$20,000 and months of coordination. FableFlow democratizes multimedia storytelling, eliminating financial and technical barriers so you can focus on what matters: **crafting narratives that spark curiosity and inspire critical thinking**.
+Traditional children's publishing costs thousands and takes months of coordination. FableFlow removes the financial and technical barriers so you can focus on **crafting narratives that spark curiosity and critical thinking**.
 
-**The children who will thrive in an AI-shaped future** aren't those who passively consume content—they're those who actively question, explore, and create. Your stories can help build that foundation.
+Children who thrive in an AI-shaped future are those who question, explore, and create. Your stories can help build that foundation.
 
 ---
 
@@ -29,7 +29,7 @@ Traditional children's publishing requires $10,000-$20,000 and months of coordin
 <div class="creator-paths">
   <div class="path-card">
     <h3>🌱 New to Storytelling</h3>
-    <p>No experience needed. Start with guided tutorials, templates, and community support that make your first story achievable in 15 minutes.</p>
+    <p>No experience needed. Guided tutorials, templates, and community support make your first story achievable in 15 minutes.</p>
     <ul class="path-features">
       <li>Step-by-step tutorials</li>
       <li>Story templates</li>
@@ -41,7 +41,7 @@ Traditional children's publishing requires $10,000-$20,000 and months of coordin
 
   <div class="path-card">
     <h3>📚 Experienced Creator</h3>
-    <p>Already write content? Learn how AI amplifies your existing workflow while maintaining your unique creative voice and vision.</p>
+    <p>Already write content? See how AI fits your existing workflow while keeping your creative voice.</p>
     <ul class="path-features">
       <li>Advanced customization</li>
       <li>Workflow integration</li>
@@ -53,7 +53,7 @@ Traditional children's publishing requires $10,000-$20,000 and months of coordin
 
   <div class="path-card">
     <h3>🏫 Educator</h3>
-    <p>Create curriculum-aligned content that transforms how students engage with complex concepts through story-based learning.</p>
+    <p>Create curriculum-aligned content that helps students engage with complex concepts through story.</p>
     <ul class="path-features">
       <li>Curriculum alignment</li>
       <li>Assessment resources</li>
@@ -65,7 +65,7 @@ Traditional children's publishing requires $10,000-$20,000 and months of coordin
 
   <div class="path-card">
     <h3>⚙️ Developer</h3>
-    <p>Integrate FableFlow into your applications or contribute to the open-source platform shaping the future of educational technology.</p>
+    <p>Integrate FableFlow into your applications or contribute to the open-source platform.</p>
     <ul class="path-features">
       <li>API documentation</li>
       <li>Custom integrations</li>
@@ -94,7 +94,7 @@ Traditional children's publishing requires $10,000-$20,000 and months of coordin
     <div class="step-number">2</div>
     <div class="step-content">
       <h4>Write Your Narrative</h4>
-      <p>Start with a simple idea or use our example template</p>
+      <p>Start with a simple idea or use an example template</p>
       <a href="../getting-started/quick-start/" class="step-link">Tutorial →</a>
     </div>
   </div>
@@ -112,7 +112,7 @@ Traditional children's publishing requires $10,000-$20,000 and months of coordin
     <div class="step-number">4</div>
     <div class="step-content">
       <h4>Share Your Creation</h4>
-      <p>Publish and inspire curious minds</p>
+      <p>Publish and reach curious readers</p>
       <a href="submit-story/" class="step-link">Submit Story →</a>
     </div>
   </div>
@@ -130,9 +130,9 @@ Traditional children's publishing requires $10,000-$20,000 and months of coordin
 ### Core Features
 - [Story Processing](../features/story-processing/) - AI-powered manuscript enhancement
 - [Illustration Generation](../features/illustrations/) - Create consistent visual narratives
-- [Voice & Narration](../features/narration/) - Professional audio production
+- [Voice & Narration](../features/narration/) - Audio production
 - [Background Music](../features/music/) - Atmospheric soundscapes
-- [Video Production](../features/video-production/) - Complete multimedia assembly
+- [Video Production](../features/video-production/) - Multimedia assembly
 
 ### Advanced Topics
 - [Advanced Guide](advanced-guide/) - Optimize your workflow
@@ -146,22 +146,22 @@ Traditional children's publishing requires $10,000-$20,000 and months of coordin
 <div class="principles-section">
   <div class="principle">
     <h4>Start with Questions, Not Answers</h4>
-    <p>The best educational stories invite children to wonder before they explain. Let curiosity pull readers through your narrative.</p>
+    <p>The best educational stories invite children to wonder before they explain. Let curiosity pull readers through the narrative.</p>
   </div>
 
   <div class="principle">
     <h4>Show Discovery as Adventure</h4>
-    <p>Scientists weren't passive recipients of knowledge—they were explorers, experimenters, questioners. Show the thrilling journey, not just the destination.</p>
+    <p>Scientists were explorers, experimenters, and questioners. Show the journey, not just the destination.</p>
   </div>
 
   <div class="principle">
     <h4>Make Failure Part of Learning</h4>
-    <p>Growth mindset isn't about easy success—it's about persistence through challenges. Your characters should struggle, fail, learn, and try again.</p>
+    <p>Growth mindset is about persistence through challenges. Let characters struggle, fail, learn, and try again.</p>
   </div>
 
   <div class="principle">
     <h4>Respect Both Children and Science</h4>
-    <p>Complex concepts can be accessible without being dumbed down. Use metaphor, story, and multi-sensory engagement to build genuine understanding.</p>
+    <p>Complex concepts can be accessible without being dumbed down. Use metaphor, story, and multi-sensory engagement to build real understanding.</p>
   </div>
 </div>
 
@@ -181,7 +181,7 @@ Traditional children's publishing requires $10,000-$20,000 and months of coordin
 
     <div class="support-card">
       <h4>📚 Documentation</h4>
-      <p>Comprehensive guides and troubleshooting resources</p>
+      <p>Guides and troubleshooting resources</p>
       <a href="../getting-started/" class="support-link">Browse Docs →</a>
     </div>
 
@@ -190,18 +190,5 @@ Traditional children's publishing requires $10,000-$20,000 and months of coordin
       <p>Read the Curiosity Chronicles for insights and techniques</p>
       <a href="../blog/" class="support-link">Read Blog →</a>
     </div>
-  </div>
-</div>
-
----
-
-<div class="creator-mission">
-  <blockquote>
-    "Every story you create becomes a training ground for wonder, critical thinking, and the joy of discovery. Your creativity, amplified by AI, can help nurture the curiosity that will define the next generation's success."
-  </blockquote>
-
-  <div class="creator-cta-bottom">
-    <p>Ready to transform your ideas into multi-sensory experiences that inspire curious minds?</p>
-    <a href="../getting-started/installation/" class="btn btn-large btn-primary">Begin Creating →</a>
   </div>
 </div>

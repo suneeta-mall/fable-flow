@@ -1,48 +1,24 @@
 # Illustration Generation
 
-Fable Flow's illustration generation feature creates beautiful, contextually relevant artwork for your stories. Using advanced AI models, it generates illustrations that match your story's style, tone, and educational objectives.
+FableFlow generates illustrations that match your story's style, tone, and educational objectives.
 
 ## Overview
 
-The illustration pipeline processes your story to create:
-
-* Scene-specific illustrations
-* Character designs
-* Educational diagrams
-* Cover artwork
-* Supporting visuals
+The pipeline produces scene illustrations, character designs, educational diagrams, cover artwork, and supporting visuals.
 
 ## Key Features
 
 ### Intelligent Scene Analysis
 
-The system analyzes your story to:
-
-* Identify key visual moments
-* Extract character descriptions
-* Recognize educational concepts
-* Determine appropriate visual style
-* Plan illustration placement
+Identifies key visual moments, extracts character descriptions and educational concepts, picks a visual style, and plans where illustrations go.
 
 ### Style Consistency
 
-Maintains visual coherence through:
-
-* Consistent character designs
-* Unified color palette
-* Matching art style
-* Age-appropriate visuals
-* Educational clarity
+Holds visual coherence across the book: consistent character designs, a unified color palette, and a single age-appropriate art style.
 
 ### Multiple Illustration Types
 
-Generates various illustration styles:
-
-* Children's book illustrations
-* Educational diagrams
-* Character portraits
-* Scene compositions
-* Cover artwork
+Covers children's book illustrations, educational diagrams, character portraits, scene compositions, and cover artwork.
 
 ## Usage
 
@@ -56,19 +32,14 @@ Use the web-based Studio interface:
 4. Preview generated illustrations in the Media Gallery
 5. Monitor real-time progress
 
-### Option 2: CLI - Individual Illustration Generation
+### Option 2: CLI
 
 ```bash
-# Generate illustrations (requires processed story)
-fable-flow illustrator draw
+# Run the full generation pipeline (illustration generation runs as a stage within it)
+fable-flow generate examples/cassie_beach_adventure_input.json
 ```
 
-### Option 3: CLI - Full Publishing Pipeline
-
-```bash
-# Run complete pipeline including illustrations
-fable-flow publisher process
-```
+Illustration generation runs as a stage within `fable-flow generate`. Use `--resume` to re-run only missing pieces. The stage can also be re-run from FableFlow Studio.
 
 ### Configuration
 
@@ -93,16 +64,12 @@ MODEL_API_KEY=your_api_key
 
 ## Agent Architecture
 
-FableFlow uses a two-agent illustration system:
+Two agents work together:
 
 - **Illustration Planner Agent** - Analyzes story scenes, identifies key visual moments, creates detailed image prompts
 - **Illustrator Agent** - Generates images using AI models (DALL-E, Stable Diffusion), ensures consistency
 
-These agents work together to create cohesive visual narratives that match your story's tone and educational objectives.
-
 ## Output
-
-The illustration pipeline generates:
 
 * `illustrations/` directory containing:
     * Scene illustrations
@@ -114,7 +81,7 @@ The illustration pipeline generates:
 
 ## Integration
 
-Illustrations work seamlessly with:
+Illustrations feed into:
 
 * **Story Processing** - Uses scene breakdown
 * **Video Production** - Provides visual assets
@@ -123,23 +90,9 @@ Illustrations work seamlessly with:
 
 ## Best Practices
 
-1. **Style Selection**
-    * Choose age-appropriate styles
-    * Consider educational objectives
-    * Maintain consistency
-    * Match story tone
-
-2. **Quality Control**
-    * Review generated illustrations
-    * Check educational accuracy
-    * Verify style consistency
-    * Ensure age-appropriateness
-
-3. **Asset Management**
-    * Organize by scene/chapter
-    * Maintain style guides
-    * Track revisions
-    * Backup original files
+1. **Style Selection** - choose age-appropriate styles that match the story tone and educational goals.
+2. **Quality Control** - review generated illustrations for accuracy, style consistency, and age-appropriateness.
+3. **Asset Management** - organize by scene/chapter, keep style guides, and back up originals.
 
 ## Troubleshooting
 
@@ -156,6 +109,4 @@ Illustrations work seamlessly with:
 
 ### Getting Help
 
-- Check the [full documentation](../README.md)
-- Report issues on [GitHub](https://github.com/suneeta-mall/fable-flow/issues)
-- Join our [community discussions](https://github.com/suneeta-mall/fable-flow/discussions) 
+See the [full documentation](../README.md), [GitHub issues](https://github.com/suneeta-mall/fable-flow/issues), and [community discussions](https://github.com/suneeta-mall/fable-flow/discussions).

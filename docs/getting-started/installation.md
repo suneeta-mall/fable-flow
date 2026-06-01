@@ -1,6 +1,6 @@
 # Installation Guide
 
-This guide will help you install and set up Fable Flow on your system. Follow these steps to get up and running quickly.
+Install and set up Fable Flow on your system.
 
 ## System Requirements
 
@@ -19,7 +19,7 @@ This guide will help you install and set up Fable Flow on your system. Follow th
 
 ## Prerequisites
 
-Before installing Fable Flow, ensure you have the following tools installed:
+Install these tools first.
 
 ### 1. Python 3.11+
 
@@ -99,7 +99,7 @@ cd fable-flow
 
 ### 2. Create Virtual Environment
 
-Creating a virtual environment isolates Fable Flow's dependencies from your system Python:
+A virtual environment isolates Fable Flow's dependencies from your system Python:
 
 ```bash
 python3.11 -m venv .venv
@@ -122,35 +122,34 @@ python3.11 -m venv .venv
     .venv\Scripts\Activate.ps1
     ```
 
-You should see `(.venv)` in your terminal prompt, indicating the virtual environment is active.
+`(.venv)` appears in your prompt when the environment is active.
 
 ### 4. Install Dependencies
 
-Use the provided Makefile to install all required dependencies:
+Install all dependencies via the Makefile:
 
 ```bash
 make install
 ```
 
-This command will:
-- Install the UV package manager for faster dependency resolution
-- Install all Python dependencies from `requirements.txt`
-- Install Fable Flow in editable mode
-- Verify all dependencies are correctly installed
+This command:
+
+- Installs the UV package manager
+- Installs Python dependencies from `requirements.txt`
+- Installs Fable Flow in editable mode
+- Verifies the installation
 
 ### 5. Verify Installation
-
-Test that Fable Flow is correctly installed:
 
 ```bash
 fable-flow --help
 ```
 
-You should see the Fable Flow help message with available commands.
+This prints the help message with available commands.
 
 ## Optional: GPU Setup
 
-For better performance with AI models, set up GPU acceleration:
+For faster AI model processing, set up GPU acceleration.
 
 ### NVIDIA GPU (CUDA)
 
@@ -178,7 +177,7 @@ For better performance with AI models, set up GPU acceleration:
 
 ### Apple Silicon (MPS)
 
-For M1/M2 Macs, PyTorch automatically uses Metal Performance Shaders (MPS):
+On M1/M2 Macs, PyTorch automatically uses Metal Performance Shaders (MPS):
 
 ```bash
 python -c "import torch; print(f'MPS available: {torch.backends.mps.is_available()}')"
@@ -188,7 +187,7 @@ python -c "import torch; print(f'MPS available: {torch.backends.mps.is_available
 
 ### Environment Variables
 
-Create a `.env` file in the project root to configure Fable Flow:
+Create a `.env` file in the project root:
 
 ```bash
 # API Configuration
@@ -213,11 +212,11 @@ BATCH_SIZE=8
 # HUGGINGFACE_TOKEN="your-token-here"
 ```
 
-> Note: Models will be downloaded automatically when needed. If you're using models from Hugging Face, you may need to set your Hugging Face token in the `.env` file.
+> Note: Models download automatically when needed. For Hugging Face models, set your Hugging Face token in the `.env` file.
 
 ### Configuration File
 
-Create a `config.yaml` file in the project root to customize Fable Flow's behavior:
+Create a `config.yaml` file in the project root to customize behavior:
 
 ```yaml
 # Model Configuration
@@ -239,7 +238,7 @@ output:
   temp_dir: "./temp"
 ```
 
-> Note: The `config.yaml` file is optional. If not provided, Fable Flow will use default values. See the [Configuration Guide](configuration.md) for all available options.
+> Note: `config.yaml` is optional. Without it, Fable Flow uses default values. See the [Configuration Guide](configuration.md) for all options.
 
 ## Troubleshooting
 
@@ -270,10 +269,6 @@ If you encounter issues:
 
 ## Next Steps
 
-Now that Fable Flow is installed, you're ready to:
-
 - **[Quick Start Tutorial](quick-start.md)** - Create your first multimedia story
 - **[Configuration Guide](configuration.md)** - Customize Fable Flow for your needs
 - **[Feature Overview](../features/story-processing.md)** - Explore all capabilities
-
-Congratulations! 🎉 You've successfully installed Fable Flow and are ready to transform your stories with AI-powered multimedia creation. 
