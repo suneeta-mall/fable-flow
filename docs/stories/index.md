@@ -19,7 +19,7 @@ title: Story Library
     <p>Each Curious Cassie story turns a scientific concept into an adventure, celebrating its discoverer while building curiosity, critical thinking, and a growth mindset.</p>
 
     <div class="collection-stats">
-      <span class="stat">📚 3 Complete Adventures</span>
+      <span class="stat">📚 4 Complete Adventures</span>
       <span class="stat">🎯 Ages 5-10</span>
       <span class="stat">🔬 STEM + Growth Mindset</span>
     </div>
@@ -81,6 +81,24 @@ title: Story Library
         <span>⚓ Harbor Exploration</span>
       </div>
       <a href="../books/curious_cassie/cassies_harbour_quest/book/" class="story-link">Join Adventure →</a>
+    </div>
+  </div>
+
+  <div class="story-card">
+    <img src="../books/curious_cassie/cassie_caleb_eye_that_learned_to_see/illustrations/chapter_1_ill_1.png" alt="The Eye That Learned to See" class="story-image">
+    <div class="story-content">
+      <h4>Cassie, Caleb, and the Eye That Learned to See</h4>
+      <p>Cassie and Caleb discover how computers came to see the world, exploring computer vision and AI through the work of Dr Fei-Fei Li.</p>
+      <div class="story-tags">
+        <span class="tag">Computer Vision</span>
+        <span class="tag">AI</span>
+        <span class="tag">Ages 5-10</span>
+      </div>
+      <div class="story-features">
+        <span>🤖 AI Vision</span>
+        <span>🎨 Illustrations</span>
+      </div>
+      <a href="../books/curious_cassie/cassie_caleb_eye_that_learned_to_see/book/" class="story-link">Read Adventure →</a>
     </div>
   </div>
 </div>

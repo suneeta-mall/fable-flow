@@ -119,6 +119,25 @@ Cassie is a guide to science, discovery, and learning. Each story celebrates a s
       </div>
     </div>
   </div>
+
+  <div class="story-item">
+    <img src="../books/curious_cassie/cassie_caleb_eye_that_learned_to_see/illustrations/chapter_1_ill_1.png" alt="The Eye That Learned to See" class="story-thumb">
+    <div class="story-details">
+      <h3>🤖 Cassie, Caleb, and the Eye That Learned to See</h3>
+      <p class="story-description">Cassie and Caleb discover how computers came to see the world, exploring computer vision and artificial intelligence.</p>
+      <div class="story-meta">
+        <span class="age-badge">Ages 5-10</span>
+        <span class="theme-badge">Computer Vision</span>
+        <span class="scientist-badge">Dr Fei-Fei Li</span>
+      </div>
+      <div class="story-features">
+        <span class="feature">📖 Interactive Reading</span>
+        <span class="feature">🤖 AI Vision</span>
+        <span class="feature">🎨 Illustrations</span>
+      </div>
+      <a href="../books/curious_cassie/cassie_caleb_eye_that_learned_to_see/book/" class="story-btn">Read Adventure →</a>
+    </div>
+  </div>
 </div>
 
 ## 🎯 Educational Themes

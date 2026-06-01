@@ -138,7 +138,7 @@ flowchart LR
       <p>Cassie's scientific adventures make STEM learning engaging. Each story celebrates a scientist while teaching curiosity, growth, and discovery.</p>
       <div class="story-stats">
         <span class="age-tag">Ages 5-10</span>
-        <span class="story-count">3 Adventures Available</span>
+        <span class="story-count">4 Adventures Available</span>
       </div>
       <a href="curious-cassie/" class="story-link">Explore Cassie's World →</a>
     </div>
