@@ -1,0 +1,4 @@
+__pycache__/
+*.pyc
+# backup files studio writes before saving edits
+*.json.bak

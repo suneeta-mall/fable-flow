@@ -98,4 +98,6 @@ studio/web-ui/dist/
 studio/web-ui/.vite/
 studio/__pycache__/
 studio/*.pyc
+# transient image candidates studio writes before accept/reject
+**/.studio_candidate_*
 .claude/

@@ -56,7 +56,9 @@ style:
   video_animation_style: "subtle natural motion, gentle camera drift, soft lighting"
 
 book:
-  author: "FableFlow AI"
+  author: "Suneeta Mall"
   publisher: "FableFlow Publishing"
   publisher_location: "Sydney, Australia"
   edition: "First Edition"
+  isbn_pdf: "978-0-XXXXX-XXX-X"
+  isbn_epub: "978-0-XXXXX-XXX-X"

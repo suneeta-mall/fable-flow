@@ -1,6 +1,6 @@
 .DEFAULT_GOAL := install
 
-.PHONY: help install sync lock lock-upgrade fmt lint check test cov clean run validate vllm-serve docs-serve docs-stop
+.PHONY: help install sync lock lock-upgrade fmt lint check test cov clean run validate vllm-serve docs-serve docs-stop studio-install studio-start studio-stop
 
 UV ?= uv
 PYTHON ?= 3.13
@@ -9,6 +9,8 @@ OUTPUT ?=
 MODEL ?=
 VLLM_MODEL ?= google/gemma-4-31B-it
 VLLM_PORT ?= 8000
+STUDIO_PORT ?= 8077
+STUDIO_UI_PORT ?= 3000
 
 help:
 	@echo "FableFlow Makefile"
@@ -37,6 +39,11 @@ help:
 	@echo "Docs:"
 	@echo "  docs-serve     - Run mkdocs livereload on :8080"
 	@echo "  docs-stop      - Stop mkdocs livereload"
+	@echo ""
+	@echo "Studio (book_content.json editor):"
+	@echo "  studio-install - Install studio backend (uv group) + web-ui (npm)"
+	@echo "  studio-start   - Launch backend on :$(STUDIO_PORT) and UI on :$(STUDIO_UI_PORT)"
+	@echo "  studio-stop    - Stop studio backend + UI"
 
 install: sync
 
@@ -100,6 +107,33 @@ docs-stop:
 	@sleep 1
 	@-pkill -9 -f "mkdocs serve" 2>/dev/null
 	@echo "Stopped"
+
+studio-install:
+	@echo "📦 Installing studio backend dependencies (uv group: studio)..."
+	$(UV) sync --group studio
+	@echo "🎨 Installing studio web-ui dependencies (npm)..."
+	cd studio/web-ui && npm install
+	@echo "✅ Studio dependencies installed"
+
+studio-start:
+	@echo "🚀 Backend on http://localhost:$(STUDIO_PORT) ..."
+	@STUDIO_PORT=$(STUDIO_PORT) STUDIO_RELOAD=1 $(UV) run uvicorn studio.api:app \
+		--host 0.0.0.0 --port $(STUDIO_PORT) --reload &
+	@sleep 2
+	@echo "🎨 UI on http://localhost:$(STUDIO_UI_PORT) ..."
+	@cd studio/web-ui && npm run dev -- --port $(STUDIO_UI_PORT) &
+	@sleep 2
+	@echo ""
+	@echo "✅ FableFlow Studio started — open http://localhost:$(STUDIO_UI_PORT)"
+	@echo "   To stop: make studio-stop"
+
+studio-stop:
+	@echo "🛑 Stopping FableFlow Studio..."
+	@-pkill -f "uvicorn studio.api:app" 2>/dev/null || true
+	@-pkill -f "vite.*$(STUDIO_UI_PORT)" 2>/dev/null || true
+	@-pkill -f "node.*vite" 2>/dev/null || true
+	@sleep 1
+	@echo "✅ Studio stopped"
 
 clean:
 	find . -name "*.pyc" -delete 2>/dev/null || true
